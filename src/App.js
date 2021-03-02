@@ -30,7 +30,7 @@ function App() {
         <Route path="/board" component={Board} />
         <Route exact path="/profile" component={Profile} />
         <Route path="/profile/messages" component={Messages} />
-        <Route exact path="/profile/:messageId" render={(routeProps) => {
+        <Route path="/profile/:messageId" render={(routeProps) => {
           return <MessageDetail {...routeProps} />
         }} />
         <Route path="/new-post" component={NewPost} />

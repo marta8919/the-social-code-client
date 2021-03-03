@@ -1,4 +1,4 @@
-import React from "react";
+import {React, useState, useEffect} from "react";
 //External Elements
 import { Switch, Route } from "react-router-dom";
 
@@ -14,14 +14,18 @@ import NewPost from "./pages/NewPost";
 import Profile from "./pages/Profile";
 import Board from "./pages/Board";
 import MessageDetail from "./pages/MessageDetail";
-import NavBar from './components/NavBar'
+import axios from 'axios'
+import config from './config.js'
 
 
 
-function App() {
+function App(props) {
+
+  const [loggedInUser, setlogin] = useState(null)
+
   const handleSignUp = (event) => {
     event.preventDefault()
-    console.log('hey there')
+    axios.post()
   }
 
   const handleLogIn = (event)=> {
@@ -33,8 +37,19 @@ function App() {
       password : event.target.password.value,
     }
 
-    axios.post(`${config.API_URL}/api/login`)
+    axios.post(`${config.API_URL}/api/login`, user, {withCredentials: true})
+     .then((response)=>{
+       setlogin(response.data) 
+        props.history.push('/')
+       
+     })
+     .catch((err)=> { console.log("Something went wrong loggin in", err ) })
 
+  }
+
+  const handlePost = (event)=> {
+    event.preventDefault()
+    console.log("handle post")
   }
 
   return (
@@ -66,7 +81,7 @@ function App() {
           return <MessageDetail {...routeProps} />
         }} />
         <Route path="/new-post" render={() => {
-          return <NewPost/>
+          return <NewPost onPost={handlePost}/>
         }} />
         
       </Switch>

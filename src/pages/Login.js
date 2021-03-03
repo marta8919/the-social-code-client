@@ -24,9 +24,9 @@ export default function Login(props) {
         
       <h1>Log In</h1>
       <form className={classes.root} noValidate autoComplete="off" onSubmit={loginUser}>
-        <TextField id="outlined-basic" label="Email" variant="outlined" type="email"/>
-        <TextField id="outlined-basic" label="Password" variant="outlined" type="password" />
-        <Button variant="contained" type="submit" color="primary">Default</Button>
+        <TextField id="outlined-basic" label="Email" variant="outlined" type="email" name="email" />
+        <TextField id="outlined-basic" label="Password" variant="outlined" type="password" name="password" />
+        <Button variant="contained" type="submit" color="primary">Log in</Button>
       </form>
       <NavBar/>
       </>

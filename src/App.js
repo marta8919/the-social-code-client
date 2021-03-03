@@ -76,6 +76,7 @@ function App(props) {
       })
       .catch((err) => setError(err.response.data))
   }
+  
 
   return (
     <div className="App">
@@ -88,7 +89,7 @@ function App(props) {
           return <SignUp error={error} addUser={handleSignUp}/>
         }} />
         <Route path="/login" render={() => {
-          return <Login loginUser= {handleLogIn} error={error} />
+          return <Login loginUser={handleLogIn} error={error} />
         }} />
         <Route path="/about" render={() => {
           return <AboutUs/>
@@ -96,8 +97,8 @@ function App(props) {
         <Route path="/board" render={() => {
           return <Board/>
         }} />
-        <Route exact path="/profile" render={() => {
-          return <Profile/>
+        <Route exact path="/profile" render={(routeProps) => {
+          return <Profile user={loggedInUser} {...routeProps}/>
         }} />
         <Route path="/profile/messages" render={() => {
           return <Messages/>

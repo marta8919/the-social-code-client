@@ -35,7 +35,6 @@ function App(props) {
     axios.post(`${config.API_URL}/signup`, user)
       .then((response) => props.history.push('/'))
       .catch((err) => setError(err.response.data))
-      // 
   }
 
   const handleLogIn = (event)=> {

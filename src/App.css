@@ -23,6 +23,13 @@
   margin-bottom: 10px;
 }
 
+.text-left{
+  text-align: left;
+}
+
+.card-image {
+  height: 200px
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

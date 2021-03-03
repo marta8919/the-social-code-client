@@ -19,14 +19,14 @@ export default function Login() {
 
     return (
         <>
-
-        <NavBar/>
+        
       <h1>Log In</h1>
       <form className={classes.root} noValidate autoComplete="off">
         <TextField id="outlined-basic" label="Email" variant="outlined" type="email"/>
         <TextField id="outlined-basic" label="Password" variant="outlined" type="password" />
         <Button variant="contained" type="submit" color="primary">Default</Button>
       </form>
+      <NavBar/>
       </>
     );
 }

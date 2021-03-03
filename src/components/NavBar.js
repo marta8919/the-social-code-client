@@ -5,7 +5,6 @@ import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import HomeIcon from '@material-ui/icons/Home';
 import InfoIcon from '@material-ui/icons/Info';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
-import {Link} from 'react-router-dom'
 
 const useStyles = makeStyles({
     root: {
@@ -23,9 +22,9 @@ const useStyles = makeStyles({
   
     return (
       <BottomNavigation value={value} onChange={handleChange} className={classes.root}>
-        <Link to="/"><BottomNavigationAction label="Home" value="recents" icon={<HomeIcon />} /></Link>
-        <Link to="/about"><BottomNavigationAction label="About" value="nearby" icon={<InfoIcon />} /></Link>
-        <Link to="/login"><BottomNavigationAction label="Log In" value="folder" icon={<VpnKeyIcon />} /></Link>
+      <BottomNavigationAction label="Home" value="recents" icon={<HomeIcon />} href="/"/>
+      <BottomNavigationAction label="About" value="nearby" icon={<InfoIcon />} href="/about" />
+      <BottomNavigationAction label="Log In" value="folder" icon={<VpnKeyIcon />} href="/login" />
       </BottomNavigation>
     );
   }

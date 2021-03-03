@@ -6,7 +6,7 @@ import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
 import EmailIcon from '@material-ui/icons/Email';
 import KeyboardIcon from '@material-ui/icons/Keyboard';
 import DashboardIcon from '@material-ui/icons/Dashboard';
-import {Link} from 'react-router-dom'
+
 
 const useStyles = makeStyles({
     root: {
@@ -24,10 +24,10 @@ export default function NavBarUser() {
   
     return (
       <BottomNavigation value={value} onChange={handleChange} className={classes.root}>
-        <Link to="/board"><BottomNavigationAction label="Board" value="board" icon={<DashboardIcon />} /></Link>
-        <Link to="/profile/messages"><BottomNavigationAction label="Messages" value="message" icon={<EmailIcon />} /></Link>
-        <Link to="/new-post"><BottomNavigationAction label="Write a post" value="post" icon={<KeyboardIcon />} /></Link>
-        <Link to="/profile"><BottomNavigationAction label="Profile" value="profile" icon={<EmojiPeopleIcon />} /></Link>
+        <BottomNavigationAction label="Board" value="board" icon={<DashboardIcon />} href="/board" />
+        <BottomNavigationAction label="Messages" value="message" icon={<EmailIcon />} href="/profile/messages" />
+        <BottomNavigationAction label="Write a post" value="post" icon={<KeyboardIcon />} href="/new-post" />
+        <BottomNavigationAction label="Profile" value="profile" icon={<EmojiPeopleIcon />} href="/profile" />
       </BottomNavigation>
     );
 }

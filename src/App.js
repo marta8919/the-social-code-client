@@ -1,6 +1,6 @@
 import {React, useState, useEffect} from "react";
 //External Elements
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, withRouter } from "react-router-dom";
 
 //Styles css
 
@@ -16,8 +16,6 @@ import Board from "./pages/Board";
 import MessageDetail from "./pages/MessageDetail";
 import axios from 'axios'
 import config from './config.js'
-
-
 
 function App(props) {
 
@@ -48,11 +46,11 @@ function App(props) {
       password : event.target.password.value,
     }
 
-    axios.post(`${config.API_URL}/api/login`, user, {withCredentials: true})
+    axios.post(`${config.API_URL}/signin`, user)
      .then((response)=>{
-       setlogin(response.data) 
-        props.history.push('/')
-       
+       setlogin(response.data)
+       props.history.push("/") 
+       console.log("user logged in successfully")     
      })
      .catch((err)=> { console.log("Something went wrong loggin in", err ) })
 
@@ -100,4 +98,4 @@ function App(props) {
   );
 }
 
-export default App;
+export default withRouter(App);

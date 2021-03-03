@@ -1,70 +1,71 @@
-# Getting Started with Create React App
+# The Social Code - TSC
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!-- Logo to be filled in -->
+![]()
 
-## Available Scripts
+This work is licensed under a MIT License
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-In the project directory, you can run:
 
-### `yarn start`
+## Description
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The Social Code TBS is a platform that allows developers to post their ideas, articles and code to a tech social media, give feeback on other user's post and save some inspiration.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The user will have to log in to view, write articles and search users to connect though private messages.
 
-### `yarn test`
+## MVP
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The MPV will include the possibility to sign-up, log-in and log-out. Publish (or save as a draft) post/article/code functionality and view the posts the users have published on their profile page. the main board will show all posts and articles. On the profile page the user will also have the possibility to edit their profile information and edit drafts. Private Messaging and responsive design is also included.
 
-### `yarn build`
+## Backlog
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [ ] Access to lost password
+- [ ] Email validation
+- [ ] Main board with the latest news of the day
+- [ ] Voting posts through "likes"
+- [ ] Drag and drop images
+- [ ] Search Bar
+- [ ] Notifications on the navigation bar
+- [ ] Adding img to review
+- [ ] Liked posts visible on profile
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Built with
+- [React](https://reactjs.org/)
+- [NodeJs](https://nodejs.org/es/)
+- [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
+- [Material UI](https://material-ui.com/)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Data Structure Server Side
+### Config
 
-### `yarn eject`
+### db (connection to MongoDB)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### error-handling
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Models
+- Post.model.js
+- User.model.js
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### routes
+- index.js
+- user-routes.js
+- auth.routes.js
+- post.routes.js
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Data Structure Client Side
+### public
+- images
 
-## Learn More
+### src
+#### components
+#### pages
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Resources
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+[Kanba board](https://www.notion.so/599c7db70d1841529f66226c690f6447?v=d64120829e4548a49ac65f89135463a9)
 
-### Code Splitting
+[Presentation Slides]()
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Deployed Website
+(WIP)
+[TSC]()

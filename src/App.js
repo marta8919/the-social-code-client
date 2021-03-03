@@ -25,7 +25,18 @@ function App(props) {
 
   const handleSignUp = (event) => {
     event.preventDefault()
-    axios.post()
+
+    let user = {
+      username: event.target.username.value,
+      email: event.target.email.value,
+      password: event.target.password.value,
+      password2: event.target.password2.value
+    } 
+
+    axios.post(`${config.API_URL}/signup`, user)
+      .then( )
+      .catch()
+      // props.history.push('/')
   }
 
   const handleLogIn = (event)=> {

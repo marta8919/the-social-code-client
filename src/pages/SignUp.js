@@ -13,6 +13,8 @@ function SignUp (props) {
                 <TextField name="email" label="Email" type="email" variant="outlined"/>
                 <span className="input-grey">Email won't be shared with third parties</span>
                 <TextField name="password" id="filled-password-input" label="Password" type="password" variant="outlined"/>
+                <TextField name="password2" id="filled-password-input" label="Repeat Password" type="password" variant="outlined"/>
+
                 <Button type="submit" variant="contained">Sign up</Button>
             </form>
         </StylesProvider>

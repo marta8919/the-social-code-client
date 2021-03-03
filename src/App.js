@@ -21,7 +21,15 @@ function App(props) {
 
   const [loggedInUser, setlogin] = useState(null)
   const [error, setError] = useState(null)
-  const [post, setPost] = useState(null)
+  const [allPost, setPost] = useState([])
+
+  useEffect(()=>{
+    axios.get(`${config.API_URL}/board`)
+    .then((response)=>{
+      setPost(response.data)
+    })
+    .catch((err) => setError(err.response.data))
+  }, []);
 
   const handleSignUp = (event) => {
     event.preventDefault()
@@ -36,7 +44,6 @@ function App(props) {
     axios.post(`${config.API_URL}/signup`, user)
       .then((response) => props.history.push('/'))
       .catch((err) => setError(err.response.data))
-      // 
   }
 
   const handleLogIn = (event)=> {
@@ -63,19 +70,39 @@ function App(props) {
     console.log("handle post")
     let title = event.target.title.value
     let description = event.target.description.value
+    let postType = event.target.postType.value
+
+    let newPost= {
+      title: title,
+      description: description,
+      postType: postType,
+    }
+
+    axios.post(`${config.API_URL}/publish`, newPost, {withCredentials: true})
+      .then((response)=>{
+        setPost(response.data,...allPost)
+        props.history.push("/board")
+        console.log("Post published")
+      })
+      .catch((err) => setError(err.response.data))
+  }
+
+  const handleDraft = (post) => {
+    console.log("Draft works")
+    let title = post.title
+    let description = post.description
 
     let newPost= {
       title: title,
       description: description,
     }
 
-    axios.post(`${config.API_URL}/publish`, newPost, {withCredentials: true})
-      .then((response)=>{
-        setPost(response.data)
-        props.history.push("/board")
-        console.log("Post published")
-      })
-      .catch((err) => setError(err.response.data))
+    axios.post(`${config.API_URL}/new-draft`, newPost, {withCredentials: true})
+    .then(()=>{ 
+      props.history.push("/board")
+      console.log("draft saved")
+    })
+    .catch((err) => setError(err.response.data))
   }
 
   return (
@@ -95,7 +122,7 @@ function App(props) {
           return <AboutUs/>
         }} />
         <Route path="/board" render={() => {
-          return <Board/>
+          return <Board allPost={allPost}/>
         }} />
         <Route exact path="/profile" render={() => {
           return <Profile/>
@@ -107,7 +134,7 @@ function App(props) {
           return <MessageDetail {...routeProps} />
         }} />
         <Route path="/new-post" render={() => {
-          return <NewPost onPost={handlePost} error={error}/>
+          return <NewPost onPost={handlePost} error={error} saveDraft={handleDraft}/>
         }} />
         
       </Switch>

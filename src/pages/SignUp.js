@@ -14,7 +14,11 @@ function SignUp (props) {
                 <span className="input-grey">Email won't be shared with third parties</span>
                 <TextField name="password" id="filled-password-input" label="Password" type="password" variant="outlined"/>
                 <TextField name="password2" id="filled-password-input" label="Repeat Password" type="password" variant="outlined"/>
-
+                {
+                    props.error ? (
+                        <p style={{color: 'red'}}>{ props.error.errorMessage}</p>
+                    ) : null
+                }
                 <Button type="submit" variant="contained">Sign up</Button>
             </form>
         </StylesProvider>

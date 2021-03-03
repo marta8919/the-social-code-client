@@ -21,6 +21,7 @@ function App(props) {
 
   const [loggedInUser, setlogin] = useState(null)
   const [error, setError] = useState(null)
+  const [post, setPost] = useState(null)
 
   const handleSignUp = (event) => {
     event.preventDefault()
@@ -46,19 +47,34 @@ function App(props) {
       password : event.target.password.value,
     }
 
-    axios.post(`${config.API_URL}/signin`, user)
+    axios.post(`${config.API_URL}/signin`, user, {withCredentials: true})
      .then((response)=>{
        setlogin(response.data)
        props.history.push("/") 
        console.log("user logged in successfully")     
      })
-     .catch((err)=> { console.log("Something went wrong loggin in", err ) })
+     .catch((err) => setError(err.response.data))
 
   }
 
   const handlePost = (event)=> {
     event.preventDefault()
     console.log("handle post")
+    let title = event.target.title.value
+    let description = event.target.description.value
+
+    let newPost= {
+      title: title,
+      description: description,
+    }
+
+    axios.post(`${config.API_URL}/publish`, newPost, {withCredentials: true})
+      .then((response)=>{
+        setPost(response.data)
+        props.history.push("/board")
+        console.log("Post published")
+      })
+      .catch((err) => setError(err.response.data))
   }
 
   return (
@@ -72,7 +88,7 @@ function App(props) {
           return <SignUp error={error} addUser={handleSignUp}/>
         }} />
         <Route path="/login" render={() => {
-          return <Login loginUser= {handleLogIn}/>
+          return <Login loginUser= {handleLogIn} error={error} />
         }} />
         <Route path="/about" render={() => {
           return <AboutUs/>
@@ -90,7 +106,7 @@ function App(props) {
           return <MessageDetail {...routeProps} />
         }} />
         <Route path="/new-post" render={() => {
-          return <NewPost onPost={handlePost}/>
+          return <NewPost onPost={handlePost} error={error}/>
         }} />
         
       </Switch>

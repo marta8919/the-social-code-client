@@ -42,19 +42,6 @@ export default function NewPost(props) {
             </RadioGroup>
             </FormControl>
 
-            <p>Post form</p>
-            <form className={classes.root} noValidate autoComplete="off" onSubmit={onPost}>
-            <TextareaAutosize aria-label="minimum height" rowsMin={3} placeholder="Write your article here" name="description" maxLength="100"/>
-
-            {
-                props.error ? (
-                    <p style={{color: 'red'}}>{ props.error.errorMessage}</p>
-                ) : null
-            }
-            <Button type="submit" variant="contained" color="primary">Post</Button>
-            </form>
-            <hr></hr>
-
             <p>Article form</p>
             <form className={classes.root} noValidate autoComplete="off">
             <TextField id="outlined-basic" label="Title" variant="outlined" name="title"/>
@@ -67,7 +54,6 @@ export default function NewPost(props) {
             <Button type="submit" variant="contained" color="primary">Publish article</Button>
             <Button type="submit" variant="contained" color="primary">Save as draft</Button>
             </form>
-
 
             <NavBarUser/>
         </div>

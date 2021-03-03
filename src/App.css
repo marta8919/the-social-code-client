@@ -7,6 +7,23 @@
   pointer-events: none;
 }
 
+.form-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10 auto;
+}
+
+.MuiFormControl-root{
+  margin: 5px;
+}
+.input-grey {
+  color:grey;
+  font-size: 0.8em;
+  margin-bottom: 10px;
+}
+
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

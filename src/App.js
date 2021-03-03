@@ -17,22 +17,44 @@ import MessageDetail from "./pages/MessageDetail";
 import NavBar from "./components/NavBar";
 
 
+
 function App() {
+  const handleSignUp = (event) => {
+    event.preventDefault()
+    console.log('hey there')
+  }
+
   return (
     <div className="App">
       <NavBar/>
       <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/signup" component={SignUp} />
-        <Route path="/login" component={Login} />
-        <Route path="/about" component={AboutUs} />
-        <Route path="/board" component={Board} />
-        <Route exact path="/profile" component={Profile} />
-        <Route path="/profile/messages" component={Messages} />
+        <Route exact path="/" render={() => {
+          return <HomePage/>
+        }} />
+        <Route path="/signup" render={() => {
+          return <SignUp addUser={handleSignUp}/>
+        }} />
+        <Route path="/login" render={() => {
+          return <Login/>
+        }} />
+        <Route path="/about" render={() => {
+          return <AboutUs/>
+        }} />
+        <Route path="/board" render={() => {
+          return <Board/>
+        }} />
+        <Route exact path="/profile" render={() => {
+          return <Profile/>
+        }} />
+        <Route path="/profile/messages" render={() => {
+          return <Messages/>
+        }} />
         <Route path="/profile/:messageId" render={(routeProps) => {
           return <MessageDetail {...routeProps} />
         }} />
-        <Route path="/new-post" component={NewPost} />
+        <Route path="/new-post" render={() => {
+          return <NewPost/>
+        }} />
         
       </Switch>
     </div>

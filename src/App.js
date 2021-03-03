@@ -1,7 +1,7 @@
 import {React, useState, useEffect} from "react";
 //External Elements
 import { Switch, Route, withRouter } from "react-router-dom";
-
+import LinearProgress from '@material-ui/core/LinearProgress';
 //Styles css
 
 //Components and Pages
@@ -25,10 +25,18 @@ function App(props) {
 
   useEffect(()=>{
     axios.get(`${config.API_URL}/board`)
-    .then((response)=>{
-      setPost(response.data)
-    })
-    .catch((err) => setError(err.response.data))
+      .then((response)=>{
+        setPost(response.data)
+      })
+      .catch((err) => setError(err.response.data))
+      
+
+    if(!loggedInUser) {
+      axios.get(`${config.API_URL}/profile`, {withCredentials: true})
+        .then((response) => {
+          setlogin(response.data)
+        })
+    }
   }, []);
 
   const handleSignUp = (event) => {
@@ -104,6 +112,10 @@ function App(props) {
       console.log("draft saved")
     })
     .catch((err) => setError(err.response.data))
+  }
+
+  if(!loggedInUser) {
+    return <LinearProgress/>
   }
 
   return (

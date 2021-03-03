@@ -14,19 +14,18 @@ import NewPost from "./pages/NewPost";
 import Profile from "./pages/Profile";
 import Board from "./pages/Board";
 import MessageDetail from "./pages/MessageDetail";
-import NavBar from "./components/NavBar";
 
 
 
 function App() {
   const handleSignUp = (event) => {
     event.preventDefault()
-    console.log('hey there')
+    axios.post()
   }
 
   return (
     <div className="App">
-      <NavBar/>
+
       <Switch>
         <Route exact path="/" render={() => {
           return <HomePage/>

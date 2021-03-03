@@ -9,11 +9,11 @@ function SignUp (props) {
     return(
         <StylesProvider injectFirst>
             <form onSubmit={addUser} className="form-center" noValidate autoComplete="off">
-                <TextField label="Username" type="text" variant="outlined"/>
-                <TextField label="Email" type="email" variant="outlined"/>
+                <TextField name="username" label="Username" type="text" variant="outlined"/>
+                <TextField name="email" label="Email" type="email" variant="outlined"/>
                 <span className="input-grey">Email won't be shared with third parties</span>
-                <TextField id="filled-password-input" label="Password" type="password" variant="outlined"/>
-                <Button variant="contained">Sign up</Button>
+                <TextField name="password" id="filled-password-input" label="Password" type="password" variant="outlined"/>
+                <Button type="submit" variant="contained">Sign up</Button>
             </form>
         </StylesProvider>
 

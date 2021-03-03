@@ -22,6 +22,7 @@ import config from './config.js'
 function App(props) {
 
   const [loggedInUser, setlogin] = useState(null)
+  const [error, setError] = useState(null)
 
   const handleSignUp = (event) => {
     event.preventDefault()
@@ -34,9 +35,9 @@ function App(props) {
     } 
 
     axios.post(`${config.API_URL}/signup`, user)
-      .then( )
-      .catch()
-      // props.history.push('/')
+      .then((response) => props.history.push('/'))
+      .catch((err) => setError(err.response.data))
+      // 
   }
 
   const handleLogIn = (event)=> {
@@ -71,7 +72,7 @@ function App(props) {
           return <HomePage/>
         }} />
         <Route path="/signup" render={() => {
-          return <SignUp addUser={handleSignUp}/>
+          return <SignUp error={error} addUser={handleSignUp}/>
         }} />
         <Route path="/login" render={() => {
           return <Login loginUser= {handleLogIn}/>

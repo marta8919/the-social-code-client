@@ -15,6 +15,7 @@ import Profile from "./pages/Profile";
 import Board from "./pages/Board";
 import MessageDetail from "./pages/MessageDetail";
 import axios from 'axios'
+import config from './config.js'
 
 
 

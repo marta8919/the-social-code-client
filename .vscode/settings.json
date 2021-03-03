@@ -1,13 +1,7 @@
 {
     "workbench.colorCustomizations": {
-<<<<<<< HEAD
-        "activityBar.background": "#30167D",
-        "titleBar.activeBackground": "#431FAE",
-        "titleBar.activeForeground": "#FCFBFE"
-=======
         "activityBar.background": "#123420",
         "titleBar.activeBackground": "#19482C",
         "titleBar.activeForeground": "#F5FCF8"
->>>>>>> origin/sofia
     }
 }

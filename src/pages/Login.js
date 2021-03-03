@@ -14,14 +14,16 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-export default function Login() {
+export default function Login(props) {
     const classes = useStyles();
+
+    const {loginUser} = props
 
     return (
         <>
         
       <h1>Log In</h1>
-      <form className={classes.root} noValidate autoComplete="off">
+      <form className={classes.root} noValidate autoComplete="off" onSubmit={loginUser}>
         <TextField id="outlined-basic" label="Email" variant="outlined" type="email"/>
         <TextField id="outlined-basic" label="Password" variant="outlined" type="password" />
         <Button variant="contained" type="submit" color="primary">Default</Button>

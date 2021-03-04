@@ -6,8 +6,13 @@
   --gradient1B: #0696D2;
 }
 
-*{
-  
+:root {
+  display: flex;
+  justify-content: center;
+}
+
+a {
+  color: white;
 }
 
 body{
@@ -51,4 +56,33 @@ body{
 
 .card-image {
   height: 200px
+}
+
+.control-btns {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-pic{
+  width: 200px;
+  height:200px;
+  object-fit: cover;
+  border: 5px solid white;
+  border-radius: 50%;
+}
+
+.my-icon{
+  margin: 10px;
+}
+
+.text-card {
+  margin: 10px;
+}
+
+.my-link:hover {
+  color: var(--turquoise);
+}
+
+.my-link {
+  color: var(--darkbackground);
 }

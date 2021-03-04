@@ -2,6 +2,7 @@ import {React, useState, useEffect} from "react";
 import {Redirect} from 'react-router-dom'
 import axios from 'axios'
 import config from '../config'
+import { LinearProgress } from "@material-ui/core";
 
 function Profile(props) {
 
@@ -18,8 +19,10 @@ function Profile(props) {
 
     const {user} = props
 
-
-    if (!user) {
+    if(!user){
+        return <LinearProgress/>
+    }
+    else if(user == 'NotLoggedIn'){
         return <Redirect to={'/'}/>
     }
 

@@ -40,7 +40,7 @@ export default function AboutUs() {
                             <a href="https://www.linkedin.com/in/sof%C3%ADa-s%C3%A1nchez-urbano-76953b64/"><i class="fab fa-linkedin fa-lg"></i></a>
                         </div>
                         <h4 class="mb-4 mt-4">Sofia Sanchez</h4>
-                        <p class="text-resp">Who doesn't love a good puzzle? That's how I feel about coding!
+                        <p class="text-left">Who doesn't love a good puzzle? That's how I feel about coding!
                         I'm a developer and a building architect, specialized in Web Development, BIM Management and committed to ambitious projects with new challenges.
                         My journey into programming began learning about the Revit API and Web Development, and from the first 'Hello World', I was hooked.
                         </p>
@@ -53,7 +53,7 @@ export default function AboutUs() {
                             <a href="https://www.linkedin.com/in/martagilabertgu"><i class="fab fa-linkedin fa-lg"></i></a>
                         </div>
                     <h4 class="mb-4 mt-4">Marta Gilabert</h4>
-                    <p class="text-resp">To live is to learn, that's my motto. I've always loved to learn new things and to put myself out of the comfort zone, trying to solve problems in the most creative way. A few years ago I opened for the first time freecodecamp.org, at got so impressed by how big and unknown to me this world was. Since then, I have not stopped learning.</p>
+                    <p class="text-left">To live is to learn, that's my motto. I've always loved to learn new things and to put myself out of the comfort zone, trying to solve problems in the most creative way. A few years ago I opened for the first time freecodecamp.org, at got so impressed by how big and unknown to me this world was. Since then, I have not stopped learning.</p>
                     </div>
                 </div>
             </div>

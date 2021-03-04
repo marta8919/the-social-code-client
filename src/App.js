@@ -1,7 +1,7 @@
 import {React, useState, useEffect} from "react";
 //External Elements
-import { Switch, Route, withRouter } from "react-router-dom";
-
+import { Switch, Route, withRouter, Redirect } from "react-router-dom";
+import LinearProgress from '@material-ui/core/LinearProgress';
 //Styles css
 
 //Components and Pages
@@ -27,12 +27,25 @@ function App(props) {
   const [allPost, setPost] = useState([])
 
   useEffect(()=>{
+      if(!loggedInUser) {
+        axios.get(`${config.API_URL}/profile`, {withCredentials: true})
+          .then((response) => {
+            setlogin(response.data)
+          })
+          .catch(()=>{ return <Redirect to='/login' />})
+      }
+
+      getBoardPost();
+      
+  }, []);
+
+  const getBoardPost = ()=>{
     axios.get(`${config.API_URL}/board`)
     .then((response)=>{
       setPost(response.data)
     })
     .catch((err) => setError(err.response.data))
-  }, []);
+  }
 
   const handleSignUp = (event) => {
     event.preventDefault()
@@ -83,12 +96,13 @@ function App(props) {
 
     axios.post(`${config.API_URL}/publish`, newPost, {withCredentials: true})
       .then((response)=>{
-        setPost(response.data,...allPost)
+        setPost(allPost.concat(response.data))
         props.history.push("/board")
         console.log("Post published")
       })
-      .catch((err) => setError(err.response.data))
+      .catch((err) => setError(err))
   }
+  
 
   const handleDraft = (post) => {
     console.log("Draft works")
@@ -108,6 +122,10 @@ function App(props) {
     .catch((err) => setError(err.response.data))
   }
 
+  if(!loggedInUser) {
+    return <LinearProgress/>
+  }
+
   return (
     <div className="App">
 
@@ -119,16 +137,16 @@ function App(props) {
           return <SignUp error={error} addUser={handleSignUp}/>
         }} />
         <Route path="/login" render={() => {
-          return <Login loginUser= {handleLogIn} error={error} />
+          return <Login loginUser={handleLogIn} error={error} />
         }} />
         <Route path="/about" render={() => {
           return <AboutUs/>
         }} />
         <Route path="/board" render={() => {
-          return <Board allPost={allPost}/>
+          return <Board allPost={allPost} getPost={getBoardPost}/>
         }} />
-        <Route exact path="/profile" render={() => {
-          return <Profile/>
+        <Route exact path="/profile" render={(routeProps) => {
+          return <Profile user={loggedInUser} {...routeProps}/>
         }} />
         <Route path="/profile/messages" render={() => {
           return <Messages/>

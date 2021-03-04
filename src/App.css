@@ -1,3 +1,29 @@
+:root {
+  --darkbackground: #271b45;
+  --turquoise: #1cc5bc;
+  --cyan: #15c2cd;
+  --gradient1A:#29EDC6;
+  --gradient1B: #0696D2;
+}
+
+body{
+  background-color: var(--darkbackground);
+  color:white;
+}
+
+.MuiButton-root {
+  background: rgb(41,237,198);
+  background: linear-gradient(90deg, rgba(41,237,198,1) 0%, rgba(6,150,210,1) 86%);
+  color:white;
+  font-weight: 400;
+}
+
+.MuiOutlinedInput-input{
+  background-color: white;
+  border-radius: 5px;
+  color:white
+}
+
 .App {
   text-align: center;
 }

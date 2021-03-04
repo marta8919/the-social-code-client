@@ -3,6 +3,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { StylesProvider } from '@material-ui/core/styles';
 import '../App.css'
+import NavBar from '../components/NavBar';
 
 function SignUp (props) {
     const {addUser} = props
@@ -21,6 +22,7 @@ function SignUp (props) {
                 }
                 <Button type="submit" variant="contained">Sign up</Button>
             </form>
+            <NavBar/>
         </StylesProvider>
 
     )

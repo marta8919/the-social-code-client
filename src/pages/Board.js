@@ -1,8 +1,14 @@
-import React from 'react'
+import {React, useState, useEffect} from "react";
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 export default function Board(props) {
 
     const {allPost} = props
+    console.log(allPost)
+
+     if(!allPost){
+        return <LinearProgress/>
+     }
 
     return (
         <div>

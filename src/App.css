@@ -86,3 +86,7 @@ body{
 .my-link {
   color: var(--darkbackground);
 }
+
+.group-btn{
+  margin: 20px auto 20px auto;
+}

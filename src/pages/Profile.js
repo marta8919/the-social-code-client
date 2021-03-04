@@ -32,6 +32,7 @@ function Profile(props) {
              <p>City: {user.city} | Country: {user.country}</p>
              <p>Hobbies: {user.hobbies}</p>
              <p>Part of TSC since {user.dateRegistered}</p>
+             <img src={user.picture} alt="example"></img>
 
              {
                  userPost.map((singlePost)=>{

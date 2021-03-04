@@ -11,6 +11,10 @@ body{
   color:white;
 }
 
+.text-dark{
+  color:black;
+}
+
 .MuiButton-root {
   background: rgb(41,237,198);
   background: linear-gradient(90deg, rgba(41,237,198,1) 0%, rgba(6,150,210,1) 86%);

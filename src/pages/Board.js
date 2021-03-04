@@ -1,6 +1,8 @@
 import {React, useState, useEffect} from "react";
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { Button } from "@material-ui/core";
+import BoardPost from "../components/BoardPost";
+import BoardArticle from "../components/BoardArticle";
 
 export default function Board(props) {
     const [publishedVisible, setVisible] = useState('posts')
@@ -19,9 +21,8 @@ export default function Board(props) {
     }
 
     return (
-        <div>
-            
-            <h1>Board</h1>
+        <div>            
+            <h2>Board</h2>
             <div>
                 <Button onClick={handlePosts}>Posts</Button>
                 <Button onClick={handleArticles}>Articles/Code</Button>
@@ -30,10 +31,10 @@ export default function Board(props) {
                 allPost.filter(e => e.postStatus === 'published')
                     .map((singlePost)=>{
                         if(publishedVisible === 'posts' && singlePost.postType == 'post') {
-                            return <p>Title: {singlePost.title},  Description: {singlePost.description} </p>
+                            return <BoardPost key={singlePost._id} user={singlePost.userId} description={singlePost.description}/>
                         }
                         else if(publishedVisible === 'articles' && singlePost.postType == 'article') {
-                            return <p>Title: {singlePost.title},  Description: {singlePost.description} </p>
+                            return <BoardArticle key={singlePost._id} title={singlePost.title}  description={singlePost.description}/>
                         }
                 })
             }

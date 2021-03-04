@@ -165,10 +165,11 @@ function App(props) {
 
       </Switch>
       <Footer/>
-      <NavBar/>
-      <UserNavBar/>
-      
 
+    <UserNavBar/> 
+    <NavBar/>
+    
+      
     </div>
   );
 }

@@ -1,7 +1,6 @@
 import { Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import "../App.css";
-import NavBar from '../components/NavBar'
 
 
 function HomePage() {
@@ -12,7 +11,6 @@ function HomePage() {
       <Link to="/signup">
         <Button variant="contained">Join us Today!</Button>
       </Link>
-      <NavBar />
     </div>
   );
 }

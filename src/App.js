@@ -37,7 +37,6 @@ function App(props) {
             else {
               console.log('no user')
               setlogin('NotLoggedIn')
-              // props.history.push('/')
             }
           })
           .catch(()=>{
@@ -112,7 +111,6 @@ function App(props) {
       .catch((err) => setError(err))
   }
   
-
   const handleDraft = (post) => {
     console.log("Draft works")
     let title = post.title

@@ -44,7 +44,12 @@ export default function NewPost(props) {
             <p>Article form</p>
             <form className={classes.root} noValidate autoComplete="off">
             <TextField id="outlined-basic" label="Title" variant="outlined" name="title"/>
-            <TextareaAutosize aria-label="minimum height" rowsMin={5} placeholder="Write your article here" name="description" rowsMax={20} />
+            <TextareaAutosize aria-label="minimum height" rowsMin={5} placeholder="Write your article here" 
+              name="description" rowsMax={20} />
+            {/* <code> */}
+              <TextareaAutosize aria-label="minimum height" rowsMin={5} placeholder="Write your article here" 
+              name="description" rowsMax={20} />
+            {/* </code> */}
             {
                 props.error ? (
                     <p style={{color: 'red'}}>{ props.error.errorMessage}</p>

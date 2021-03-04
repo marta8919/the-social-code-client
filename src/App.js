@@ -28,19 +28,28 @@ function App(props) {
 
   useEffect(()=>{
       if(!loggedInUser) {
+        
         axios.get(`${config.API_URL}/profile`, {withCredentials: true})
           .then((response) => {
-            setlogin(response.data)
+            if(response.data._id) {
+              setlogin(response.data)
+            }
+            else {
+              console.log('no user')
+              setlogin('NotLoggedIn')
+              // props.history.push('/')
+            }
           })
-          .catch(()=>{ return <Redirect to='/login' />})
+          .catch(()=>{
+            console.log('user not found')
+          
+          })
       }
-
       getBoardPost();
-      
   }, []);
 
   const getBoardPost = ()=>{
-    axios.get(`${config.API_URL}/board`)
+    axios.get(`${config.API_URL}/board`, {withCredentials:true})
     .then((response)=>{
       setPost(response.data)
     })
@@ -120,10 +129,6 @@ function App(props) {
       console.log("draft saved")
     })
     .catch((err) => setError(err.response.data))
-  }
-
-  if(!loggedInUser) {
-    return <LinearProgress/>
   }
 
   return (

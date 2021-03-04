@@ -12,6 +12,7 @@ import Typography from "@material-ui/core/Typography";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import ButtonGroup from '@material-ui/core/ButtonGroup';
 
 const useStyles = makeStyles({
   root: {
@@ -98,9 +99,11 @@ function Profile(props) {
         </div>
       </Card>
 
-      <div>
+      <div className="group-btn">
+      <ButtonGroup color="primary" aria-label="outlined primary button group">
         <Button onClick={handlePosts}>Posts</Button>
         <Button onClick={handleArticles}>Articles/Code</Button>
+      </ButtonGroup>
       </div>
 
       {userPost

@@ -16,6 +16,9 @@ import Board from "./pages/Board";
 import MessageDetail from "./pages/MessageDetail";
 import axios from 'axios'
 import config from './config.js'
+import Footer from './components/Footer'
+import NavBar from './components/NavBar'
+import UserNavBar from './components/NavBarUser'
 
 function App(props) {
 
@@ -136,8 +139,15 @@ function App(props) {
         <Route path="/new-post" render={() => {
           return <NewPost onPost={handlePost} error={error} saveDraft={handleDraft}/>
         }} />
-        
+
+       
+
       </Switch>
+      <Footer/>
+      <NavBar/>
+      <UserNavBar/>
+      
+
     </div>
   );
 }

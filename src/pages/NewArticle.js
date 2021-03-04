@@ -1,5 +1,4 @@
 import React from 'react'
-import NavBarUser from '../components/NavBarUser'
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -55,7 +54,6 @@ export default function NewPost(props) {
             <Button type="submit" variant="contained" color="primary">Save as draft</Button>
             </form>
 
-            <NavBarUser/>
         </div>
     )
 }

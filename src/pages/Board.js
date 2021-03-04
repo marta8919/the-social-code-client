@@ -1,5 +1,4 @@
 import React from 'react'
-import NavBarUser from '../components/NavBarUser'
 
 export default function Board(props) {
 
@@ -11,12 +10,9 @@ export default function Board(props) {
             <h1>Board</h1>
             {
                 allPost.map((singlePost)=>{
-                    return (
-                        <p>{singlePost.description}</p>
-                    )
+                    return <p>Title: {singlePost.title},  Description: {singlePost.description} </p>
                 })
             }
-            <NavBarUser />
         </div>
     )
 }

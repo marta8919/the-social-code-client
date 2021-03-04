@@ -1,9 +1,14 @@
-import React from 'react'
-import NavBarUser from '../components/NavBarUser'
+import {React, useState, useEffect} from "react";
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 export default function Board(props) {
 
     const {allPost} = props
+    console.log(allPost)
+
+     if(!allPost){
+        return <LinearProgress/>
+     }
 
     return (
         <div>
@@ -11,12 +16,9 @@ export default function Board(props) {
             <h1>Board</h1>
             {
                 allPost.map((singlePost)=>{
-                    return (
-                        <p>{singlePost.description}</p>
-                    )
+                    return <p>Title: {singlePost.title},  Description: {singlePost.description} </p>
                 })
             }
-            <NavBarUser />
         </div>
     )
 }

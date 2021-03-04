@@ -1,6 +1,6 @@
 import {React, useState, useEffect} from "react";
 //External Elements
-import { Switch, Route, withRouter } from "react-router-dom";
+import { Switch, Route, withRouter, Redirect } from "react-router-dom";
 import LinearProgress from '@material-ui/core/LinearProgress';
 //Styles css
 
@@ -16,6 +16,9 @@ import Board from "./pages/Board";
 import MessageDetail from "./pages/MessageDetail";
 import axios from 'axios'
 import config from './config.js'
+import Footer from './components/Footer'
+import NavBar from './components/NavBar'
+import UserNavBar from './components/NavBarUser'
 
 function App(props) {
 
@@ -24,20 +27,25 @@ function App(props) {
   const [allPost, setPost] = useState([])
 
   useEffect(()=>{
-    axios.get(`${config.API_URL}/board`)
-      .then((response)=>{
-        setPost(response.data)
-      })
-      .catch((err) => setError(err.response.data))
-      
+      if(!loggedInUser) {
+        axios.get(`${config.API_URL}/profile`, {withCredentials: true})
+          .then((response) => {
+            setlogin(response.data)
+          })
+          .catch(()=>{ return <Redirect to='/login' />})
+      }
 
-    if(!loggedInUser) {
-      axios.get(`${config.API_URL}/profile`, {withCredentials: true})
-        .then((response) => {
-          setlogin(response.data)
-        })
-    }
+      getBoardPost();
+      
   }, []);
+
+  const getBoardPost = ()=>{
+    axios.get(`${config.API_URL}/board`)
+    .then((response)=>{
+      setPost(response.data)
+    })
+    .catch((err) => setError(err.response.data))
+  }
 
   const handleSignUp = (event) => {
     event.preventDefault()
@@ -88,11 +96,11 @@ function App(props) {
 
     axios.post(`${config.API_URL}/publish`, newPost, {withCredentials: true})
       .then((response)=>{
-        setPost(response.data,...allPost)
+        setPost(allPost.concat(response.data))
         props.history.push("/board")
         console.log("Post published")
       })
-      .catch((err) => setError(err.response.data))
+      .catch((err) => setError(err))
   }
   
 
@@ -135,7 +143,7 @@ function App(props) {
           return <AboutUs/>
         }} />
         <Route path="/board" render={() => {
-          return <Board allPost={allPost}/>
+          return <Board allPost={allPost} getPost={getBoardPost}/>
         }} />
         <Route exact path="/profile" render={(routeProps) => {
           return <Profile user={loggedInUser} {...routeProps}/>
@@ -149,8 +157,15 @@ function App(props) {
         <Route path="/new-post" render={() => {
           return <NewPost onPost={handlePost} error={error} saveDraft={handleDraft}/>
         }} />
-        
+
+       
+
       </Switch>
+      <Footer/>
+      <NavBar/>
+      <UserNavBar/>
+      
+
     </div>
   );
 }

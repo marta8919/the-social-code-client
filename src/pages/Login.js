@@ -1,7 +1,6 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import NavBar from '../components/NavBar'
 import Button from '@material-ui/core/Button';
 
 
@@ -33,7 +32,6 @@ export default function Login(props) {
         }
         <Button variant="contained" type="submit" color="primary">Log in</Button>
       </form>
-      <NavBar/>
       </>
     );
 }

@@ -1,7 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import NavBar from '../components/NavBar'
-
 
 import { StylesProvider } from '@material-ui/core/styles';
 import '../App.css'
@@ -59,7 +57,7 @@ export default function AboutUs() {
                     </div>
                 </div>
             </div>
-            <NavBar/>
+
         </StylesProvider>
     )
 }

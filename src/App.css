@@ -37,6 +37,10 @@ body{
   color:white
 }
 
+.MuiButton-outlinedPrimary {
+  color:white;
+}
+
 .form-center {
   display: flex;
   flex-direction: column;
@@ -93,4 +97,16 @@ body{
 
 .group-btn{
   margin: 20px auto 20px auto;
+}
+
+.card-board{
+  margin-bottom:15px;
+}
+
+.post-container{
+  display:flex;
+}
+
+.post-text {
+  margin-left: 15px;
 }

@@ -8,6 +8,7 @@ import CardAbout from '../components/CardAbout';
 
 export default function AboutUs() {
     return (
+        <div className="container">
         <StylesProvider injectFirst>
             <h1>About us</h1>
             <p className="text-left">
@@ -59,5 +60,6 @@ export default function AboutUs() {
             </div>
 
         </StylesProvider>
+        </div>
     )
 }

@@ -34,7 +34,7 @@ export default function NewPost(props) {
       };
 
     return (
-        <div>
+        <div className="container">
             <h1>Write a post</h1>
 
             <form className={classes.root} noValidate autoComplete="off" onSubmit={onPost}>

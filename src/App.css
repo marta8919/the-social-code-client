@@ -43,9 +43,19 @@ body{
 
 .form-center {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: center;
   margin: 10 auto;
+}
+
+.form-center input {
+  background-color: white;
+  color: black;
+}
+
+.container {
+  max-width: 500px;
 }
 
 .MuiFormControl-root{

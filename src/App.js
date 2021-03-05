@@ -62,7 +62,11 @@ function App(props) {
       username: event.target.username.value,
       email: event.target.email.value,
       password: event.target.password.value,
-      password2: event.target.password2.value
+      password2: event.target.password2.value,
+      country: event.target.country.value,
+      city: event.target.city.value,
+      hobbies: event.target.hobbies.value,
+      intro: event.target.intro.value
     } 
 
     axios.post(`${config.API_URL}/signup`, user)

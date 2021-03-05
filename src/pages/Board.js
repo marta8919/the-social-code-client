@@ -1,12 +1,15 @@
 import { React, useState, useEffect } from "react";
+
+//Components from Material UI
+import { StylesProvider } from '@material-ui/core/styles';
 import LinearProgress from "@material-ui/core/LinearProgress";
 import { Button } from "@material-ui/core";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
+
+//Internal Components
+import BoardPost from "../components/BoardPost";
+import BoardArticle from "../components/BoardArticle";
 
 const useStyles = makeStyles({
   root: {
@@ -45,7 +48,7 @@ export default function Board(props) {
   };
 
   return (
-    <div>
+    <StylesProvider>
       <h1>Board</h1>
       <div className="group-btn">
         <ButtonGroup color="primary" aria-label="outlined primary button group">
@@ -58,35 +61,18 @@ export default function Board(props) {
         .map((singlePost) => {
           if (publishedVisible === "posts" && singlePost.postType == "post") {
             return (
-              <Card className={classes.root}>
-                <CardContent>
-                  <Typography variant="body2" component="p">
-                    {singlePost.description}
-                    <br />
-                  </Typography>
-                </CardContent>
-              </Card>
+                <BoardPost key={singlePost._id} user={singlePost.userId} description={singlePost.description}/>
             );
           } else if (
             publishedVisible === "articles" &&
             singlePost.postType == "article"
           ) {
             return (
-              <Card className={classes.root}>
-                <CardContent>
-                  <Typography className={classes.pos} color="textSecondary">
-                    {singlePost.title}
-                    {singlePost.postType}
-                  </Typography>
-                  <Typography variant="body2" component="p">
-                    {singlePost.description}
-                    <br />
-                  </Typography>
-                </CardContent>
-              </Card>
+                <BoardArticle key={singlePost._id} title={singlePost.title}  description={singlePost.description}/>
+
             );
           }
         })}
-    </div>
+    </StylesProvider>
   );
 }

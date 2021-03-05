@@ -9,6 +9,9 @@ import Button from "@material-ui/core/Button";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import { InputLabel } from '@material-ui/core';
 
+//import calendar styles
+import 'react-calendar/dist/Calendar.css';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {

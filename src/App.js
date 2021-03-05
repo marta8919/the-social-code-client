@@ -19,6 +19,7 @@ import config from './config.js'
 import Footer from './components/Footer'
 import NavBar from './components/NavBar'
 import UserNavBar from './components/NavBarUser'
+import EditForm from './pages/EditForm'
 
 function App(props) {
 
@@ -73,6 +74,7 @@ function App(props) {
       .then((response) => props.history.push('/'))
       .catch((err) => setError(err.response.data))
   }
+
 
   const handleLogIn = (event)=> {
     event.preventDefault()
@@ -133,6 +135,24 @@ function App(props) {
     .catch((err) => setError(err.response.data))
   }
 
+  const handleEditProfile= (event)=>{
+    event.preventDefault()
+
+    let editedProfile = {
+      country: event.target.country.value,
+      city: event.target.city.value,
+      hobbies: event.target.hobbies.value,
+      intro: event.target.intro.value
+    }
+
+    axios.patch(`${config.API_URL}/profile/edit`, editedProfile, {withCredentials: true})
+     .then((response)=> 
+     { setlogin(response.data)
+       props.history.push('/profile')}
+     )
+     .catch((err) => setError(err.response.data))
+  }
+
   return (
     <div className="App">
 
@@ -154,6 +174,9 @@ function App(props) {
         }} />
         <Route exact path="/profile" render={(routeProps) => {
           return <Profile user={loggedInUser} {...routeProps}/>
+        }} />
+        <Route exact path="/profile/edit" render={(routeProps) => {
+          return <EditForm onEdit={handleEditProfile} user ={loggedInUser} {...routeProps}/>
         }} />
         <Route path="/profile/messages" render={() => {
           return <Messages/>

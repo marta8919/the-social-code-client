@@ -1,21 +1,23 @@
-import {React, useState} from 'react'
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+import { React, useState } from "react";
+import {Redirect} from 'react-router-dom'
 
+//components from Material UI
+import LinearProgress from "@material-ui/core/LinearProgress";
+import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
+import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    '& > *': {
+    "& > *": {
       margin: theme.spacing(3),
-      width: '70ch',
+      width: "70ch",
     },
   },
 }));
 
-
 export default function NewPost(props) {
+    const {user} = props
 
     const [post, setPost] = useState({})
 
@@ -31,6 +33,12 @@ export default function NewPost(props) {
     const handleChange = (event) => {
         setValue(event.target.value);
       };
+
+    if (!user) {
+      return <LinearProgress />;
+    } else if (user == "NotLoggedIn") {
+      return <Redirect to={"/"} />;
+    }
 
     return (
         <div className="container">
@@ -51,7 +59,7 @@ export default function NewPost(props) {
 
             <hr></hr>
 
-            <h1>Write an article</h1>
+            {/* <h1>Write an article</h1>
 
             <form className={classes.root} noValidate autoComplete="off" onSubmit={onPost}>
             <TextField id="outlined-basic" label="Title" variant="outlined" name="title" onChange={handleChangePost} />
@@ -69,7 +77,7 @@ export default function NewPost(props) {
             <Button type="submit" variant="contained" color="primary">Publish article</Button>
             <Button variant="contained" color="secondary" onClick={() => {saveDraft(post)}}>Save as draft</Button>
 
-            </form>
+            </form> */}
 
         </div>
     )

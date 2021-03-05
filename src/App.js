@@ -20,6 +20,7 @@ import Footer from './components/Footer'
 import NavBar from './components/NavBar'
 import UserNavBar from './components/NavBarUser'
 import EditForm from './pages/EditForm'
+import EditPic from './pages/EditPic'
 
 function App(props) {
 
@@ -75,7 +76,6 @@ function App(props) {
       .catch((err) => setError(err.response.data))
   }
 
-
   const handleLogIn = (event)=> {
     event.preventDefault()
     console.log("log in user")
@@ -97,43 +97,54 @@ function App(props) {
 
   const handlePost = (event)=> {
     event.preventDefault()
-    console.log("handle post")
-    let title = event.target.title.value
-    let description = event.target.description.value
-    let postType = event.target.postType.value
-
     let newPost= {
-      title: title,
-      description: description,
-      postType: postType,
+      title: event.target.title.value,
+      description: event.target.description.value,
+      code: event.target.code.value,
+      postType: event.target.postType.value,
     }
 
     axios.post(`${config.API_URL}/publish`, newPost, {withCredentials: true})
       .then((response)=>{
         setPost(allPost.concat(response.data))
         props.history.push("/board")
-        console.log("Post published")
       })
       .catch((err) => setError(err))
   }
-  
-  const handleDraft = (post) => {
-    console.log("Draft works")
-    let title = post.title
-    let description = post.description
 
-    let newPost= {
-      title: title,
-      description: description,
-    }
+  const handleDelete = (postId) => {
+    axios.delete(`${config.API_URL}/delete/${postId}`)
+      .then(() => {
+        let filteredPosts = allPost.filter(e => e._id !== postId)
+        //update hook allPost
+        setPost(filteredPosts)
 
-    axios.post(`${config.API_URL}/new-draft`, newPost, {withCredentials: true})
-    .then(()=>{ 
-      props.history.push("/board")
-      console.log("draft saved")
-    })
-    .catch((err) => setError(err.response.data))
+        //send the user back to the main board
+        props.history.push('/board')
+      })
+
+      .catch((err) => {
+        console.log('Delete failed', err)
+      })
   }
+  
+  // const handleDraft = (post) => {
+  //   console.log("Draft works")
+  //   let title = post.title
+  //   let description = post.description
+
+  //   let newPost= {
+  //     title: title,
+  //     description: description,
+  //   }
+
+  //   axios.post(`${config.API_URL}/new-draft`, newPost, {withCredentials: true})
+  //   .then(()=>{ 
+  //     props.history.push("/board")
+  //     console.log("draft saved")
+  //   })
+  //   .catch((err) => setError(err.response.data))
+  // }
 
   const handleEditProfile= (event)=>{
     event.preventDefault()
@@ -153,6 +164,30 @@ function App(props) {
      .catch((err) => setError(err.response.data))
   }
 
+  const handleEditPic = (event)=>{
+    event.preventDefault()
+
+    let imageUrl = event.target.imageUrl.files[0]
+
+    let uploadForm = new FormData()
+    uploadForm.append('imageUrl', imageUrl)
+
+    axios.post(`${config.API_URL}/profile/upload`, uploadForm, {withCredentials: true})
+     .then((response)=>{
+       setlogin(response.data)
+       props.history.push("/profile")
+     })
+     .catch((err)=> setError(err.response.data))
+  }
+
+  const handleLogout= () => {
+    axios.post(`${config.API_URL}/logout`, {}, {withCredentials: true})
+     .then(()=>{
+       setlogin(null)
+       props.history.push('/')
+     })
+  }
+
   return (
     <div className="App">
 
@@ -170,25 +205,26 @@ function App(props) {
           return <AboutUs/>
         }} />
         <Route path="/board" render={() => {
-          return <Board allPost={allPost} getPost={getBoardPost}/>
+          return <Board user={loggedInUser} allPost={allPost} getPost={getBoardPost}/>
         }} />
         <Route exact path="/profile" render={(routeProps) => {
-          return <Profile user={loggedInUser} {...routeProps}/>
+          return <Profile onLogout={handleLogout} user={loggedInUser} onDelete={handleDelete} {...routeProps}/>
         }} />
         <Route exact path="/profile/edit" render={(routeProps) => {
           return <EditForm onEdit={handleEditProfile} user ={loggedInUser} {...routeProps}/>
         }} />
+        <Route exact path="/profile/editPic" render={(routeProps) => {
+          return <EditPic onEditPic={handleEditPic} user ={loggedInUser} {...routeProps}/>
+        }} />
         <Route path="/profile/messages" render={() => {
-          return <Messages/>
+          return <Messages user={loggedInUser}/>
         }} />
         <Route path="/profile/:messageId" render={(routeProps) => {
-          return <MessageDetail {...routeProps} />
+          return <MessageDetail user={loggedInUser} {...routeProps} />
         }} />
         <Route path="/new-post" render={() => {
-          return <NewPost onPost={handlePost} error={error} saveDraft={handleDraft}/>
+          return <NewPost user={loggedInUser} onPost={handlePost} error={error}/>
         }} />
-
-       
 
       </Switch>
       <Footer/>

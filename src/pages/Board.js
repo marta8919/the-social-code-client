@@ -1,4 +1,5 @@
 import { React, useState, useEffect } from "react";
+import {Redirect} from 'react-router-dom'
 
 //Components from Material UI
 import { StylesProvider } from '@material-ui/core/styles';
@@ -33,7 +34,7 @@ const useStyles = makeStyles({
 export default function Board(props) {
   const [publishedVisible, setVisible] = useState("posts");
   const classes = useStyles();
-  const { allPost } = props;
+  const { allPost, user } = props;
 
   if (!allPost) {
     return <LinearProgress />;
@@ -46,6 +47,12 @@ export default function Board(props) {
   const handleArticles = () => {
     setVisible("articles");
   };
+
+  if (!user) {
+    return <LinearProgress />;
+  } else if (user == "NotLoggedIn") {
+    return <Redirect to={"/"} />;
+  }
 
   return (
     <StylesProvider>
@@ -68,7 +75,7 @@ export default function Board(props) {
             singlePost.postType == "article"
           ) {
             return (
-                <BoardArticle key={singlePost._id} title={singlePost.title}  description={singlePost.description}/>
+                <BoardArticle key={singlePost._id} title={singlePost.title}  description={singlePost.description} code={singlePost.code}/>
 
             );
           }

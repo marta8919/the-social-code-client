@@ -47,7 +47,7 @@ function Profile(props) {
       .catch((err) => console.log(err));
   }, []);
 
-  const { user } = props;
+  const { user, onDelete , onLogout} = props;
 
   if (!user) {
     return <LinearProgress />;
@@ -55,13 +55,13 @@ function Profile(props) {
     return <Redirect to={"/"} />;
   }
 
-  const handlePosts = () => {
-    setVisible("posts");
-  };
+  // const handlePosts = () => {
+  //   setVisible("posts");
+  // };
 
-  const handleArticles = () => {
-    setVisible("articles");
-  };
+  // const handleArticles = () => {
+  //   setVisible("articles");
+  // };
 
   return (
     <div>
@@ -69,6 +69,7 @@ function Profile(props) {
       <h3>Welcome to your profile </h3>
       <Card className={classes.card}>
         <img src={user.picture} alt="user image" className="profile-pic"></img>
+        <Link to="/profile/editPic">Edit picture</Link>
 
         <div className="text-card">
           <p>
@@ -93,18 +94,18 @@ function Profile(props) {
           <Link to="/profile/delete" className="my-link">
             <DeleteForeverIcon className="my-icon" />
           </Link>
-          <Link to="/logout" className="my-link">
-            <ExitToAppIcon className="my-icon" />
-          </Link>
+          <a onClick={onLogout} ><ExitToAppIcon/></a>
         </div>
       </Card>
 
-      <div className="group-btn">
+      {/* <div className="group-btn">
       <ButtonGroup color="primary" aria-label="outlined primary button group">
         <Button onClick={handlePosts}>Posts</Button>
         <Button onClick={handleArticles}>Articles/Code</Button>
       </ButtonGroup>
-      </div>
+      </div> */}
+
+      <h3>Your commits</h3>
 
       {userPost
         .filter((e) => e.postStatus === "published")
@@ -119,11 +120,11 @@ function Profile(props) {
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Button size="small">Delete Post</Button>
+                  <Button onClick={() => {onDelete(singlePost._id)}} size="small">pop()</Button>
                 </CardActions>
               </Card>
             );
-          } else if (
+          {/* } else if (
             publishedVisible === "articles" &&
             singlePost.postType == "article"
           ) {
@@ -144,8 +145,9 @@ function Profile(props) {
                 </CardActions>
               </Card>
             );
-          }
-        })}
+          } */}
+        }
+      })}
     </div>
   );
 }

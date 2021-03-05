@@ -12,7 +12,6 @@ import Typography from "@material-ui/core/Typography";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import ButtonGroup from '@material-ui/core/ButtonGroup';
 
 const useStyles = makeStyles({
   root: {
@@ -51,7 +50,7 @@ function Profile(props) {
 
   if (!user) {
     return <LinearProgress />;
-  } else if (user == "NotLoggedIn") {
+  } else if (user === "NotLoggedIn") {
     return <Redirect to={"/"} />;
   }
 
@@ -68,7 +67,7 @@ function Profile(props) {
       <h1>Hey @{user.username} !</h1>
       <h3>Welcome to your profile </h3>
       <Card className={classes.card}>
-        <img src={user.picture} alt="user image" className="profile-pic"></img>
+        <img src={user.picture} alt="user" className="profile-pic"></img>
         <Link to="/profile/editPic">Edit picture</Link>
 
         <div className="text-card">
@@ -94,7 +93,7 @@ function Profile(props) {
           <Link to="/profile/delete" className="my-link">
             <DeleteForeverIcon className="my-icon" />
           </Link>
-          <a onClick={onLogout} ><ExitToAppIcon/></a>
+          <button className="transparent" onClick={onLogout} ><ExitToAppIcon/></button>
         </div>
       </Card>
 
@@ -109,8 +108,7 @@ function Profile(props) {
 
       {userPost
         .filter((e) => e.postStatus === "published")
-        .map((singlePost) => {
-          if (publishedVisible === "posts" && singlePost.postType == "post") {
+        .map((singlePost) => {if (publishedVisible === "posts" && singlePost.postType ==="post") {
             return (
               <Card className={classes.root}>
                 <CardContent>
@@ -124,9 +122,9 @@ function Profile(props) {
                 </CardActions>
               </Card>
             );
-          {/* } else if (
+          /* } else if (
             publishedVisible === "articles" &&
-            singlePost.postType == "article"
+            singlePost.postType ==="article"
           ) {
             return (
               <Card className={classes.root}>
@@ -145,7 +143,7 @@ function Profile(props) {
                 </CardActions>
               </Card>
             );
-          } */}
+          } */
         }
       })}
     </div>

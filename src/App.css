@@ -20,6 +20,11 @@ body{
   color:white;
 }
 
+.transparent {
+  background: none;
+  border:none
+}
+
 .text-dark{
   color:black;
 }

@@ -50,7 +50,7 @@ export default function Board(props) {
 
   if (!user) {
     return <LinearProgress />;
-  } else if (user == "NotLoggedIn") {
+  } else if (user ==="NotLoggedIn") {
     return <Redirect to={"/"} />;
   }
 
@@ -66,13 +66,13 @@ export default function Board(props) {
       {allPost
         .filter((e) => e.postStatus === "published")
         .map((singlePost) => {
-          if (publishedVisible === "posts" && singlePost.postType == "post") {
+          if (publishedVisible === "posts" && singlePost.postType ==="post") {
             return (
                 <BoardPost key={singlePost._id} user={singlePost.userId} description={singlePost.description}/>
             );
           } else if (
             publishedVisible === "articles" &&
-            singlePost.postType == "article"
+            singlePost.postType ==="article"
           ) {
             return (
                 <BoardArticle key={singlePost._id} title={singlePost.title}  description={singlePost.description} code={singlePost.code}/>

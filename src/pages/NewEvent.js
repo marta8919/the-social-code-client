@@ -41,7 +41,7 @@ export default function NewEvent(props) {
 
   if (!user) {
     return <LinearProgress />;
-  } else if (user == "NotLoggedIn") {
+  } else if (user ==="NotLoggedIn") {
     return <Redirect to={"/"} />;
   }
 

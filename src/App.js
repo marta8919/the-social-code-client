@@ -100,10 +100,7 @@ function App(props) {
   const handlePost = (event)=> {
     event.preventDefault()
     let newPost= {
-      title: event.target.title.value,
       description: event.target.description.value,
-      code: event.target.code.value,
-      postType: event.target.postType.value,
     }
 
     axios.post(`${config.API_URL}/publish`, newPost, {withCredentials: true})
@@ -149,24 +146,6 @@ function App(props) {
         console.log('Delete failed', err)
       })
   }
-  
-  // const handleDraft = (post) => {
-  //   console.log("Draft works")
-  //   let title = post.title
-  //   let description = post.description
-
-  //   let newPost= {
-  //     title: title,
-  //     description: description,
-  //   }
-
-  //   axios.post(`${config.API_URL}/new-draft`, newPost, {withCredentials: true})
-  //   .then(()=>{ 
-  //     props.history.push("/board")
-  //     console.log("draft saved")
-  //   })
-  //   .catch((err) => setError(err.response.data))
-  // }
 
   const handleEditProfile= (event)=>{
     event.preventDefault()
@@ -227,7 +206,7 @@ function App(props) {
           return <AboutUs/>
         }} />
         <Route path="/board" render={() => {
-          return <Board user={loggedInUser} allPost={allPost} getPost={getBoardPost}/>
+          return <Board user={loggedInUser} allPost={allPost}/>
         }} />
         <Route exact path="/profile" render={(routeProps) => {
           return <Profile onLogout={handleLogout} user={loggedInUser} onDelete={handleDelete} {...routeProps}/>

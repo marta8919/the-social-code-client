@@ -58,7 +58,7 @@ export default function NewPost(props) {
             <TextareaAutosize aria-label="minimum height" rowsMin={5} placeholder="Write your article here" name="description" rowsMax={20} onChange={handleChangePost} />
             <code>
             <TextareaAutosize aria-label="minimum height" rowsMin={5} placeholder="<p>Write your code here</p>" 
-              name="description" rowsMax={20} />
+              name="code" rowsMax={20} />
             </code>
             <input type="hidden" name="postType" value="article" onChange={handleChangePost} ></input>
             {

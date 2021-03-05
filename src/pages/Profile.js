@@ -47,7 +47,7 @@ function Profile(props) {
       .catch((err) => console.log(err));
   }, []);
 
-  const { user, onDelete } = props;
+  const { user, onDelete , onLogout} = props;
 
   if (!user) {
     return <LinearProgress />;
@@ -69,6 +69,7 @@ function Profile(props) {
       <h3>Welcome to your profile </h3>
       <Card className={classes.card}>
         <img src={user.picture} alt="user image" className="profile-pic"></img>
+        <Link to="/profile/editPic">Edit picture</Link>
 
         <div className="text-card">
           <p>
@@ -93,9 +94,7 @@ function Profile(props) {
           <Link to="/profile/delete" className="my-link">
             <DeleteForeverIcon className="my-icon" />
           </Link>
-          <Link to="/logout" className="my-link">
-            <ExitToAppIcon className="my-icon" />
-          </Link>
+          <a onClick={onLogout} ><ExitToAppIcon/></a>
         </div>
       </Card>
 

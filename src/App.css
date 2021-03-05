@@ -11,9 +11,9 @@
   justify-content: center;
 }
 
-a {
+/* a {
   color: white;
-}
+} */
 
 body{
   background-color: var(--darkbackground);

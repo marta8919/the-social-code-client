@@ -20,6 +20,8 @@ import config from './config.js'
 import Footer from './components/Footer'
 import NavBar from './components/NavBar'
 import UserNavBar from './components/NavBarUser'
+import EditForm from './pages/EditForm'
+import EditPic from './pages/EditPic'
 
 function App(props) {
 
@@ -166,6 +168,48 @@ function App(props) {
   //   .catch((err) => setError(err.response.data))
   // }
 
+  const handleEditProfile= (event)=>{
+    event.preventDefault()
+
+    let editedProfile = {
+      country: event.target.country.value,
+      city: event.target.city.value,
+      hobbies: event.target.hobbies.value,
+      intro: event.target.intro.value
+    }
+
+    axios.patch(`${config.API_URL}/profile/edit`, editedProfile, {withCredentials: true})
+     .then((response)=> 
+     { setlogin(response.data)
+       props.history.push('/profile')}
+     )
+     .catch((err) => setError(err.response.data))
+  }
+
+  const handleEditPic = (event)=>{
+    event.preventDefault()
+
+    let imageUrl = event.target.imageUrl.files[0]
+
+    let uploadForm = new FormData()
+    uploadForm.append('imageUrl', imageUrl)
+
+    axios.post(`${config.API_URL}/profile/upload`, uploadForm, {withCredentials: true})
+     .then((response)=>{
+       setlogin(response.data)
+       props.history.push("/profile")
+     })
+     .catch((err)=> setError(err.response.data))
+  }
+
+  const handleLogout= () => {
+    axios.post(`${config.API_URL}/logout`, {}, {withCredentials: true})
+     .then(()=>{
+       setlogin(null)
+       props.history.push('/')
+     })
+  }
+
   return (
     <div className="App">
 
@@ -186,7 +230,13 @@ function App(props) {
           return <Board user={loggedInUser} allPost={allPost} getPost={getBoardPost}/>
         }} />
         <Route exact path="/profile" render={(routeProps) => {
-          return <Profile user={loggedInUser} onDelete={handleDelete} {...routeProps}/>
+          return <Profile onLogout={handleLogout} user={loggedInUser} onDelete={handleDelete} {...routeProps}/>
+        }} />
+        <Route exact path="/profile/edit" render={(routeProps) => {
+          return <EditForm onEdit={handleEditProfile} user ={loggedInUser} {...routeProps}/>
+        }} />
+        <Route exact path="/profile/editPic" render={(routeProps) => {
+          return <EditPic onEditPic={handleEditPic} user ={loggedInUser} {...routeProps}/>
         }} />
         <Route exact path="/profile/messages" render={() => {
           return <Messages user={loggedInUser}/>
@@ -200,8 +250,6 @@ function App(props) {
         <Route path="/new-event" render={() => {
           return <NewEvent user={loggedInUser} onAdd={handleEvent} error={error}/>
         }} />
-
-       
 
       </Switch>
       <Footer/>

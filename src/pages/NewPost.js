@@ -26,7 +26,6 @@ export default function NewPost(props) {
         [event.currentTarget.name] : event.currentTarget.value
     })
     
-
     const classes = useStyles();
     const [value, setValue] = useState(2);
     const {onPost, saveDraft} = props
@@ -54,6 +53,7 @@ export default function NewPost(props) {
                     <p style={{color: 'red'}}>{ props.error.errorMessage}</p>
                 ) : null
             }
+
             <Button type="submit" variant="contained" color="primary">Post</Button>
             </form>
 

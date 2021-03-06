@@ -8,7 +8,7 @@ import VpnKeyIcon from '@material-ui/icons/VpnKey';
 
 const useStyles = makeStyles({
     root: {
-      width: 500,
+      width: 400,
     },
   });
 
@@ -21,7 +21,7 @@ const useStyles = makeStyles({
     };
   
     return (
-      <BottomNavigation value={value} onChange={handleChange} className={classes.root}>
+      <BottomNavigation value={value} onChange={handleChange} className="my-nav">
       <BottomNavigationAction label="Home" value="recents" icon={<HomeIcon />} href="/"/>
       <BottomNavigationAction label="About" value="nearby" icon={<InfoIcon />} href="/about" />
       <BottomNavigationAction label="Log In" value="folder" icon={<VpnKeyIcon />} href="/login" />

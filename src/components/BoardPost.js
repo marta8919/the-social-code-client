@@ -18,6 +18,7 @@ function BoardPost (props) {
     
     return (
         <StylesProvider>
+            <div className="container">
             <Card className="card-board">
                 <CardContent className="post-container">
                     <img src={user.picture} alt="Profile Picture" className="profile-pic"/>
@@ -43,6 +44,7 @@ function BoardPost (props) {
                 </CardContent>
                 
             </Card>
+            </div>
         </StylesProvider>
     )
 }

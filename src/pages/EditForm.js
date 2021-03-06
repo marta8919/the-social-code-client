@@ -17,14 +17,16 @@ export default function EditForm(props) {
 
     return (
         <div className="container">
+            <div className="header">
             <h1>Hello @{user.username}</h1>
             <h3>Here you can edit your profile.</h3>
+            </div>
             <StylesProvider injectFirst>
             <form onSubmit={onEdit} className="form-center" noValidate autoComplete="off">
-                <TextField name="country" label="Country" type="text" variant="outlined"  onChange={handleChangeUser} value={loggedInUser.country}/>
-                <TextField name="city" label="City" type="text" variant="outlined" value={loggedInUser.city} onChange={handleChangeUser}  />
-                <TextField name="intro" label="Intro" type="text" variant="outlined" value={loggedInUser.intro} onChange={handleChangeUser} />
-                <TextField name="hobbies" label="Hobbies" type="text" variant="outlined" value={loggedInUser.hobbies}  onChange={handleChangeUser} />
+                <TextField className="my-inputfield" name="country" label="Country" type="text" variant="filled"  onChange={handleChangeUser} value={loggedInUser.country}/>
+                <TextField className="my-inputfield" name="city" label="City" type="text" variant="filled" value={loggedInUser.city} onChange={handleChangeUser}  />
+                <TextField className="my-inputfield" name="intro" label="Intro" type="text" variant="filled" value={loggedInUser.intro} onChange={handleChangeUser} />
+                <TextField className="my-inputfield" name="hobbies" label="Hobbies" type="text" variant="filled" value={loggedInUser.hobbies}  onChange={handleChangeUser} />
                 <Button type="submit" variant="contained">Save</Button>
             </form>
             </StylesProvider>

@@ -9,6 +9,9 @@ import Button from "@material-ui/core/Button";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import { InputLabel } from '@material-ui/core';
 
+//import calendar styles
+import 'react-calendar/dist/Calendar.css';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
@@ -41,16 +44,16 @@ export default function NewEvent(props) {
 
   if (!user) {
     return <LinearProgress />;
-  } else if (user == "NotLoggedIn") {
+  } else if (user ==="NotLoggedIn") {
     return <Redirect to={"/"} />;
   }
 
   return (
     <div className="container">
-      <h1>Create a digital event!</h1>
+      <h1 className="header">Create a digital event!</h1>
 
       <form
-        className={classes.root}
+        className="my-form"
         noValidate
         autoComplete="off"
         onSubmit={onAdd}
@@ -62,6 +65,7 @@ export default function NewEvent(props) {
           placeholder="Title of the geek event"
           name="title"
           maxLength="100"
+          className="my-inputfield"
         />
         <label>Description</label>
         <TextareaAutosize
@@ -70,6 +74,7 @@ export default function NewEvent(props) {
           placeholder="Tell me more about this event within 151 characters"
           name="description"
           maxLength="151"
+          className="my-inputfield"
         />
 
         <label>Tags</label>
@@ -79,6 +84,7 @@ export default function NewEvent(props) {
           placeholder="Tags separated by commas like python, javascript, ..."
           name="tags"
           maxLength="100"
+          className="my-inputfield"
         />
 
         <label>Date</label>
@@ -95,6 +101,7 @@ export default function NewEvent(props) {
           placeholder="12"
           name="hours"
           maxLength="2"
+          className="my-inputfield"
           />
           <TextareaAutosize className="time-input"
           aria-label="minimum height"
@@ -102,18 +109,17 @@ export default function NewEvent(props) {
           placeholder="00"
           name="minutes"
           maxLength="2"
+          className="my-inputfield"
           />
         </div>
         
         {props.error ? (
           <p style={{ color: "red" }}>{props.error.errorMessage}</p>
         ) : null}
-        <Button type="submit" variant="contained" color="primary">
+        <Button type="submit" variant="contained" color="primary" className="my-btn">
           Post
         </Button>
       </form>
-
-      <hr></hr>
 
       {/* <h1>Write an article</h1>
 

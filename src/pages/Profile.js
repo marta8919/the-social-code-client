@@ -12,7 +12,6 @@ import Typography from "@material-ui/core/Typography";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import ButtonGroup from '@material-ui/core/ButtonGroup';
 
 const useStyles = makeStyles({
   root: {
@@ -45,6 +44,9 @@ function Profile(props) {
         setUserPost(response.data);
       })
       .catch((err) => console.log(err));
+      
+    
+    
   }, []);
 
   const { user, onDelete , onLogout} = props;
@@ -52,7 +54,7 @@ function Profile(props) {
 
   if (!user) {
     return <LinearProgress />;
-  } else if (user == "NotLoggedIn") {
+  } else if (user === "NotLoggedIn") {
     return <Redirect to={"/"} />;
   }
 
@@ -65,17 +67,18 @@ function Profile(props) {
   // };
 
   return (
-    <div>
+    <div className="container">
+      <div className="header">
       <h1>Hey @{user.username} !</h1>
       <h3>Welcome to your profile </h3>
-      <Card className={classes.card}>
-        <img src={user.picture} alt="user image" className="profile-pic"></img>
+      </div>
+      <Card className="my-card">
+        <div className="image-btn">
+        <img src={user.picture} alt="user" className="profile-pic"></img>
         <Link to="/profile/editPic">Edit picture</Link>
+        </div>
 
         <div className="text-card">
-          <p>
-            <strong>Intro: </strong> {user.intro}
-          </p>
           <p>
             <strong>City: </strong> {user.city}
           </p>
@@ -84,6 +87,9 @@ function Profile(props) {
           </p>
           <p>
             <strong>Hobbies: </strong> {user.hobbies}
+          </p>
+          <p>
+            <strong>Intro: </strong> {user.intro}
           </p>
           <p>Part of TSC since {user.dateRegistered}</p>
         </div>
@@ -95,7 +101,7 @@ function Profile(props) {
           <Link to="/profile/delete" className="my-link">
             <DeleteForeverIcon className="my-icon" />
           </Link>
-          <a onClick={onLogout} ><ExitToAppIcon/></a>
+          <button className="transparent" onClick={onLogout} ><ExitToAppIcon/></button>
         </div>
       </Card>
 
@@ -106,12 +112,11 @@ function Profile(props) {
       </ButtonGroup>
       </div> */}
 
-      <h3>Your commits</h3>
+      <h3 className="header">Your commits</h3>
 
       {userPost
         .filter((e) => e.postStatus === "published")
-        .map((singlePost) => {
-          if (publishedVisible === "posts" && singlePost.postType == "post") {
+        .map((singlePost) => {if (publishedVisible === "posts" && singlePost.postType ==="post") {
             return (
               <Card className={classes.root}>
                 <CardContent>
@@ -125,9 +130,9 @@ function Profile(props) {
                 </CardActions>
               </Card>
             );
-          {/* } else if (
+          /* } else if (
             publishedVisible === "articles" &&
-            singlePost.postType == "article"
+            singlePost.postType ==="article"
           ) {
             return (
               <Card className={classes.root}>
@@ -146,7 +151,7 @@ function Profile(props) {
                 </CardActions>
               </Card>
             );
-          } */}
+          } */
         }
       })}
     </div>

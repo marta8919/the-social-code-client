@@ -102,7 +102,6 @@ function App(props) {
     let newPost= {
       title: event.target.title.value,
       description: event.target.description.value,
-      code: event.target.code.value,
       postType: event.target.postType.value,
     }
 
@@ -196,11 +195,10 @@ function App(props) {
 
     axios.post(`${config.API_URL}/profile/upload`, uploadForm, {withCredentials: true})
      .then((response)=>{
-       console.log(response.data)
        setlogin(response.data)
        props.history.push("/profile")
      })
-     .catch((err)=> setError(err))
+     .catch((err)=> setError(err.response.data))
   }
 
   const handleLogout= () => {
@@ -256,7 +254,7 @@ function App(props) {
       <Footer/>
 
     <UserNavBar/> 
-    <NavBar/>
+    {/* <NavBar/> */}
     
       
     </div>

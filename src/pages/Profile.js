@@ -48,6 +48,7 @@ function Profile(props) {
   }, []);
 
   const { user, onDelete , onLogout} = props;
+  console.log(user)
 
   if (!user) {
     return <LinearProgress />;

@@ -11,6 +11,7 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Messages from "./pages/Messages";
 import NewPost from "./pages/NewPost";
+import NewEvent from "./pages/NewEvent";
 import Profile from "./pages/Profile";
 import Board from "./pages/Board";
 import MessageDetail from "./pages/MessageDetail";
@@ -27,6 +28,7 @@ function App(props) {
   const [loggedInUser, setlogin] = useState(null)
   const [error, setError] = useState(null)
   const [allPost, setPost] = useState([])
+  const [allEvents, setAllEvents] = useState([])
 
   useEffect(()=>{
       if(!loggedInUser) {
@@ -112,6 +114,26 @@ function App(props) {
       .catch((err) => setError(err))
   }
 
+  const handleEvent = (event) => {
+    event.preventDefault()
+    let newEvent= {
+      title: event.target.title.value,
+      description: event.target.description.value,
+      tags: event.target.tags.value,
+      picture: event.target.picture.value,
+      dateEvent: event.target.dateEvent.value,
+      hours: event.target.hours.value,
+      minutes: event.target.minutes.value,
+    }
+
+    axios.post(`${config.API_URL}/event/publish`, newEvent, {withCredentials: true})
+      .then((response)=>{
+        setAllEvents(allEvents.concat(response.data))
+        props.history.push("/board")
+      })
+      .catch((err) => setError(err))
+  }
+
   const handleDelete = (postId) => {
     axios.delete(`${config.API_URL}/delete/${postId}`)
       .then(() => {
@@ -174,10 +196,11 @@ function App(props) {
 
     axios.post(`${config.API_URL}/profile/upload`, uploadForm, {withCredentials: true})
      .then((response)=>{
+       console.log(response.data)
        setlogin(response.data)
        props.history.push("/profile")
      })
-     .catch((err)=> setError(err.response.data))
+     .catch((err)=> setError(err))
   }
 
   const handleLogout= () => {
@@ -216,14 +239,17 @@ function App(props) {
         <Route exact path="/profile/editPic" render={(routeProps) => {
           return <EditPic onEditPic={handleEditPic} user ={loggedInUser} {...routeProps}/>
         }} />
-        <Route path="/profile/messages" render={() => {
+        <Route exact path="/profile/messages" render={() => {
           return <Messages user={loggedInUser}/>
         }} />
-        <Route path="/profile/:messageId" render={(routeProps) => {
+        <Route path="/profile/:roomName" render={(routeProps) => {
           return <MessageDetail user={loggedInUser} {...routeProps} />
         }} />
         <Route path="/new-post" render={() => {
           return <NewPost user={loggedInUser} onPost={handlePost} error={error}/>
+        }} />
+        <Route path="/new-event" render={() => {
+          return <NewEvent user={loggedInUser} onAdd={handleEvent} error={error}/>
         }} />
 
       </Switch>

@@ -20,7 +20,7 @@ function BoardPost (props) {
         <StylesProvider>
             <Card className="card-board">
                 <CardContent className="post-container">
-                    <img src={user.picture} alt="Profile Picture"/>
+                    <img src={user.picture} alt="Profile Picture" className="profile-pic"/>
                     <div className="post-text">
                         <Typography variant="h5" component="h2"className="text-dark">@{user.username}</Typography>
                         <Typography variant="body2" component="p" className="text-dark">{description}</Typography>

@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React } from "react";
 import {Redirect} from 'react-router-dom'
 
 //components from Material UI
@@ -8,21 +8,8 @@ import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 
 
 export default function NewPost(props) {
-    const {user} = props
-
-    const [post, setPost] = useState({})
-
-    const handleChangePost = (event) => setPost({
-        ...post,
-        [event.currentTarget.name] : event.currentTarget.value
-    })
-    
-    const [value, setValue] = useState(2);
+    const {user} = props 
     const {onPost, saveDraft} = props
-
-    const handleChange = (event) => {
-        setValue(event.target.value);
-      };
 
     if (!user) {
       return <LinearProgress />;
@@ -45,26 +32,6 @@ export default function NewPost(props) {
 
             <Button type="submit" variant="contained" color="primary" className="my-btn">Post</Button>
             </form>
-
-            {/* <h1>Write an article</h1>
-
-            <form className={classes.root} noValidate autoComplete="off" onSubmit={onPost}>
-            <TextField id="outlined-basic" label="Title" variant="outlined" name="title" onChange={handleChangePost} />
-            <TextareaAutosize aria-label="minimum height" rowsMin={5} placeholder="Write your article here" name="description" rowsMax={20} onChange={handleChangePost} />
-            <code>
-            <TextareaAutosize aria-label="minimum height" rowsMin={5} placeholder="<p>Write your code here</p>" 
-              name="code" rowsMax={20} />
-            </code>
-            <input type="hidden" name="postType" value="article" onChange={handleChangePost} ></input>
-            {
-                props.error ? (
-                    <p className="errorMessage">{ props.error.errorMessage}</p>                ) : null
-            }
-            <Button type="submit" variant="contained" color="primary">Publish article</Button>
-            <Button variant="contained" color="secondary" onClick={() => {saveDraft(post)}}>Save as draft</Button>
-
-            </form> */}
-
         </div>
     )
 }

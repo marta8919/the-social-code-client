@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 
 //Components from Material UI
@@ -8,9 +8,11 @@ import { Button } from "@material-ui/core";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import { makeStyles } from "@material-ui/core/styles";
 
-//Internal Components
+//Internal files
 import BoardPost from "../components/BoardPost";
 import BoardEvent from "../components/BoardEvent";
+import axios from 'axios'
+import config from '../config.js'
 
 const useStyles = makeStyles({
   root: {
@@ -31,10 +33,36 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Board(props) {
-  const [publishedVisible, setVisible] = useState("posts");
+export default function Board(props) {  
   const classes = useStyles();
-  const { allPost, user, allEvents } = props;
+  const { user } = props;
+
+  const [error, setError] = useState(null)
+  const [allPost, setPost] = useState([])
+  const [allEvents, setAllEvents] = useState([])
+  const [publishedVisible, setVisible] = useState("posts");
+
+  useEffect(()=>{
+      getBoardPost();
+      getBoardEvent();
+  }, []);
+
+  const getBoardPost = ()=>{
+    axios.get(`${config.API_URL}/board/posts`, {withCredentials:true})
+    .then((response)=>{
+      setPost(response.data)
+    })
+    .catch((err) => setError(err.response.data))
+  }
+
+  const getBoardEvent = ()=>{
+    axios.get(`${config.API_URL}/board/events`, {withCredentials:true})
+    .then((response)=>{
+      setAllEvents(response.data)
+    })
+    .catch((err) => setError(err.response.data))
+  }
+
 
   if (!allPost) {
     return <LinearProgress />;
@@ -80,10 +108,9 @@ export default function Board(props) {
         ) : (
           allEvents.map((singleEvent) => {
             return (
-              <BoardPost
+              <BoardEvent
                 key={singleEvent._id}
-                user={singleEvent.userId}
-                description={singleEvent.description}
+                event={singleEvent}
               />
             );
           })

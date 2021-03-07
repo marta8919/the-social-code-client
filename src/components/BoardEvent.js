@@ -1,51 +1,35 @@
 import React from "react";
 import Card from "@material-ui/core/Card";
-import { CardContent, Typography, CardActions, Checkbox } from '@material-ui/core';
-import {FavoriteBorder, Favorite} from '@material-ui/icons';
-import SmsIcon from '@material-ui/icons/Sms';
-import SmsOutlinedIcon from '@material-ui/icons/SmsOutlined';
+import { CardContent, Typography } from '@material-ui/core';
 
 function BoardEvent(props) {
-  const { title, description, code } = props;
-  const [checked, setCheck] = React.useState(false);
-
-  const toggleCheckBox = (event) => {
-    setCheck(event.target.checked);
-  };
-
+  const { event } = props;
+  
   return (
     <Card className="card-board">
       <CardContent>
         <Typography variant="h5" component="h2" className="text-dark">
-          {title} hello
+          {event.title}
         </Typography>
         <Typography variant="body2" component="p" className="text-dark">
-          {description}
+          {event.description}
         </Typography>
-        {code ? (
+        <Typography variant="body2" component="p" className="text-dark">
+          Date: {event.dateString}, at {event.hours}:{event.minutes}
+        </Typography>
+        <a href="{event.link}">
+          Link to register
+        </a>
+        {event.tags ? (
           <div className="article-code">
             <Typography variant="body2" component="p" className="text-dark">
-              Code:{" "}
+              Tags: #{event.tags}
             </Typography>
-            <code>{code}</code>
           </div>
         ) : (
           ""
         )}
       </CardContent>
-      <CardActions disableSpacing>
-        <Checkbox
-          icon={<FavoriteBorder />}
-          checkedIcon={<Favorite />}
-          inputProps={{ "aria-label": "Like" }}
-        />
-
-        <Checkbox
-          icon={<SmsOutlinedIcon />}
-          checkedIcon={<SmsIcon />}
-          inputProps={{ "aria-label": "Like" }}
-        />
-      </CardActions>
     </Card>
   );
 }

@@ -4,7 +4,8 @@ import TextField from '@material-ui/core/TextField';
 import { StylesProvider } from '@material-ui/core/styles';
 import '../App.css'
 
-export default function EditForm(props) {
+
+export default function EditProfile(props) {
     const {user, onEdit} = props
 
     const [loggedInUser, setLogin] = useState(user)

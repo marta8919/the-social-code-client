@@ -8,18 +8,18 @@ import HomePage from "./pages/HomePage";
 import AboutUs from "./pages/AboutUs";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
-import Messages from "./pages/Messages";
 import NewPost from "./pages/NewPost";
 import NewEvent from "./pages/NewEvent";
 import Profile from "./pages/Profile";
 import Board from "./pages/Board";
-import MessageDetail from "./pages/MessageDetail";
 import axios from 'axios'
 import config from './config.js'
 import Footer from './components/Footer'
 import UserNavBar from './components/NavBarUser'
-import EditForm from './pages/EditForm'
+import EditProfile from './pages/EditProfile'
 import EditPic from './pages/EditPic'
+import EditEvent from './pages/EditEvent'
+
 
 function App(props) {
 
@@ -42,16 +42,8 @@ function App(props) {
           })
           .catch()
       }
-      getBoardPost();
+      
   }, []);
-
-  const getBoardPost = ()=>{
-    axios.get(`${config.API_URL}/board`, {withCredentials:true})
-    .then((response)=>{
-      setPost(response.data)
-    })
-    .catch((err) => setError(err.response.data))
-  }
 
   const handleLogIn = (event)=> {
     event.preventDefault()
@@ -105,21 +97,6 @@ function App(props) {
         props.history.push("/board")
       })
       .catch((err) => setError(err.response.data))
-  }
-
-  const handleDelete = (postId) => {
-    axios.delete(`${config.API_URL}/delete/${postId}`)
-      .then(() => {
-        let filteredPosts = allPost.filter(e => e._id !== postId)
-        //update hook allPost
-        setPost(filteredPosts)
-
-        //send the user back to the main board
-        props.history.push('/board')
-      })
-      .catch((err) => {
-        console.log(err)
-      })
   }
 
   const handleEditProfile= (event)=>{
@@ -181,22 +158,16 @@ function App(props) {
           return <AboutUs/>
         }} />
         <Route path="/board" render={() => {
-          return <Board user={loggedInUser} allPost={allPost} allEvents={allEvents} />
+          return <Board user={loggedInUser}/>
         }} />
         <Route exact path="/profile" render={(routeProps) => {
-          return <Profile onLogout={handleLogout} user={loggedInUser} onDelete={handleDelete} {...routeProps}/>
+          return <Profile onLogout={handleLogout} user={loggedInUser} {...routeProps}/>
         }} />
         <Route exact path="/profile/edit" render={(routeProps) => {
-          return <EditForm onEdit={handleEditProfile} user ={loggedInUser} {...routeProps}/>
+          return <EditProfile onEdit={handleEditProfile} user ={loggedInUser} {...routeProps}/>
         }} />
         <Route exact path="/profile/editPic" render={(routeProps) => {
-          return <EditPic onEditPic={handleEditPic} user ={loggedInUser} {...routeProps}/>
-        }} />
-        <Route exact path="/profile/messages" render={() => {
-          return <Messages user={loggedInUser}/>
-        }} />
-        <Route path="/profile/:roomName" render={(routeProps) => {
-          return <MessageDetail user={loggedInUser} {...routeProps} />
+          return <EditPic onEditPic={handleEditPic} user={loggedInUser} {...routeProps}/>
         }} />
         <Route path="/new-post" render={() => {
           return <NewPost user={loggedInUser} onPost={handlePost} error={error}/>
@@ -204,12 +175,16 @@ function App(props) {
         <Route path="/new-event" render={() => {
           return <NewEvent user={loggedInUser} onAdd={handleEvent} error={error}/>
         }} />
+        <Route path="/event/:eventId/edit" render={(routeProps) => {
+        return <EditEvent {...routeProps}/>}}/>
+        
+        
 
       </Switch>
       <Footer/>
 
-    <UserNavBar/> 
-    {/* <NavBar/> */}
+      <UserNavBar/> 
+      {/* <NavBar/> */}
     
       
     </div>

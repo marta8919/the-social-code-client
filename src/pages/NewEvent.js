@@ -83,7 +83,7 @@ export default function NewEvent(props) {
         <TextareaAutosize
           aria-label="minimum height"
           rowsMin={1}
-          placeholder="Tags separated by commas like python, javascript, ..."
+          placeholder="Link to Register / event"
           name="link"
           maxLength="100"
           className="my-inputfield"
@@ -151,7 +151,7 @@ export default function NewEvent(props) {
         ) : null}
         
         <Button type="submit" variant="contained" color="primary" className="my-btn">
-          Post
+          Push event!
         </Button>
       </form>
     </div>

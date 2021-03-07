@@ -10,10 +10,6 @@
   margin: 0;
 }
 
-/* a {
-  color: white;
-} */
-
 body{
   background-color: var(--darkbackground);
   color:white;
@@ -31,11 +27,22 @@ body{
   color:black;
 }
 
+.text-white{
+  color: white;
+}
+
+.errorMessage {
+  color: #474f4f;
+  background-color: #9fd3d6;
+  padding: 5px 20px;
+  border-radius: 5px;
+}
+
 .MuiButton-root {
   background: rgb(41,237,198);
   background: linear-gradient(90deg, rgba(41,237,198,1) 0%, rgba(6,150,210,1) 86%);
   color:white;
-  font-weight: 400;
+  font-weight: 600;
 }
 
 .MuiOutlinedInput-input{

@@ -3,6 +3,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { StylesProvider } from '@material-ui/core/styles';
 import '../App.css'
+import { Link } from 'react-router-dom';
 
 function SignUp (props) {
     const {addUser} = props
@@ -23,11 +24,11 @@ function SignUp (props) {
 
                 {
                     props.error ? (
-                        <p style={{color: 'red'}}>{ props.error.errorMessage}</p>
-                    ) : null
+                        <p className="errorMessage">{ props.error.errorMessage}</p>                    ) : null
                 }
 
                 <Button type="submit" variant="contained">Sign up</Button>
+                <Link className="text-white" to="/login">Do you already have an account with us? Log in!</Link>
             </form>
         </StylesProvider>
         </div>

@@ -49,8 +49,7 @@ export default function NewPost(props) {
             
             {
                 props.error ? (
-                    <p style={{color: 'red'}}>{ props.error.errorMessage}</p>
-                ) : null
+                    <p className="errorMessage">{ props.error.errorMessage}</p>                ) : null
             }
             <Button type="submit" variant="contained" color="primary">Publish article</Button>
             <Button type="submit" variant="contained" color="primary">Save as draft</Button>

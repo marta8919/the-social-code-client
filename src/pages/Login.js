@@ -19,8 +19,7 @@ export default function Login(props) {
         <TextField id="outlined-basic" label="Password" variant="outlined" type="password" name="password" />
         {
             props.error ? (
-              <p style={{color: 'red'}}>{ props.error.errorMessage}</p>
-            ) : null
+              <p className="errorMessage">{ props.error.errorMessage}</p>            ) : null
         }
         <Button variant="contained" type="submit" color="primary">Log in</Button>
       </form>

@@ -133,8 +133,7 @@ export default function NewEvent(props) {
             <input type="hidden" name="postType" value="article" onChange={handleChangePost} ></input>
             {
                 props.error ? (
-                    <p style={{color: 'red'}}>{ props.error.errorMessage}</p>
-                ) : null
+                    <p className="errorMessage">{ props.error.errorMessage}</p>                ) : null
             }
             <Button type="submit" variant="contained" color="primary">Publish article</Button>
             <Button variant="contained" color="secondary" onClick={() => {saveDraft(post)}}>Save as draft</Button>

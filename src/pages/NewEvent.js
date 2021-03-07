@@ -99,7 +99,7 @@ export default function NewEvent(props) {
         </div>
         
         {error ? (
-          <p style={{ color: "red" }}>{props.error.errorMessage}</p>
+          <p style={{ color: "red" }}>{error.errorMessage}</p>
         ) : null}
         
         <Button type="submit" variant="contained" color="primary" className="my-btn">

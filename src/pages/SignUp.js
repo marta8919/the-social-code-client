@@ -1,17 +1,41 @@
-import React from 'react';
+import {React, useState} from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { StylesProvider } from '@material-ui/core/styles';
 import '../App.css'
 import { Link } from 'react-router-dom';
 
+import axios from 'axios'
+import config from '../config.js'
+
 function SignUp (props) {
-    const {addUser} = props
+
+    const [error, setError] = useState(null)
+
+    const handleSignUp = (event) => {
+        event.preventDefault()
+    
+        let user = {
+          username: event.target.username.value,
+          email: event.target.email.value,
+          password: event.target.password.value,
+          password2: event.target.password2.value,
+          country: event.target.country.value,
+          city: event.target.city.value,
+          hobbies: event.target.hobbies.value,
+          intro: event.target.intro.value
+        } 
+    
+        axios.post(`${config.API_URL}/signup`, user)
+          .then((response) => props.history.push('/login'))
+          .catch((err) => setError(err.response.data))
+      }
+
     return(
         <div className="container">
         <h1>Sign up</h1>
         <StylesProvider injectFirst>
-            <form onSubmit={addUser} className="form-center" noValidate autoComplete="off">
+            <form onSubmit={handleSignUp} className="form-center" noValidate autoComplete="off">
                 <TextField name="username" label="Username" type="text" variant="outlined"/>
                 <TextField name="email" label="Email" type="email" variant="outlined"/>
                 {/* <span className="input-grey">Email won't be shared with third parties</span> */}
@@ -23,8 +47,8 @@ function SignUp (props) {
                 <TextField name="hobbies" label="Hobbies" type="text" variant="outlined"/>
 
                 {
-                    props.error ? (
-                        <p className="errorMessage">{ props.error.errorMessage}</p>                    ) : null
+                    error ? (
+                        <p className="errorMessage">{ error.errorMessage}</p>) : null
                 }
 
                 <Button type="submit" variant="contained">Sign up</Button>

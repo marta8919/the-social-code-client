@@ -53,25 +53,6 @@ function App(props) {
     .catch((err) => setError(err.response.data))
   }
 
-  const handleSignUp = (event) => {
-    event.preventDefault()
-
-    let user = {
-      username: event.target.username.value,
-      email: event.target.email.value,
-      password: event.target.password.value,
-      password2: event.target.password2.value,
-      country: event.target.country.value,
-      city: event.target.city.value,
-      hobbies: event.target.hobbies.value,
-      intro: event.target.intro.value
-    } 
-
-    axios.post(`${config.API_URL}/signup`, user)
-      .then((response) => props.history.push('/'))
-      .catch((err) => setError(err.response.data))
-  }
-
   const handleLogIn = (event)=> {
     event.preventDefault()
 
@@ -189,8 +170,8 @@ function App(props) {
         <Route exact path="/" render={() => {
           return <HomePage/>
         }} />
-        <Route path="/signup" render={() => {
-          return <SignUp error={error} addUser={handleSignUp}/>
+        <Route path="/signup" render={(routeProps) => {
+          return <SignUp {...routeProps} />
         }} />
         <Route path="/login" render={() => {
           return <Login loginUser={handleLogIn} error={error} />

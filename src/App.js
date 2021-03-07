@@ -1,7 +1,6 @@
 import {React, useState, useEffect} from "react";
-//External Elements
-import { Switch, Route, withRouter, Redirect } from "react-router-dom";
-import LinearProgress from '@material-ui/core/LinearProgress';
+import { Switch, Route, withRouter} from "react-router-dom";
+
 //Styles css
 
 //Components and Pages
@@ -18,7 +17,6 @@ import MessageDetail from "./pages/MessageDetail";
 import axios from 'axios'
 import config from './config.js'
 import Footer from './components/Footer'
-import NavBar from './components/NavBar'
 import UserNavBar from './components/NavBarUser'
 import EditForm from './pages/EditForm'
 import EditPic from './pages/EditPic'
@@ -39,14 +37,10 @@ function App(props) {
               setlogin(response.data)
             }
             else {
-              console.log('no user')
               setlogin('NotLoggedIn')
             }
           })
-          .catch(()=>{
-            console.log('user not found')
-          
-          })
+          .catch()
       }
       getBoardPost();
   }, []);
@@ -80,7 +74,6 @@ function App(props) {
 
   const handleLogIn = (event)=> {
     event.preventDefault()
-    console.log("log in user")
 
     let user = {
       email: event.target.email.value,
@@ -90,8 +83,7 @@ function App(props) {
     axios.post(`${config.API_URL}/signin`, user, {withCredentials: true})
      .then((response)=>{
        setlogin(response.data)
-       props.history.push("/") 
-       console.log("user logged in successfully")     
+       props.history.push("/profile") 
      })
      .catch((err) => setError(err.response.data))
 
@@ -143,29 +135,10 @@ function App(props) {
         //send the user back to the main board
         props.history.push('/board')
       })
-
       .catch((err) => {
-        console.log('Delete failed', err)
+        console.log(err)
       })
   }
-  
-  // const handleDraft = (post) => {
-  //   console.log("Draft works")
-  //   let title = post.title
-  //   let description = post.description
-
-  //   let newPost= {
-  //     title: title,
-  //     description: description,
-  //   }
-
-  //   axios.post(`${config.API_URL}/new-draft`, newPost, {withCredentials: true})
-  //   .then(()=>{ 
-  //     props.history.push("/board")
-  //     console.log("draft saved")
-  //   })
-  //   .catch((err) => setError(err.response.data))
-  // }
 
   const handleEditProfile= (event)=>{
     event.preventDefault()

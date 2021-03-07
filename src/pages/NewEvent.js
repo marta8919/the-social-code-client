@@ -4,25 +4,14 @@ import Calendar from 'react-calendar'
 
 //components from Material UI
 import LinearProgress from "@material-ui/core/LinearProgress";
-import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
-import { InputLabel } from '@material-ui/core';
 
 //import calendar styles
 import 'react-calendar/dist/Calendar.css';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    "& > *": {
-      margin: theme.spacing(3),
-      width: "70ch",
-    },
-  },
-}));
-
 export default function NewEvent(props) {
-  const { user } = props;
+  const { onAdd, user, error} = props;
 
   const [event, setEvent] = useState({});
   const [date, setDate] = useState(new Date())
@@ -32,10 +21,6 @@ export default function NewEvent(props) {
       ...event,
       [event.currentTarget.name]: event.currentTarget.value,
     });
-
-  const classes = useStyles();
-  const [value, setValue] = useState(2);
-  const { onAdd, saveDraft } = props;
 
   const onChangeDate = date => {
     setDate(date)
@@ -113,32 +98,15 @@ export default function NewEvent(props) {
           />
         </div>
         
-        {props.error ? (
+        {error ? (
           <p style={{ color: "red" }}>{props.error.errorMessage}</p>
         ) : null}
+        
         <Button type="submit" variant="contained" color="primary" className="my-btn">
           Post
         </Button>
       </form>
 
-      {/* <h1>Write an article</h1>
-
-            <form className={classes.root} noValidate autoComplete="off" onSubmit={onPost}>
-            <TextField id="outlined-basic" label="Title" variant="outlined" name="title" onChange={handleChangePost} />
-            <TextareaAutosize aria-label="minimum height" rowsMin={5} placeholder="Write your article here" name="description" rowsMax={20} onChange={handleChangePost} />
-            <code>
-            <TextareaAutosize aria-label="minimum height" rowsMin={5} placeholder="<p>Write your code here</p>" 
-              name="code" rowsMax={20} />
-            </code>
-            <input type="hidden" name="postType" value="article" onChange={handleChangePost} ></input>
-            {
-                props.error ? (
-                    <p className="errorMessage">{ props.error.errorMessage}</p>                ) : null
-            }
-            <Button type="submit" variant="contained" color="primary">Publish article</Button>
-            <Button variant="contained" color="secondary" onClick={() => {saveDraft(post)}}>Save as draft</Button>
-
-            </form> */}
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState} from "react";
 import {Redirect} from 'react-router-dom'
 
 //Components from Material UI
@@ -71,13 +71,9 @@ export default function Board(props) {
             return (
                 <BoardPost key={singlePost._id} user={singlePost.userId} description={singlePost.description}/>
             );
-          } else if (
-            publishedVisible === "articles" &&
-            singlePost.postType ==="article"
-          ) {
+          } else if (publishedVisible === "articles" && singlePost.postType ==="article") {
             return (
                 <BoardArticle key={singlePost._id} title={singlePost.title}  description={singlePost.description} code={singlePost.code}/>
-
             );
           }
         })}

@@ -35,7 +35,6 @@ const useStyles = makeStyles({
 function Profile(props) {
   const classes = useStyles();
   const [userPost, setUserPost] = useState([]);
-  const [publishedVisible, setVisible] = useState("posts");
 
   useEffect(() => {
     axios
@@ -50,7 +49,7 @@ function Profile(props) {
   }, []);
 
   const { user, onDelete , onLogout} = props;
-  console.log(user)
+ 
 
   if (!user) {
     return <LinearProgress />;
@@ -116,9 +115,9 @@ function Profile(props) {
 
       {userPost
         .filter((e) => e.postStatus === "published")
-        .map((singlePost) => {if (publishedVisible === "posts" && singlePost.postType ==="post") {
+        .map((singlePost) => {if (singlePost.postType ==="post") {
             return (
-              <Card className={classes.root}>
+              <Card className={classes.root} key={singlePost._id}>
                 <CardContent>
                   <Typography variant="body2" component="p">
                     {singlePost.description}
@@ -130,28 +129,6 @@ function Profile(props) {
                 </CardActions>
               </Card>
             );
-          /* } else if (
-            publishedVisible === "articles" &&
-            singlePost.postType ==="article"
-          ) {
-            return (
-              <Card className={classes.root}>
-                <CardContent>
-                  <Typography className={classes.pos} color="textSecondary">
-                    {singlePost.title}
-                    {singlePost.postType}
-                  </Typography>
-                  <Typography variant="body2" component="p">
-                    {singlePost.description}
-                    <br />
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <Button size="small">Delete Post</Button>
-                </CardActions>
-              </Card>
-            );
-          } */
         }
       })}
     </div>

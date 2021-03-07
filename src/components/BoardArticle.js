@@ -1,6 +1,6 @@
 import React from "react";
 import Card from "@material-ui/core/Card";
-import { CardContent, Typography, CardActions, FormControlLabel, Checkbox } from '@material-ui/core';
+import { CardContent, Typography, CardActions, Checkbox } from '@material-ui/core';
 import {FavoriteBorder, Favorite} from '@material-ui/icons';
 import SmsIcon from '@material-ui/icons/Sms';
 import SmsOutlinedIcon from '@material-ui/icons/SmsOutlined';
@@ -37,14 +37,12 @@ function BoardArticle(props) {
         <Checkbox
           icon={<FavoriteBorder />}
           checkedIcon={<Favorite />}
-          onChange={toggleCheckBox}
           inputProps={{ "aria-label": "Like" }}
         />
 
         <Checkbox
           icon={<SmsOutlinedIcon />}
           checkedIcon={<SmsIcon />}
-          onChange={toggleCheckBox}
           inputProps={{ "aria-label": "Like" }}
         />
       </CardActions>

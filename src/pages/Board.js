@@ -1,8 +1,8 @@
-import { React, useState} from "react";
-import {Redirect} from 'react-router-dom'
+import { React, useState } from "react";
+import { Redirect } from "react-router-dom";
 
 //Components from Material UI
-import { StylesProvider } from '@material-ui/core/styles';
+import { StylesProvider } from "@material-ui/core/styles";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import { Button } from "@material-ui/core";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
@@ -10,7 +10,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 //Internal Components
 import BoardPost from "../components/BoardPost";
-import BoardArticle from "../components/BoardArticle";
+import BoardEvent from "../components/BoardEvent";
 
 const useStyles = makeStyles({
   root: {
@@ -34,7 +34,7 @@ const useStyles = makeStyles({
 export default function Board(props) {
   const [publishedVisible, setVisible] = useState("posts");
   const classes = useStyles();
-  const { allPost, user } = props;
+  const { allPost, user, allEvents } = props;
 
   if (!allPost) {
     return <LinearProgress />;
@@ -44,40 +44,51 @@ export default function Board(props) {
     setVisible("posts");
   };
 
-  const handleArticles = () => {
-    setVisible("articles");
+  const handleEvents = () => {
+    setVisible("events");
   };
 
   if (!user) {
     return <LinearProgress />;
-  } else if (user ==="NotLoggedIn") {
+  } else if (user === "NotLoggedIn") {
     return <Redirect to={"/"} />;
   }
 
   return (
     <StylesProvider>
       <div classes="container">
-      <h1 className="header">Board</h1>
-      <div className="group-btn">
-        <ButtonGroup color="primary" aria-label="outlined primary button group">
-          <Button onClick={handlePosts}>Posts</Button>
-          <Button onClick={handleArticles}>Articles/Code</Button>
-        </ButtonGroup>
-      </div>
-      {allPost
-        .filter((e) => e.postStatus === "published")
-        .map((singlePost) => {
-          if (publishedVisible === "posts" && singlePost.postType ==="post") {
-            return (
-                <BoardPost key={singlePost._id} user={singlePost.userId} description={singlePost.description}/>
-            );
-          } else if (publishedVisible === "articles" && singlePost.postType ==="article") {
-            return (
-                <BoardArticle key={singlePost._id} title={singlePost.title}  description={singlePost.description} code={singlePost.code}/>
-            );
-          }
-        })}
+        <h1 className="header">Board</h1>
+        <div className="group-btn">
+          <ButtonGroup
+            color="primary"
+            aria-label="outlined primary button group"
+          >
+            <Button onClick={handlePosts}>Posts</Button>
+            <Button onClick={handleEvents}>Events</Button>
+          </ButtonGroup>
         </div>
+        {publishedVisible === "posts" ? (
+          allPost.map((singlePost) => {
+            return (
+              <BoardPost
+                key={singlePost._id}
+                user={singlePost.userId}
+                description={singlePost.description}
+              />
+            );
+          })
+        ) : (
+          allEvents.map((singleEvent) => {
+            return (
+              <BoardPost
+                key={singleEvent._id}
+                user={singleEvent.userId}
+                description={singleEvent.description}
+              />
+            );
+          })
+        )}
+      </div>
     </StylesProvider>
   );
 }

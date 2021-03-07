@@ -92,8 +92,9 @@ function App(props) {
       title: event.target.title.value,
       description: event.target.description.value,
       tags: event.target.tags.value,
-      picture: event.target.picture.value,
-      dateEvent: event.target.dateEvent.value,
+      link: event.target.link.value,
+      dateOriginal: event.target.dateOriginal.value,
+      dateString: event.target.dateString.value,
       hours: event.target.hours.value,
       minutes: event.target.minutes.value,
     }
@@ -103,7 +104,7 @@ function App(props) {
         setAllEvents(allEvents.concat(response.data))
         props.history.push("/board")
       })
-      .catch((err) => setError(err))
+      .catch((err) => setError(err.response.data))
   }
 
   const handleDelete = (postId) => {
@@ -180,7 +181,7 @@ function App(props) {
           return <AboutUs/>
         }} />
         <Route path="/board" render={() => {
-          return <Board user={loggedInUser} allPost={allPost} getPost={getBoardPost}/>
+          return <Board user={loggedInUser} allPost={allPost} allEvents={allEvents} />
         }} />
         <Route exact path="/profile" render={(routeProps) => {
           return <Profile onLogout={handleLogout} user={loggedInUser} onDelete={handleDelete} {...routeProps}/>

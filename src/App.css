@@ -36,7 +36,8 @@ body{
   background-color: #E0AA84;
   padding: 5px 20px;
   border-radius: 5px;
-  border: 1px solid #99361E;
+  border: 1px solid white;
+  margin-bottom: 5px;
 }
 
 .MuiButton-root {
@@ -75,6 +76,18 @@ body{
 
 .MuiFormControl-root{
   margin: 5px;
+}
+.time-field {
+  display: flex;
+  align-items: center;
+}
+
+.time-field p, .my-select {
+  margin-right: 5px;
+}
+
+.my-select {
+  background-color: white;
 }
 
 .input-grey {

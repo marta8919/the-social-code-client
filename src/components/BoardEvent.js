@@ -5,7 +5,7 @@ import {FavoriteBorder, Favorite} from '@material-ui/icons';
 import SmsIcon from '@material-ui/icons/Sms';
 import SmsOutlinedIcon from '@material-ui/icons/SmsOutlined';
 
-function BoardArticle(props) {
+function BoardEvent(props) {
   const { title, description, code } = props;
   const [checked, setCheck] = React.useState(false);
 
@@ -50,4 +50,4 @@ function BoardArticle(props) {
   );
 }
 
-export default BoardArticle;
+export default BoardEvent;

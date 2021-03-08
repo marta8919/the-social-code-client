@@ -78,8 +78,8 @@ export default function Board(props) {
   }
 
   return (
-    <StylesProvider>
-      <div classes="container">
+  
+      <div className="container">
         <Link to="/about"><img className="logo" src="./images/logo.png"/></Link>
         <h1 className="header">Board</h1>
         <div className="group-btn">
@@ -112,6 +112,5 @@ export default function Board(props) {
           })
         )}
       </div>
-    </StylesProvider>
   );
 }

@@ -83,11 +83,12 @@ body {
 
 .container {
   display: flex;
-  max-width: 600px;
+  max-width: 800px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  line-height: 4vh;
 }
 
 .MuiFormControl-root {
@@ -134,9 +135,12 @@ body {
   border: 5px solid white;
   border-radius: 50%;
 }
+
 .navBar-pic {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--darkbackground);
+  margin: 5px
 }
 
 .my-icon {
@@ -174,6 +178,9 @@ body {
 .my-card {
   padding: 10px;
   display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: 10px auto;
 }
 
 .header {
@@ -194,6 +201,7 @@ body {
   bottom: 0px;
   position: fixed;
   width: 100%;
+  border: 2px solid var(--darkbackground);
 }
 
 /* .my-nav a {
@@ -211,6 +219,7 @@ body {
 
 .my-btn {
   width: 100%;
+  margin-top: 20px;
 }
 
 .MuiBottomNavigation-root{
@@ -240,10 +249,23 @@ body {
   width: 50px;
 }
 
+.team {
+  display: flex;
+  justify-content: space-between;
+}
+
+.team-card{
+  width: 400px;
+  padding: 20px;
+}
+
+.form-center select {
+  background-color: white;
+}
+
 @media (max-width: 500px) {
   .container {
-    width: 100%;
-    margin: 15px 5px 15px 5px;
+    margin: 20px;
   }
   .my-inputfield {
     width: 100%;
@@ -254,10 +276,11 @@ body {
     height: 100px;
   }
 
-  .navBar-pic {
+  .navBar-pic { 
     width: 40px;
     height: 40px;
     border: 3px solid var(--darkbackground);
+    margin: 5px;
   }
 
   .text-card {
@@ -270,10 +293,23 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding: 10px;
   }
 
   .fake-code{
     width: 80%;
+  }
+
+  .team{
+    flex-direction: column;
+  }
+
+  .team-card{
+    width: 90%;
+  }
+
+  .my-card-content{
+    width: 60% ;
   }
 
 }

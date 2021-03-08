@@ -18,27 +18,9 @@ import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { PhotoSizeSelectLargeOutlined } from "@material-ui/icons";
 
-const useStyles = makeStyles({
-  root: {
-    maxWidth: 500,
-    margin: 6,
-    marginBottom: 10,
-  },
-  title: {
-    fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
-  },
-  card: {
-    padding: 10,
-    maxWidth: 500,
-    display: "flex",
-  },
-});
+
 
 function Profile(props) {
-  const classes = useStyles();
   const [userPost, setUserPost] = useState([]);
   const [userEvent, setUserEvent] = useState([]);
   const [publishedVisible, setVisible] = useState("posts");
@@ -161,8 +143,8 @@ function Profile(props) {
       {publishedVisible === "posts"
         ? userPost.map((singlePost) => {
             return (
-              <Card className={classes.root} key={singlePost._id}>
-                <CardContent>
+              <Card className="my-card" key={singlePost._id}>
+                <CardContent className="my-card-content">
                   <Typography variant="body2" component="p">
                     {singlePost.description}
                     <br />
@@ -183,8 +165,8 @@ function Profile(props) {
           })
         : userEvent.map((singleEvent) => {
             return (
-              <Card className={classes.root} key={singleEvent._id}>
-                <CardContent>
+              <Card className="my-card" key={singleEvent._id}>
+                <CardContent className="my-card-content">
                   <h4>{singleEvent.title}</h4>
                   <Typography variant="body2" component="p">
                     {singleEvent.dateString}, at {singleEvent.hours}:

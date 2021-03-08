@@ -14,16 +14,16 @@ export default function Login(props) {
     return (
       <div className="container">
       <Link to="/"><img className="logo" src="./images/logo.png"/></Link>
-      <h1>Log In</h1>
+      <h1 className="header">Log In</h1>
       <StylesProvider injectFirst>
       <form className="form-center" noValidate autoComplete="off" onSubmit={loginUser}>
-        <TextField id="outlined-basic" label="Email" variant="outlined" type="email" name="email"/>
-        <TextField id="outlined-basic" label="Password" variant="outlined" type="password" name="password" />
+        <TextField id="outlined-basic" label="Email" variant="filled" type="email" name="email"/>
+        <TextField id="outlined-basic" label="Password" variant="filled" type="password" name="password" />
         {
             props.error ? (
               <p className="errorMessage">{ props.error.errorMessage}</p>            ) : null
         }
-        <Button variant="contained" type="submit" color="primary">Log in</Button>
+        <Button className="my-btn" variant="contained" type="submit" color="primary">Log in</Button>
       </form>
       </StylesProvider>
       </div>

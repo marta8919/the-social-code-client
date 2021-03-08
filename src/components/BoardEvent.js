@@ -7,7 +7,7 @@ function BoardEvent(props) {
   
   return (
     <div className="container">
-    <Card className="card-board">
+    <Card className="my-card">
       <CardContent>
         <Typography variant="h5" component="h2" className="text-dark">
           {event.title}

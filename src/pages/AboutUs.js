@@ -1,6 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-
+import { Link} from 'react-router-dom'
+import { Button } from "@material-ui/core";
 import { StylesProvider } from '@material-ui/core/styles';
 import '../App.css'
 import CardAbout from '../components/CardAbout';
@@ -19,23 +19,23 @@ export default function AboutUs() {
                 Would you like to help us grow up?
             </p>
 
-            <Link to="/signup" className="white">
-                Join the TBS community!
+            <Link to="/signup" className="link-underline">
+                <Button className="my-btn">Join TSC community!</Button>
             </Link>
 
             <div className="section">
                 <h3 className="header">Why joining The Social Code?</h3>
-                <CardAbout image="./images/example.png" title="Join a community"/>
-                <CardAbout image="./images/example.png" title="Sharing is caring!"/>
-                <CardAbout image="./images/example.png" title="What happens in TSC stays in TSC"/>
+                <CardAbout className="my-card" image="./images/example.png" title="Join a community"/>
+                <CardAbout className="my-card" image="./images/example.png" title="Sharing is caring!"/>
+                <CardAbout className="my-card" image="./images/example.png" title="What happens in TSC stays in TSC"/>
             </div>
 
             <div className="section text-center">
-                <h3 className="title">Meet the team</h3>
+                <h3 className="header">Meet the team</h3>
 
                 <div className="team">
                     <div className="team-card">
-                        <img src="images/sofia.png" className="team-img mb-4" alt="Sofia Urbano"/>
+                        <img src="https://res.cloudinary.com/martacloud/image/upload/v1615215879/sofia_ssm1gh.png" className="profile-pic" alt="Sofia Urbano"/>
                         
                         <div className="contact">
                             <a href="https://github.com/SofSanUrb"><i className="fab fa-github fa-lg"></i></a>
@@ -49,7 +49,7 @@ export default function AboutUs() {
                     </div>
                     
                     <div className="team-card">
-                        <img src="images/martasnow.png" className="team-img mb-4" alt="Marta Gilabert"/>
+                        <img src="https://res.cloudinary.com/martacloud/image/upload/v1613666307/martasnow_ctujxn.png" className="profile-pic" alt="Marta Gilabert"/>
                         <div className="contact">
                             <a href="https://github.com/marta8919"><i className="fab fa-github fa-lg"></i></a>
                             <a href="https://www.linkedin.com/in/martagilabertgu"><i className="fab fa-linkedin fa-lg"></i></a>

@@ -40,13 +40,13 @@ export default function NewEvent(props) {
   }
 
   return (
-    // <StylesProvider >
       <div className="container">
         <Link to="/about"><img className="logo" src="./images/logo.png"/></Link>
-        <h1 className="header">Create a digital event!</h1>
 
+        <h1 className="header">Create a digital event!</h1>
+      
+      <div class="form-center calendar-form">
       <form
-        className="my-form"
         noValidate
         autoComplete="off"
         onSubmit={onAdd}
@@ -154,7 +154,7 @@ export default function NewEvent(props) {
             <option value='02'>30</option>
             <option value='02'>45</option>
           </Select>
-        </div>
+          </div>
         <br/>
 
         {error ? (
@@ -165,9 +165,9 @@ export default function NewEvent(props) {
           Push event!
         </Button>
       </form>
+      </div>
+
     </div>
       
-
-    // </StylesProvider>
   );
 }

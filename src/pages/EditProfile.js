@@ -1,4 +1,5 @@
 import {React, useState} from 'react'
+import {Link} from 'react-router-dom'
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { StylesProvider } from '@material-ui/core/styles';
@@ -18,6 +19,7 @@ export default function EditProfile(props) {
 
     return (
         <div className="container">
+            <Link to="/about"><img className="logo" src="./images/logo.png"/></Link>
             <div className="header">
             <h1>Hello @{user.username}</h1>
             <h3>Here you can edit your profile.</h3>

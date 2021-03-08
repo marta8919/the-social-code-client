@@ -207,7 +207,19 @@ body {
   padding: 10px;
 }
 
+.myError-img {
+  width: 70%;
+  max-width: 600px;
+  align-items: center;
+}
 
+.big-title{
+  font-size: 10em;
+}
+
+.logo{
+  width: 50px;
+}
 
 @media (max-width: 500px) {
   .container {

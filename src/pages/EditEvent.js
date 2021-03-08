@@ -3,6 +3,7 @@ import config from "../config";
 
 import React, { useEffect, useState } from "react";
 import Calendar from "react-calendar";
+import { Link } from 'react-router-dom'
 
 import LinearProgress from "@material-ui/core/LinearProgress";
 import { StylesProvider } from "@material-ui/styles";
@@ -32,14 +33,6 @@ export default function EditEvent(props) {
       [event.currentTarget.name]: event.currentTarget.value,
     });
 
-  // const onChangeDate = (event) => {
-  //   let date = singleEvent.dateOriginal
-  //   setEvent({
-  //       ...singleEvent,
-  //     [event.currentTarget.dateString]: `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
-  //   });
-  // };
-
   const handleEditEvent = (event) => {
     console.log("editing");
     event.preventDefault()
@@ -62,6 +55,7 @@ export default function EditEvent(props) {
 
   return (
     <div className="container">
+      <Link to="/about"><img className="logo" src="./images/logo.png"/></Link>
       <div className="header">
         <h1>Hello</h1>
         <h3>Let's edit the event </h3>

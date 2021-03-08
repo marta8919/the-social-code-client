@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 //Components from Material UI
 import { StylesProvider } from "@material-ui/core/styles";
@@ -80,6 +80,7 @@ export default function Board(props) {
   return (
     <StylesProvider>
       <div classes="container">
+        <Link to="/about"><img className="logo" src="./images/logo.png"/></Link>
         <h1 className="header">Board</h1>
         <div className="group-btn">
           <ButtonGroup

@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Calendar from 'react-calendar'
 
 //components from Material UI
@@ -42,6 +42,7 @@ export default function NewEvent(props) {
   return (
     // <StylesProvider >
       <div className="container">
+        <Link to="/about"><img className="logo" src="./images/logo.png"/></Link>
         <h1 className="header">Create a digital event!</h1>
 
       <form

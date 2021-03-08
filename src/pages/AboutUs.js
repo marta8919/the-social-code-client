@@ -9,6 +9,7 @@ import CardAbout from '../components/CardAbout';
 export default function AboutUs() {
     return (
         <div className="container">
+        <Link to="/about"><img className="logo" src="./images/logo.png"/></Link>
         <StylesProvider injectFirst>
             <h1 className="header">About us</h1>
             <p className="text-left">

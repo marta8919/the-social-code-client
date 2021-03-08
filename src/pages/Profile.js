@@ -109,6 +109,7 @@ function Profile(props) {
 
   return (
     <div className="container">
+      <Link to="/about"><img className="logo" src="./images/logo.png"/></Link>
       <div className="header">
         <h1>Hey @{user.username} !</h1>
         <h3>Welcome to your profile </h3>

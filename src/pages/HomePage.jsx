@@ -14,11 +14,17 @@ function HomePage() {
       <div className="fake-code">
 
       <Typist>
-        <h2>Hey you! Welcome to The Social Code. Do you want to join our community?</h2>
+        <h2>Hello! Hola! Hallo!
+        <br></br>
+        <br></br>
+        Welcome to The Social Code. A social platform that connects techies so we can share our experiences and interests. 
+        <br></br>
+        <br></br>
+        Do you want to join us? 🙂</h2>
         <br></br>
 
       <Link to="/signup" className="link-underline">
-        <Button className="my-btn" variant="contained">Join us Today!</Button>
+        <Button className="my-btn" variant="contained">Join us Today! 🚀 </Button>
       </Link>
     
       </Typist>

@@ -21,6 +21,7 @@ import NavBar from './components/NavBar'
 import EditProfile from './pages/EditProfile'
 import EditPic from './pages/EditPic'
 import EditEvent from './pages/EditEvent'
+import NotFound from './pages/NotFound'
 
 
 function App(props) {
@@ -157,6 +158,7 @@ function App(props) {
   return (
     <>
 
+    <div className="main">
       <Switch>
         <Route exact path="/" render={() => {
           return <HomePage/>
@@ -190,8 +192,11 @@ function App(props) {
         }} />
         <Route path="/event/:eventId/edit" render={(routeProps) => {
         return <EditEvent {...routeProps}/>}}/>
+        <Route render={() => {
+        return <NotFound />}}/>
         
       </Switch>
+    </div>
       <Footer/>
 
 

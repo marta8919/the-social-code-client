@@ -1,5 +1,5 @@
 import { React } from "react";
-import {Redirect} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 
 //components from Material UI
 import LinearProgress from "@material-ui/core/LinearProgress";
@@ -19,6 +19,7 @@ export default function NewPost(props) {
 
     return (
         <div className="container">
+            <Link to="/about"><img className="logo" src="./images/logo.png"/></Link>
             <h1 className="header">Write a post</h1>
 
             <form className="my-form" noValidate autoComplete="off" onSubmit={onPost}>

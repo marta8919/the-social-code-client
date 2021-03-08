@@ -40,7 +40,7 @@ function App(props) {
               setlogin('NotLoggedIn')
             }
           })
-          .catch()
+          .catch((err)=> console.log(err))
       }
       getBoardPost();
   }, []);

@@ -70,14 +70,24 @@ export default function NewEvent(props) {
         />
 
         <label>Tags</label>
-        <TextareaAutosize
+        <Select
+        name='tags'
+        native>
+        <option value="python">python</option>
+        <option value="javascript">javascript</option>
+        <option value="react">react</option>
+        <option value="html">html</option>
+        <option value="java">java</option>
+        <option value="c++">c++</option>
+        </Select>
+        {/* <TextareaAutosize
           aria-label="minimum height"
           rowsMin={1}
           placeholder="Tags separated by commas like python, javascript, ..."
           name="tags"
           maxLength="100"
           className="my-inputfield"
-        />
+        /> */}
 
         <label>Link</label>
         <TextareaAutosize

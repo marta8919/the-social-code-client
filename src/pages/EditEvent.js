@@ -95,14 +95,24 @@ export default function EditEvent(props) {
             />
 
             <label>Tags</label>
-            <TextField
+            <Select
+            name='tags'
+            native>
+            <option value="python">python</option>
+            <option value="javascript">javascript</option>
+            <option value="react">react</option>
+            <option value="html">html</option>
+            <option value="java">java</option>
+            <option value="c++">c++</option>
+            </Select>
+            {/* <TextField
               className="my-inputfield"
               name="tags"
               type="text"
               variant="filled"
               onChange={handleChange}
               value={singleEvent.tags}
-            />
+            /> */}
 
             <label>Link</label>
             <TextField

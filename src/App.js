@@ -155,7 +155,7 @@ function App(props) {
   }
 
   return (
-    <div className="App">
+    <>
 
       <Switch>
         <Route exact path="/" render={() => {
@@ -202,7 +202,7 @@ function App(props) {
       
     
       
-    </div>
+    </>
   );
 }
 

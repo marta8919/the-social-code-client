@@ -1,9 +1,10 @@
 import { Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import "../App.css";
-import ReactTypingEffect from 'react-typing-effect';
-import Slide from 'react-reveal/Slide';
-import {React, useEffect} from "react";
+import {React} from "react";
+import Typist from 'react-typist';
+import 'react-typist/dist/Typist.css'
+// import 'react-typist/dist/standalone/Typist'
 
 
 function HomePage() {
@@ -12,36 +13,16 @@ function HomePage() {
     <div className="container">
       <div className="fake-code">
 
-      <ReactTypingEffect
-        text={["Hey you! Welcome to The Social Code. Do you want to join our community?"]}
-        cursorRenderer={cursor => <h1>{cursor}</h1>}
-        speed = {100}
-        typingDelay= {1000}
-        eraseDelay={50000}
-        displayTextRenderer={(text, i) => {
-          return (
-            <h1>
-              {text.split('').map((char, i) => {
-                const key = `${i}`;
-                return (
-                  <span
-                    key={key}
-                  >{char}</span>
-                );
-              })}
-            </h1>
-          );
-        }}        
-      />
-      </div>
-      
+      <Typist>
+        <h2>Hey you! Welcome to The Social Code. Do you want to join our community?</h2>
+        <br></br>
 
-      <Slide bottom>
-      <Link to="/signup">
-        <Button variant="contained">Join us Today!</Button>
+      <Link to="/signup" className="link-underline">
+        <Button className="my-btn" variant="contained">Join us Today!</Button>
       </Link>
-      </Slide>
-
+    
+      </Typist>
+      </div>
 
     </div>
   );

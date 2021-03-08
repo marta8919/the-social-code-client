@@ -9,16 +9,25 @@ import SmsOutlinedIcon from '@material-ui/icons/SmsOutlined';
 
 
 function BoardPost (props) {
-    const {user, description} = props
+    const {post} = props
       
     return (
         <StylesProvider>
             <Card className="card-board">
                 <CardContent className="post-container">
-                    <img src={user.picture} alt="Profile" className="profile-pic"/>
+                    <img src={post.userId.picture} alt="Profile" className="profile-pic"/>
                     <div className="post-text">
-                        <Typography variant="h5" component="h2"className="text-dark">@{user.username}</Typography>
-                        <Typography variant="body2" component="p" className="text-dark">{description}</Typography>
+                        <Typography variant="h5" component="h2"className="text-dark">@{post.userId.username}</Typography>
+                        <Typography variant="body2" component="p" className="text-dark">{post.description}</Typography>
+                        {post.tags ? (
+                            <div className="article-code">
+                                <Typography variant="body2" component="p" className="text-dark">
+                                Tags: #{post.tags}
+                                </Typography>
+                            </div>
+                            ) : (
+                            ""
+                        )}
                         <CardActions disableSpacing>
                             <Checkbox
                             icon={<FavoriteBorder/>}

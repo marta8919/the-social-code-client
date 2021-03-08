@@ -11,6 +11,7 @@ function HomePage() {
 
   return (
     <div className="container">
+      <Link to="/"><img className="logo" src="./images/logo.png"/></Link>
       <div className="fake-code">
 
       <Typist>

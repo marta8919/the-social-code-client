@@ -71,6 +71,7 @@ function App(props) {
       title: event.target.title.value,
       description: event.target.description.value,
       postType: event.target.postType.value,
+      tags: event.target.tags.value
     }
 
     axios.post(`${config.API_URL}/publish`, newPost, {withCredentials: true})

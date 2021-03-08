@@ -149,6 +149,10 @@ function Profile(props) {
                     {singlePost.description}
                     <br />
                   </Typography>
+                  <Typography variant="body2" component="p">
+                    {singlePost.dateString}
+                    <br />
+                  </Typography>
                 </CardContent>
                 <CardActions>
                   <Button

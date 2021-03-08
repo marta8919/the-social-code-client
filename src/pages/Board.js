@@ -63,11 +63,6 @@ export default function Board(props) {
     .catch((err) => setError(err.response.data))
   }
 
-
-  if (!allPost) {
-    return <LinearProgress />;
-  }
-
   const handlePosts = () => {
     setVisible("posts");
   };

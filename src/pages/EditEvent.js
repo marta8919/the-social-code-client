@@ -32,16 +32,32 @@ export default function EditEvent(props) {
       [event.currentTarget.name]: event.currentTarget.value,
     });
 
-  const onChangeDate = (event) => {
-    let date = singleEvent.dateOriginal
-    setEvent({
-        ...singleEvent,
-      [event.currentTarget.dateString]: `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
-    });
-  };
+  // const onChangeDate = (event) => {
+  //   let date = singleEvent.dateOriginal
+  //   setEvent({
+  //       ...singleEvent,
+  //     [event.currentTarget.dateString]: `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
+  //   });
+  // };
 
-  const handleEditEvent = () => {
+  const handleEditEvent = (event) => {
     console.log("editing");
+    event.preventDefault()
+    let eventId = props.match.params.eventId;
+
+    let editedEvent= {
+      title: event.target.title.value,
+      description: event.target.description.value,
+      tags: event.target.tags.value,
+      link: event.target.link.value
+    }
+
+    axios.patch(`${config.API_URL}/event/edit/${eventId}`, editedEvent, {withCredentials: true})
+     .then((response)=>{
+       setEvent(response.data)
+       props.history.push('/profile')
+     })
+     .catch((err)=> console.log(err))
   };
 
   return (
@@ -81,8 +97,8 @@ export default function EditEvent(props) {
             <label>Tags</label>
             <TextField
               className="my-inputfield"
-              name="title"
-              type="tags"
+              name="tags"
+              type="text"
               variant="filled"
               onChange={handleChange}
               value={singleEvent.tags}
@@ -97,6 +113,7 @@ export default function EditEvent(props) {
               onChange={handleChange}
               value={singleEvent.link}
             />
+            
 
             {/* <label>Date</label>
             <Calendar onChange={onChangeDate} value={singleEvent.dateOriginal} />

@@ -6,6 +6,7 @@ function BoardEvent(props) {
   const { event } = props;
   
   return (
+    <div className="container">
     <Card className="card-board">
       <CardContent>
         <Typography variant="h5" component="h2" className="text-dark">
@@ -31,6 +32,7 @@ function BoardEvent(props) {
         )}
       </CardContent>
     </Card>
+    </div>
   );
 }
 

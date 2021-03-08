@@ -153,6 +153,10 @@ body {
   display: flex;
 }
 
+.white {
+  color: white;
+}
+
 .post-text {
   margin-left: 15px;
 }
@@ -196,6 +200,14 @@ body {
 .MuiBottomNavigation-root{
   justify-content: space-between;
 }
+.fake-code {
+  border: 1px solid white;
+  font-family: monospace;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+
 
 @media (max-width: 500px) {
   .container {

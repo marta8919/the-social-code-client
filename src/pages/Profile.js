@@ -16,6 +16,7 @@ import Typography from "@material-ui/core/Typography";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import { PhotoSizeSelectLargeOutlined } from "@material-ui/icons";
 
 const useStyles = makeStyles({
   root: {

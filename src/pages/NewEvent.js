@@ -6,6 +6,8 @@ import Calendar from 'react-calendar'
 import LinearProgress from "@material-ui/core/LinearProgress";
 import Button from "@material-ui/core/Button";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
+import { Select } from "@material-ui/core";
+import { StylesProvider } from '@material-ui/core/styles';
 
 //import calendar styles
 import 'react-calendar/dist/Calendar.css';
@@ -13,18 +15,22 @@ import 'react-calendar/dist/Calendar.css';
 export default function NewEvent(props) {
   const { onAdd, user, error} = props;
 
-  const [event, setEvent] = useState({});
+  const [dateString, setDateString] = useState('')
   const [date, setDate] = useState(new Date())
-
-  const handleChangeEvent = (event) =>
-    setEvent({
-      ...event,
-      [event.currentTarget.name]: event.currentTarget.value,
-    });
+  const [hours, setHours] = useState('00')
+  const [minutes, setMinutes] = useState('00')
 
   const onChangeDate = date => {
     setDate(date)
-    console.log(date)
+    setDateString(`${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`)
+  }
+
+  const onChangeHours = (event) => {
+    setHours(event.target.value)
+  }
+
+  const onChangeMinutes = (event) => {
+    setMinutes(event.target.value)
   }
 
   if (!user) {
@@ -34,8 +40,9 @@ export default function NewEvent(props) {
   }
 
   return (
-    <div className="container">
-      <h1 className="header">Create a digital event!</h1>
+    <StylesProvider >
+      <div className="container">
+        <h1 className="header">Create a digital event!</h1>
 
       <form
         className="my-form"
@@ -58,7 +65,7 @@ export default function NewEvent(props) {
           rowsMin={3}
           placeholder="Tell me more about this event within 151 characters"
           name="description"
-          maxLength="151"
+          maxLength="200"
           className="my-inputfield"
         />
 
@@ -72,41 +79,84 @@ export default function NewEvent(props) {
           className="my-inputfield"
         />
 
+        <label>Link</label>
+        <TextareaAutosize
+          aria-label="minimum height"
+          rowsMin={1}
+          placeholder="Link to Register / event"
+          name="link"
+          maxLength="100"
+          className="my-inputfield"
+        />
+
         <label>Date</label>
         <Calendar 
           onChange={onChangeDate}
           value={date}
         />
-        <input type="hidden" name="date" value={date.toDateString()} onChange={onChangeDate} ></input>
+        <p>Date selected (dd/m/yyyy): <strong>{date.getDate()}/{date.getMonth() + 1}/{date.getFullYear()}</strong></p>
+        <input type="hidden" name="dateOriginal" value={date} onChange={onChangeDate} ></input>
+        <input type="hidden" name="dateString" value={dateString} onChange={onChangeDate} ></input>
+        <br/>
         <label>Time</label>
         <div className="time-field">
-          <TextareaAutosize className="time-input"
-          aria-label="minimum height"
-          rowsMin={1}
-          placeholder="12"
-          name="hours"
-          maxLength="2"
-          className="my-inputfield"
-          />
-          <TextareaAutosize className="time-input"
-          aria-label="minimum height"
-          rowsMin={1}
-          placeholder="00"
-          name="minutes"
-          maxLength="2"
-          className="my-inputfield"
-          />
+          <Select 
+            className="my-select"
+            native
+            value={hours}
+            onChange={onChangeHours}
+            name='hours'>
+            <option value='00'>00</option>
+            <option value='01'>01</option>
+            <option value='02'>02</option>
+            <option value='03'>03</option>
+            <option value='04'>04</option>
+            <option value='05'>05</option>
+            <option value='06'>06</option>
+            <option value='07'>07</option>
+            <option value='08'>08</option>
+            <option value='09'>09</option>
+            <option value='10'>10</option>
+            <option value='11'>11</option>
+            <option value='12'>12</option>
+            <option value='13'>13</option>
+            <option value='14'>14</option>
+            <option value='15'>15</option>
+            <option value='16'>16</option>
+            <option value='17'>17</option>
+            <option value='18'>18</option>
+            <option value='19'>19</option>
+            <option value='20'>20</option>
+            <option value='21'>21</option>
+            <option value='22'>22</option>
+            <option value='23'>23</option>
+          </Select>
+          <p>:</p>
+          <Select 
+            className="my-select"
+            native
+            value={minutes}
+            onChange={onChangeMinutes}
+            name='minutes'>
+            <option value='00'>00</option>
+            <option value='01'>15</option>
+            <option value='02'>30</option>
+            <option value='02'>45</option>
+          </Select>
         </div>
-        
+        <br/>
+
         {error ? (
-          <p style={{ color: "red" }}>{error.errorMessage}</p>
+          <p className="errorMessage">{error.errorMessage}</p>
         ) : null}
         
         <Button type="submit" variant="contained" color="primary" className="my-btn">
-          Post
+          Push event!
         </Button>
       </form>
-
     </div>
+      
+
+    </StylesProvider>
   );
 }

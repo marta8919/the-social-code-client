@@ -1,16 +1,18 @@
-import { React, useState} from "react";
-import {Redirect} from 'react-router-dom'
+import { React, useState, useEffect } from "react";
+import { Redirect } from "react-router-dom";
 
 //Components from Material UI
-import { StylesProvider } from '@material-ui/core/styles';
+import { StylesProvider } from "@material-ui/core/styles";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import { Button } from "@material-ui/core";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import { makeStyles } from "@material-ui/core/styles";
 
-//Internal Components
+//Internal files
 import BoardPost from "../components/BoardPost";
-import BoardArticle from "../components/BoardArticle";
+import BoardEvent from "../components/BoardEvent";
+import axios from 'axios'
+import config from '../config.js'
 
 const useStyles = makeStyles({
   root: {
@@ -31,10 +33,36 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Board(props) {
-  const [publishedVisible, setVisible] = useState("posts");
+export default function Board(props) {  
   const classes = useStyles();
-  const { allPost, user } = props;
+  const { user } = props;
+
+  const [error, setError] = useState(null)
+  const [allPost, setPost] = useState([])
+  const [allEvents, setAllEvents] = useState([])
+  const [publishedVisible, setVisible] = useState("posts");
+
+  useEffect(()=>{
+      getBoardPost();
+      getBoardEvent();
+  }, []);
+
+  const getBoardPost = ()=>{
+    axios.get(`${config.API_URL}/board/posts`, {withCredentials:true})
+    .then((response)=>{
+      setPost(response.data)
+    })
+    .catch((err) => setError(err.response.data))
+  }
+
+  const getBoardEvent = ()=>{
+    axios.get(`${config.API_URL}/board/events`, {withCredentials:true})
+    .then((response)=>{
+      setAllEvents(response.data)
+    })
+    .catch((err) => setError(err.response.data))
+  }
+
 
   if (!allPost) {
     return <LinearProgress />;
@@ -44,40 +72,50 @@ export default function Board(props) {
     setVisible("posts");
   };
 
-  const handleArticles = () => {
-    setVisible("articles");
+  const handleEvents = () => {
+    setVisible("events");
   };
 
   if (!user) {
     return <LinearProgress />;
-  } else if (user ==="NotLoggedIn") {
+  } else if (user === "NotLoggedIn") {
     return <Redirect to={"/"} />;
   }
 
   return (
     <StylesProvider>
       <div classes="container">
-      <h1 className="header">Board</h1>
-      <div className="group-btn">
-        <ButtonGroup color="primary" aria-label="outlined primary button group">
-          <Button onClick={handlePosts}>Posts</Button>
-          <Button onClick={handleArticles}>Articles/Code</Button>
-        </ButtonGroup>
-      </div>
-      {allPost
-        .filter((e) => e.postStatus === "published")
-        .map((singlePost) => {
-          if (publishedVisible === "posts" && singlePost.postType ==="post") {
-            return (
-                <BoardPost key={singlePost._id} user={singlePost.userId} description={singlePost.description}/>
-            );
-          } else if (publishedVisible === "articles" && singlePost.postType ==="article") {
-            return (
-                <BoardArticle key={singlePost._id} title={singlePost.title}  description={singlePost.description} code={singlePost.code}/>
-            );
-          }
-        })}
+        <h1 className="header">Board</h1>
+        <div className="group-btn">
+          <ButtonGroup
+            color="primary"
+            aria-label="outlined primary button group"
+          >
+            <Button onClick={handlePosts}>Posts</Button>
+            <Button onClick={handleEvents}>Events</Button>
+          </ButtonGroup>
         </div>
+        {publishedVisible === "posts" ? (
+          allPost.map((singlePost) => {
+            return (
+              <BoardPost
+                key={singlePost._id}
+                user={singlePost.userId}
+                description={singlePost.description}
+              />
+            );
+          })
+        ) : (
+          allEvents.map((singleEvent) => {
+            return (
+              <BoardEvent
+                key={singleEvent._id}
+                event={singleEvent}
+              />
+            );
+          })
+        )}
+      </div>
     </StylesProvider>
   );
 }

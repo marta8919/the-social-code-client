@@ -1,13 +1,17 @@
 import { React, useState, useEffect } from "react";
-import { Redirect, Link } from "react-router-dom";
+import { Redirect, Link, Route } from "react-router-dom";
+
 import axios from "axios";
 import config from "../config";
+import EditEvent from './EditEvent'
+
 import { LinearProgress } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
+import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Typography from "@material-ui/core/Typography";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
@@ -36,6 +40,8 @@ const useStyles = makeStyles({
 function Profile(props) {
   const classes = useStyles();
   const [userPost, setUserPost] = useState([]);
+  const [userEvent, setUserEvent] = useState([]);
+  const [publishedVisible, setVisible] = useState("posts");
 
   useEffect(() => {
     axios
@@ -44,11 +50,48 @@ function Profile(props) {
         setUserPost(response.data);
       })
       .catch((err) => console.log(err));
+
+    axios
+      .get(`${config.API_URL}/getevent`, { withCredentials: true })
+      .then((response) => {
+        setUserEvent(response.data);
+      })
+      .catch((err) => console.log(err));
   }, []);
 
+  const handleDeletePost = (postId) => {
+    axios
+      .delete(`${config.API_URL}/delete/${postId}`)
+      .then(() => {
+        let filteredPosts = userPost.filter((e) => e._id !== postId);
+        //update hook allPost
+        setUserPost(filteredPosts);
 
-  const { user, onDelete , onLogout} = props;
- 
+        //send the user back to the main board
+        props.history.push("/board");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handleDeleteEvent = (eventId) => {
+    axios
+      .delete(`${config.API_URL}/event/delete/${eventId}`)
+      .then(() => {
+        let filteredEvents = userEvent.filter((e) => e._id !== eventId);
+        //update hook allPost
+        setUserEvent(filteredEvents);
+
+        //send the user back to the main board
+        props.history.push("/board");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const { user, onLogout } = props;
 
   if (!user) {
     return <LinearProgress />;
@@ -56,24 +99,24 @@ function Profile(props) {
     return <Redirect to={"/"} />;
   }
 
-  // const handlePosts = () => {
-  //   setVisible("posts");
-  // };
+  const handlePosts = () => {
+    setVisible("posts");
+  };
 
-  // const handleArticles = () => {
-  //   setVisible("articles");
-  // };
+  const handleEvents = () => {
+    setVisible("events");
+  };
 
   return (
     <div className="container">
       <div className="header">
-      <h1>Hey @{user.username} !</h1>
-      <h3>Welcome to your profile </h3>
+        <h1>Hey @{user.username} !</h1>
+        <h3>Welcome to your profile </h3>
       </div>
       <Card className="my-card">
         <div className="image-btn">
-        <img src={user.picture} alt="user" className="profile-pic"></img>
-        <Link to="/profile/editPic">Edit picture</Link>
+          <img src={user.picture} alt="user" className="profile-pic"></img>
+          <Link to="/profile/editPic">Edit picture</Link>
         </div>
 
         <div className="text-card">
@@ -99,22 +142,23 @@ function Profile(props) {
           <Link to="/profile/delete" className="my-link">
             <DeleteForeverIcon className="my-icon" />
           </Link>
-          <button className="transparent" onClick={onLogout} ><ExitToAppIcon/></button>
+          <button className="transparent" onClick={onLogout}>
+            <ExitToAppIcon />
+          </button>
         </div>
       </Card>
 
-      {/* <div className="group-btn">
-      <ButtonGroup color="primary" aria-label="outlined primary button group">
-        <Button onClick={handlePosts}>Posts</Button>
-        <Button onClick={handleArticles}>Articles/Code</Button>
-      </ButtonGroup>
-      </div> */}
+      <div className="group-btn">
+        <ButtonGroup color="primary" aria-label="outlined primary button group">
+          <Button onClick={handlePosts}>Posts</Button>
+          <Button onClick={handleEvents}>Events</Button>
+        </ButtonGroup>
+      </div>
 
       <h3 className="header">Your commits</h3>
 
-      {userPost
-        .filter((e) => e.postStatus === "published")
-        .map((singlePost) => {if (singlePost.postType ==="post") {
+      {publishedVisible === "posts"
+        ? userPost.map((singlePost) => {
             return (
               <Card className={classes.root} key={singlePost._id}>
                 <CardContent>
@@ -124,12 +168,49 @@ function Profile(props) {
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Button onClick={() => {onDelete(singlePost._id)}} size="small">pop()</Button>
+                  <Button
+                    onClick={() => {
+                      handleDeletePost(singlePost._id);
+                    }}
+                    size="small"
+                  >
+                    pop()
+                  </Button>
                 </CardActions>
               </Card>
             );
-        }
-      })}
+          })
+        : userEvent.map((singleEvent) => {
+            return (
+              <Card className={classes.root} key={singleEvent._id}>
+                <CardContent>
+                  <h4>{singleEvent.title}</h4>
+                  <Typography variant="body2" component="p">
+                    {singleEvent.dateString}, at {singleEvent.hours}:
+                    {singleEvent.minutes}
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button
+                    onClick={() => {
+                      handleDeleteEvent(singleEvent._id);
+                    }}
+                    size="small"
+                  >
+                    pop()
+                  </Button>
+                  <Link
+                    to={`event/${singleEvent._id}/edit`}
+                    className="my-link"
+                  >
+                    Edit
+                  </Link>
+                </CardActions>
+              </Card>
+            );
+          })
+      }
+      
     </div>
   );
 }

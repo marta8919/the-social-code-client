@@ -2,17 +2,17 @@
   --darkbackground: #271b45;
   --turquoise: #1cc5bc;
   --cyan: #15c2cd;
-  --gradient1A:#29EDC6;
-  --gradient1B: #0696D2;
+  --gradient1A: #29edc6;
+  --gradient1B: #0696d2;
 }
 
-*{
+* {
   margin: 0;
 }
 
-body{
+body {
   background-color: var(--darkbackground);
-  color:white;
+  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,20 +20,20 @@ body{
 
 .transparent {
   background: none;
-  border:none
+  border: none;
 }
 
-.text-dark{
-  color:black;
+.text-dark {
+  color: black;
 }
 
-.text-white{
+.text-white {
   color: white;
 }
 
 .errorMessage {
-  color: #99361E;
-  background-color: #E0AA84;
+  color: #99361e;
+  background-color: #e0aa84;
   padding: 5px 20px;
   border-radius: 5px;
   border: 1px solid white;
@@ -41,20 +41,24 @@ body{
 }
 
 .MuiButton-root {
-  background: rgb(41,237,198);
-  background: linear-gradient(90deg, rgba(41,237,198,1) 0%, rgba(6,150,210,1) 86%);
-  color:white;
+  background: rgb(41, 237, 198);
+  background: linear-gradient(
+    90deg,
+    rgba(41, 237, 198, 1) 0%,
+    rgba(6, 150, 210, 1) 86%
+  );
+  color: white;
   font-weight: 600;
 }
 
-.MuiOutlinedInput-input{
+.MuiOutlinedInput-input {
   background-color: white;
   border-radius: 5px;
-  color:white
+  color: white;
 }
 
 .MuiButton-outlinedPrimary {
-  color:white;
+  color: white;
 }
 
 .form-center {
@@ -74,7 +78,7 @@ body{
   width: 500px;
 }
 
-.MuiFormControl-root{
+.MuiFormControl-root {
   margin: 5px;
 }
 .time-field {
@@ -82,7 +86,8 @@ body{
   align-items: center;
 }
 
-.time-field p, .my-select {
+.time-field p,
+.my-select {
   margin-right: 5px;
 }
 
@@ -91,17 +96,17 @@ body{
 }
 
 .input-grey {
-  color:grey;
+  color: grey;
   font-size: 0.8em;
   margin-bottom: 10px;
 }
 
-.text-left{
+.text-left {
   text-align: left;
 }
 
 .card-image {
-  height: 200px
+  height: 200px;
 }
 
 .control-btns {
@@ -109,15 +114,18 @@ body{
   flex-direction: column;
 }
 
-.profile-pic{
+.profile-pic {
   width: 200px;
-  height:200px;
+  height: 200px;
   object-fit: cover;
   border: 5px solid white;
   border-radius: 50%;
 }
-
-.my-icon{
+.navBar-pic {
+  width: 50px;
+  height: 50px;
+}
+.my-icon {
   margin: 10px;
 }
 
@@ -133,28 +141,28 @@ body{
   color: var(--darkbackground);
 }
 
-.group-btn{
+.group-btn {
   margin: 20px auto 20px auto;
 }
 
-.card-board{
-  margin-bottom:15px;
+.card-board {
+  margin-bottom: 15px;
 }
 
-.post-container{
-  display:flex;
+.post-container {
+  display: flex;
 }
 
 .post-text {
   margin-left: 15px;
 }
 
-.my-card{
+.my-card {
   padding: 10px;
   display: flex;
 }
 
-.header{
+.header {
   margin: 20px auto 20px auto;
 }
 
@@ -168,45 +176,59 @@ body{
   color: white;
 }
 
-.my-nav{
+.my-nav {
+  max-width: 800px;
   margin: 0;
-  position: fixed;
+  position:fixed;
   bottom: 0px;
+  align-items: center;
 }
 
-.my-inputfield{
+.my-inputfield {
   width: 500px;
   margin-bottom: 20px;
 }
 
-.my-btn{
+.my-btn {
   width: 100%;
 }
 
+.MuiBottomNavigation-root{
+  justify-content: space-between;
+}
 
-@media (max-width: 500px){
+@media (max-width: 500px) {
   .container {
-    width: 350px;
+    width: 100%;
     margin: 15px 5px 15px 5px;
   }
-  .my-inputfield{
+  .my-inputfield {
     width: 100%;
   }
 
-  .profile-pic{
+  .profile-pic {
     width: 100px;
-    height:100px;
+    height: 100px;
   }
-  .my-nav{
+
+  .navBar-pic {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--darkbackground);
+  }
+
+  
+
+  .my-nav {
     width: 350px;
   }
-  .text-card{
+  .text-card {
     font-size: 14px;
     max-width: 200px;
     padding: 5px;
   }
 
-  .form-center{
+  .form-center {
     display: flex;
     flex-direction: column;
     justify-content: center;

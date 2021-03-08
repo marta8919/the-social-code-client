@@ -1,7 +1,8 @@
 import {React, useState, useEffect} from "react";
 import { Switch, Route, withRouter} from "react-router-dom";
 
-//Styles css
+//Styles 
+import { LinearProgress } from "@material-ui/core";
 
 //Components and Pages
 import HomePage from "./pages/HomePage";
@@ -16,6 +17,7 @@ import axios from 'axios'
 import config from './config.js'
 import Footer from './components/Footer'
 import UserNavBar from './components/NavBarUser'
+import NavBar from './components/NavBar'
 import EditProfile from './pages/EditProfile'
 import EditPic from './pages/EditPic'
 import EditEvent from './pages/EditEvent'
@@ -141,6 +143,17 @@ function App(props) {
      })
   }
 
+  const handleNavBar = () => {
+    if (!loggedInUser) {
+      return (<LinearProgress />)
+    } else if (loggedInUser === "NotLoggedIn") {
+      return <NavBar/>
+    }
+    else{
+      return <UserNavBar user={loggedInUser}/> 
+    }
+  }
+
   return (
     <div className="App">
 
@@ -178,13 +191,15 @@ function App(props) {
         <Route path="/event/:eventId/edit" render={(routeProps) => {
         return <EditEvent {...routeProps}/>}}/>
         
-        
-
       </Switch>
       <Footer/>
 
-      <UserNavBar/> 
-      {/* <NavBar/> */}
+
+      {
+       handleNavBar() 
+      }
+      
+      
     
       
     </div>

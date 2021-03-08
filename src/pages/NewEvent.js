@@ -40,7 +40,7 @@ export default function NewEvent(props) {
   }
 
   return (
-    <StylesProvider >
+    // <StylesProvider >
       <div className="container">
         <h1 className="header">Create a digital event!</h1>
 
@@ -157,6 +157,6 @@ export default function NewEvent(props) {
     </div>
       
 
-    </StylesProvider>
+    // </StylesProvider>
   );
 }

@@ -10,8 +10,6 @@ import {
   Checkbox,
 } from "@material-ui/core";
 import { FavoriteBorder, Favorite } from "@material-ui/icons";
-// import SmsIcon from "@material-ui/icons/Sms";
-// import SmsOutlinedIcon from "@material-ui/icons/SmsOutlined";
 import Fade from "react-reveal/Fade";
 
 function BoardPost(props) {
@@ -34,7 +32,6 @@ function BoardPost(props) {
     }
   };
 
- 
   const handleLike = (postId) => {
     console.log("like yeeeey");
     axios.defaults.withCredentials = true;
@@ -86,14 +83,7 @@ function BoardPost(props) {
                   checkedIcon={<Favorite/>}
                   inputProps={{ "aria-label": "Like" }}
                   onClick={handleFunction}
-                //   color="secondary"
                 />
-                {/* 
-              <Checkbox
-                icon={<SmsOutlinedIcon />}
-                checkedIcon={<SmsIcon />}
-                inputProps={{ "aria-label": "Like" }}
-              /> */}
               </CardActions>
             </div>
           </CardContent>

@@ -7,7 +7,7 @@ export default function EditPic(props) {
 
     return (
         <div className="container">
-            <Link to="/about"><img className="logo" src="./images/logo.png"/></Link>
+            <Link to="/about"><img className="logo" src="./images/logo.png" alt="Main_Logo"/></Link>
              <h1>Hello @{user.username}</h1>
              <h3>Here you can edit your profile picture.</h3>
             <form onSubmit={onEditPic}>

@@ -33,7 +33,7 @@ function SignUp (props) {
 
     return(
         <div className="container">
-            <Link to="/"><img className="logo" src="./images/logo.png"/></Link>
+            <Link to="/"><img className="logo" src="./images/logo.png" alt="Main_Logo"/></Link>
             <h1>Sign up</h1>
             <StylesProvider injectFirst>
                 <form onSubmit={handleSignUp} className="form-center" noValidate autoComplete="off">

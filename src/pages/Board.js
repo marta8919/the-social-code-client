@@ -103,7 +103,7 @@ export default function Board(props) {
     <div className="container">
       <Fade bottom>
         <Link to="/about">
-          <img className="logo" src="./images/logo.png" />
+          <img className="logo" src="./images/logo.png" alt="Main_Logo"/>
         </Link>
 
         <h1 className="header">Board</h1>
@@ -133,7 +133,7 @@ export default function Board(props) {
             {filteredPosts.length === 0 ? (
               <Fade bottom>
                 <div className="container">
-                  <img className="myError-img" src="./images/searchError.svg" />
+                  <img className="myError-img" src="./images/searchError.svg" alt="not_found_search" />
                   <h3>Sorry! Try with a new search!</h3>
                 </div>
               </Fade>
@@ -166,7 +166,7 @@ export default function Board(props) {
             {filteredEvents.length === 0 ? (
               <Fade bottom>
                 <div className="container">
-                  <img className="myError-img" src="./images/searchError.svg" />
+                  <img className="myError-img" src="./images/searchError.svg" alt="not_found_search"/>
                   <h3>Sorry! Try with a new search!</h3>
                 </div>
               </Fade>

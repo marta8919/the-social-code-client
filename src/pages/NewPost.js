@@ -20,7 +20,7 @@ export default function NewPost(props) {
   return (
     <div className="container">
       <Link to="/about">
-        <img className="logo" src="./images/logo.png" />
+        <img className="logo" src="./images/logo.png" alt="Main_Logo"/>
       </Link>
       <h1 className="header">Write a post</h1>
 

@@ -2,7 +2,6 @@ import axios from "axios";
 import config from "../config";
 
 import React, { useEffect, useState } from "react";
-import Calendar from "react-calendar";
 import { Link } from 'react-router-dom'
 
 import LinearProgress from "@material-ui/core/LinearProgress";
@@ -55,7 +54,7 @@ export default function EditEvent(props) {
 
   return (
     <div className="container">
-      <Link to="/about"><img className="logo" src="./images/logo.png"/></Link>
+      <Link to="/about"><img className="logo" src="./images/logo.png" alt="Main_Logo"/></Link>
       <div className="header">
         <h1>Hello</h1>
         <h3>Let's edit the event </h3>

@@ -19,7 +19,7 @@ export default function EditProfile(props) {
 
     return (
         <div className="container">
-            <Link to="/about"><img className="logo" src="./images/logo.png"/></Link>
+            <Link to="/about"><img className="logo" src="./images/logo.png" alt="Main_Logo"/></Link>
             <div className="header">
             <h1>Hello @{user.username}</h1>
             <h3>Here you can edit your profile.</h3>

@@ -99,7 +99,9 @@ export default function Board(props) {
   return (
     
       <div className="container">
+        <Fade bottom>
         <Link to="/about"><img className="logo" src="./images/logo.png"/></Link>
+        
         <h1 className="header">Board</h1>
         <div className="group-btn">
           <ButtonGroup
@@ -140,6 +142,7 @@ export default function Board(props) {
           })}
           </div>)
         )}
+        </Fade>
       </div>
   );
 }

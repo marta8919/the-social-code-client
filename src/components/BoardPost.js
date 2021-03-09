@@ -1,8 +1,6 @@
 import { React, useState, useEffect } from "react";
 import axios from "axios";
-
 import config from "../config";
-
 import { StylesProvider } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import {
@@ -14,6 +12,8 @@ import {
 import { FavoriteBorder, Favorite } from "@material-ui/icons";
 // import SmsIcon from "@material-ui/icons/Sms";
 // import SmsOutlinedIcon from "@material-ui/icons/SmsOutlined";
+import Fade from 'react-reveal/Fade';
+
 
 function BoardPost(props) {
   const { post, user } = props;
@@ -83,6 +83,7 @@ function BoardPost(props) {
 
   return (
     <StylesProvider>
+      <Fade bottom>
       <Card className="my-card">
         <CardContent className="post-container">
           <img
@@ -112,6 +113,7 @@ function BoardPost(props) {
           </div>
         </CardContent>
       </Card>
+      </Fade>
     </StylesProvider>
   );
 }

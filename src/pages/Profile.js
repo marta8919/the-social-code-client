@@ -14,6 +14,8 @@ import Typography from "@material-ui/core/Typography";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import { StylesProvider } from "@material-ui/core/styles";
+
 import Fade from "react-reveal/Fade";
 
 function Profile(props) {

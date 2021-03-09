@@ -160,8 +160,13 @@ export default function Board(props) {
               </Fade>
             ) : (
               filteredEvents.map((singleEvent) => {
+                const {dateString} = singleEvent
+                let dateArr = dateString.split('/')
                 let dateToday = new Date()
-                return Date.parse(singleEvent.dateOriginal) >= Date.parse(dateToday) ? (
+                let day = Number(dateToday.getDate())
+                let month = Number(dateToday.getMonth() + 1)
+                let year = Number(dateToday.getFullYear())
+                return Number(dateArr[0]) >= day && Number(dateArr[1]) >= month && Number(dateArr[2]) >= year ? (
                   <BoardEvent
                     key={singleEvent._id}
                     event={singleEvent}

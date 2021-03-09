@@ -169,6 +169,7 @@ body {
 
 .post-container {
   display: flex;
+  justify-content: space-between;
 }
 
 .post-text {
@@ -179,12 +180,12 @@ body {
   padding: 10px;
   display: flex;
   justify-content: space-between;
-  width: 90%;
   margin: 10px auto;
 }
 
 .header {
   margin: 20px auto 20px auto;
+  text-align: center;
 }
 
 .my-footer {
@@ -195,13 +196,6 @@ body {
 
 .my-footer a {
   color: white;
-}
-
-.my-nav {
-  bottom: 0px;
-  position: fixed;
-  width: 100%;
-  border: 2px solid var(--darkbackground);
 }
 
 /* .my-nav a {
@@ -233,6 +227,8 @@ body {
   line-height: 4vh;
   margin-top: 30px;
   text-align: center;
+  background-color: #433568;
+  width: 500px;
 }
 
 .myError-img {
@@ -247,7 +243,7 @@ body {
 
 .logo{
   width: 50px;
-  margin: 20px
+  margin: 40px
 }
 
 .team {
@@ -264,10 +260,31 @@ body {
   background-color: white;
 }
 
+@media(min-width: 500px){
+  .my-nav {
+    top: 0px;
+    position: fixed;
+    width: 100%;
+    border: 2px solid var(--darkbackground);
+  }
+
+  .container {
+    margin-top: 60px;
+  }
+}
+
 @media (max-width: 500px) {
   .container {
     margin: 20px;
   }
+
+  .my-nav {
+    bottom: 0px;
+    position: fixed;
+    width: 100%;
+    border: 2px solid var(--darkbackground);
+  }
+
   .my-inputfield {
     width: 100%;
   }
@@ -298,7 +315,7 @@ body {
   }
 
   .fake-code{
-    width: 80%;
+    width: 300px;
   }
 
   .team{
@@ -309,8 +326,15 @@ body {
     width: 90%;
   }
 
-  .my-card-content{
-    width: 60% ;
+  .post-container {
+    display: flex;
+    justify-content: space-between;
+    min-width: 220px;
+    max-width: 220px;
   }
+
+  /* .my-card-content{
+    width: 60% ;
+  } */
 
 }

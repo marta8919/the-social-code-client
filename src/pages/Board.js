@@ -15,29 +15,9 @@ import BoardEvent from "../components/BoardEvent";
 import axios from 'axios'
 import config from '../config.js'
 
-const useStyles = makeStyles({
-  root: {
-    maxWidth: 500,
-    margin: 6,
-    marginBottom: 10,
-  },
-  title: {
-    fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
-  },
-  card: {
-    padding: 10,
-    maxWidth: 500,
-    display: "flex",
-  },
-});
 
 export default function Board(props) {  
-  const classes = useStyles();
   const { user } = props;
-
   const [error, setError] = useState(null)
   const [allPost, setPost] = useState([])
   const [filteredPosts, setFilterPosts] = useState([])

@@ -18,6 +18,7 @@ import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { PhotoSizeSelectLargeOutlined } from "@material-ui/icons";
 import Fade from 'react-reveal/Fade';
+import { StylesProvider } from "@material-ui/core/styles";
 
 
 
@@ -92,6 +93,7 @@ function Profile(props) {
   };
 
   return (
+    <StylesProvider>
     
     <div className="container">
       <Fade bottom>
@@ -146,26 +148,23 @@ function Profile(props) {
     </Fade>
 
 
-      <Fade bottom>
-      <h3 className="header">Your commits</h3>
-      </Fade>
-
       {publishedVisible === "posts"
         ? userPost.map((singlePost) => {
             return (
               <Fade bottom>
+              <h3 className="header">Your posts</h3>
               <Card className="my-card" key={singlePost._id}>
-                <CardContent className="my-card-content">
-                  <Typography variant="body2" component="p">
+                <CardContent className="post-container">
+                  <Typography variant="body2" component="p" className="text-dark">
                     {singlePost.description}
                     <br />
                   </Typography>
-                  <Typography variant="body2" component="p">
+                  <Typography variant="body2" component="p" className="text-dark">
                     {singlePost.dateString}
                     <br />
                   </Typography>
-                </CardContent>
-                <CardActions>
+                
+                <CardActions disableSpacing>
                   <Button
                     onClick={() => {
                       handleDeletePost(singlePost._id);
@@ -175,20 +174,24 @@ function Profile(props) {
                     pop()
                   </Button>
                 </CardActions>
+                </CardContent>
               </Card>
               </Fade>
             );
           })
         : userEvent.map((singleEvent) => {
             return (
+              <>
+              <h3 className="header">Your events</h3>
               <Card className="my-card" key={singleEvent._id}>
-                <CardContent className="my-card-content">
+                <CardContent className="post-container">
+                  <div className="text-card">
                   <h4>{singleEvent.title}</h4>
                   <Typography variant="body2" component="p">
                     {singleEvent.dateString}, at {singleEvent.hours}:
                     {singleEvent.minutes}
                   </Typography>
-                </CardContent>
+                  </div>
                 <CardActions>
                   <Button
                     onClick={() => {
@@ -205,12 +208,15 @@ function Profile(props) {
                     Edit
                   </Link>
                 </CardActions>
+                </CardContent>
               </Card>
+              </>
             );
           })
       }
       
     </div>
+    </StylesProvider>
   );
 }
 

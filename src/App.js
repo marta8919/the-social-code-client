@@ -22,6 +22,7 @@ import EditProfile from './pages/EditProfile'
 import EditPic from './pages/EditPic'
 import EditEvent from './pages/EditEvent'
 import NotFound from './pages/NotFound'
+import UserProfile from'./pages/UserProfile'
 
 
 function App(props) {
@@ -140,7 +141,7 @@ function App(props) {
   const handleLogout= () => {
     axios.post(`${config.API_URL}/logout`, {}, {withCredentials: true})
      .then(()=>{
-       setlogin(null)
+      setlogin('NotLoggedIn')
        props.history.push('/')
      })
   }
@@ -193,6 +194,8 @@ function App(props) {
         }} />
         <Route path="/event/:eventId/edit" render={(routeProps) => {
         return <EditEvent {...routeProps}/>}}/>
+        <Route path="/user/:userId" render={(routeProps) => {
+        return <UserProfile {...routeProps}/>}}/>
         <Route render={() => {
         return <NotFound />}}/>
         

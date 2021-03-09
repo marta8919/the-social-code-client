@@ -1,5 +1,7 @@
 import {React} from 'react'
 import { Link } from 'react-router-dom'
+import Button from '@material-ui/core/Button';
+import Fade from 'react-reveal/Fade';
 
 export default function EditPic(props) {
 
@@ -7,13 +9,17 @@ export default function EditPic(props) {
 
     return (
         <div className="container">
-            <Link to="/about"><img className="logo" src="./images/logo.png"/></Link>
+            <Fade bottom>
+            <Link to="/about"><img className="logo" src="../images/logo.png"/></Link>
+            <div className="header">
              <h1>Hello @{user.username}</h1>
              <h3>Here you can edit your profile picture.</h3>
-            <form onSubmit={onEditPic}>
-                <input type="file" name="imageUrl" accept="image/png, image/jpg"></input>
-                <button type="submit">Save</button>
+            </div>
+            <form onSubmit={onEditPic} className="form-center">
+                <input type="file" name="imageUrl" accept="image/png, image/jpg" className="my-inputfield"></input>
+                <Button type="submit" className="my-btn">Save</Button>
             </form>
+            </Fade>
         </div>
     )
 }

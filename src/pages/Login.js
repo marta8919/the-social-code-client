@@ -24,6 +24,7 @@ export default function Login(props) {
               <p className="errorMessage">{ props.error.errorMessage}</p>            ) : null
         }
         <Button className="my-btn" variant="contained" type="submit" color="primary">Log in</Button>
+        <p>You don't have an account?</p><Link className="text-white" to="/signup">Create one here!</Link>
       </form>
       </StylesProvider>
       </div>

@@ -120,6 +120,7 @@ export default function Board(props) {
               <BoardPost
                 key={singlePost._id}
                 post={singlePost}
+                user={user}
               />
             );
           })}

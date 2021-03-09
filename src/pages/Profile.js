@@ -1,12 +1,10 @@
 import { React, useState, useEffect } from "react";
-import { Redirect, Link, Route } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 
 import axios from "axios";
 import config from "../config";
-import EditEvent from './EditEvent'
 
 import { LinearProgress } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -16,12 +14,7 @@ import Typography from "@material-ui/core/Typography";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import { PhotoSizeSelectLargeOutlined } from "@material-ui/icons";
-import Fade from 'react-reveal/Fade';
-import { StylesProvider } from "@material-ui/core/styles";
-
-
-
+import Fade from "react-reveal/Fade";
 
 function Profile(props) {
   const [userPost, setUserPost] = useState([]);
@@ -97,56 +90,59 @@ function Profile(props) {
     
     <div className="container">
       <Fade bottom>
-      <Link to="/about"><img className="logo" src="./images/logo.png"/></Link>
-      <div className="header">
-        <h1>Hey @{user.username} !</h1>
-        <h3>Welcome to your profile </h3>
-      </div>
-      <Card className="my-card">
-        <div className="image-btn">
-          <img src={user.picture} alt="user" className="profile-pic"></img>
-          <Link to="/profile/editPic">Edit picture</Link>
+        <Link to="/about">
+          <img className="logo" src="./images/logo.png" alt="Main_Logo"/>
+        </Link>
+        <div className="header">
+          <h1>Hey @{user.username} !</h1>
+          <h3>Welcome to your profile </h3>
         </div>
+        <Card className="my-card">
+          <div className="image-btn">
+            <img src={user.picture} alt="user" className="profile-pic"></img>
+            <Link to="/profile/editPic">Edit picture</Link>
+          </div>
 
-        <div className="text-card">
-          <p>
-            <strong>City: </strong> {user.city}
-          </p>
-          <p>
-            <strong>Country: </strong> {user.country}
-          </p>
-          <p>
-            <strong>Hobbies: </strong> {user.hobbies}
-          </p>
-          <p>
-            <strong>Intro: </strong> {user.intro}
-          </p>
-          <p>Part of TSC since {user.dateRegistered}</p>
-        </div>
+          <div className="text-card">
+            <p>
+              <strong>City: </strong> {user.city}
+            </p>
+            <p>
+              <strong>Country: </strong> {user.country}
+            </p>
+            <p>
+              <strong>Hobbies: </strong> {user.hobbies}
+            </p>
+            <p>
+              <strong>Intro: </strong> {user.intro}
+            </p>
+            <p>Part of TSC since {user.dateString}</p>
+          </div>
 
-        <div className="control-btns">
-          <Link to="/profile/edit" className="my-link">
-            <EditIcon className="my-icon" />
-          </Link>
-          <Link to="/profile/delete" className="my-link">
-            <DeleteForeverIcon className="my-icon" />
-          </Link>
-          <button className="transparent" onClick={onLogout}>
-            <ExitToAppIcon />
-          </button>
-        </div>
-      </Card>
+          <div className="control-btns">
+            <Link to="/profile/edit" className="my-link">
+              <EditIcon className="my-icon" />
+            </Link>
+            <Link to="/profile/delete" className="my-link">
+              <DeleteForeverIcon className="my-icon" />
+            </Link>
+            <button className="transparent" onClick={onLogout}>
+              <ExitToAppIcon />
+            </button>
+          </div>
+        </Card>
       </Fade>
       <Fade bottom>
-      <div className="group-btn">
-        
-        <ButtonGroup color="primary" aria-label="outlined primary button group">
-          <Button onClick={handlePosts}>Posts</Button>
-          <Button onClick={handleEvents}>Events</Button>
-        </ButtonGroup>
-      </div> 
-    </Fade>
-
+        <div className="group-btn">
+          <ButtonGroup
+            color="primary"
+            aria-label="outlined primary button group"
+          >
+            <Button onClick={handlePosts}>Posts</Button>
+            <Button onClick={handleEvents}>Events</Button>
+          </ButtonGroup>
+        </div>
+      </Fade>
 
       {publishedVisible === "posts"
         ? userPost.map((singlePost) => {
@@ -212,9 +208,7 @@ function Profile(props) {
               </Card>
               </>
             );
-          })
-      }
-      
+          })}
     </div>
     </StylesProvider>
   );

@@ -259,7 +259,11 @@ body {
 .form-center select {
   background-color: white;
 }
-
+.line-center {
+  display: flex;
+  align-items: center;
+  justify-content:space-around;
+}
 @media(min-width: 500px){
   .my-nav {
     top: 0px;
@@ -272,6 +276,9 @@ body {
     margin-top: 60px;
   }
 }
+
+
+
 
 @media (max-width: 500px) {
   .container {

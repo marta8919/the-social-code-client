@@ -13,7 +13,7 @@ function HomePage() {
     <div className="container">
 
 
-    <Link to="/"><img className="logo" src="./images/logo.png"/></Link>
+    <Link to="/"><img className="logo" src="./images/logo.png" alt="Main_Logo"/></Link>
       
     <div className="fake-code">
 

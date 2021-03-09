@@ -3,7 +3,6 @@ import React, { useState } from "react";
 //Material UI
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
-import EmojiPeopleIcon from "@material-ui/icons/EmojiPeople";
 import EventIcon from "@material-ui/icons/Event";
 import KeyboardIcon from "@material-ui/icons/Keyboard";
 import DashboardIcon from "@material-ui/icons/Dashboard";

@@ -41,7 +41,7 @@ export default function NewEvent(props) {
 
   return (
       <div className="container">
-        <Link to="/about"><img className="logo" src="./images/logo.png"/></Link>
+        <Link to="/about"><img className="logo" src="./images/logo.png" alt="Main_Logo"/></Link>
 
         <h1 className="header">Create a digital event!</h1>
       

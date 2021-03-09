@@ -2,7 +2,6 @@ import axios from "axios";
 import config from "../config";
 
 import React, { useEffect, useState } from "react";
-import Calendar from "react-calendar";
 import { Link } from 'react-router-dom'
 
 import LinearProgress from "@material-ui/core/LinearProgress";

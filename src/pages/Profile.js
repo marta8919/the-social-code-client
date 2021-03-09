@@ -17,6 +17,8 @@ import EditIcon from "@material-ui/icons/Edit";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { PhotoSizeSelectLargeOutlined } from "@material-ui/icons";
+import Fade from 'react-reveal/Fade';
+
 
 
 
@@ -90,7 +92,9 @@ function Profile(props) {
   };
 
   return (
+    
     <div className="container">
+      <Fade bottom>
       <Link to="/about"><img className="logo" src="./images/logo.png"/></Link>
       <div className="header">
         <h1>Hey @{user.username} !</h1>
@@ -130,19 +134,26 @@ function Profile(props) {
           </button>
         </div>
       </Card>
-
+      </Fade>
+      <Fade bottom>
       <div className="group-btn">
+        
         <ButtonGroup color="primary" aria-label="outlined primary button group">
           <Button onClick={handlePosts}>Posts</Button>
           <Button onClick={handleEvents}>Events</Button>
         </ButtonGroup>
-      </div>
+      </div> 
+    </Fade>
 
+
+      <Fade bottom>
       <h3 className="header">Your commits</h3>
+      </Fade>
 
       {publishedVisible === "posts"
         ? userPost.map((singlePost) => {
             return (
+              <Fade bottom>
               <Card className="my-card" key={singlePost._id}>
                 <CardContent className="my-card-content">
                   <Typography variant="body2" component="p">
@@ -165,6 +176,7 @@ function Profile(props) {
                   </Button>
                 </CardActions>
               </Card>
+              </Fade>
             );
           })
         : userEvent.map((singleEvent) => {

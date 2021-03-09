@@ -1,12 +1,15 @@
 import React from "react";
 import Card from "@material-ui/core/Card";
 import { CardContent, Typography } from '@material-ui/core';
+import Fade from 'react-reveal/Fade';
+
 
 function BoardEvent(props) {
   const { event } = props;
   
   return (
     <div className="container">
+    <Fade bottom>
     <Card className="my-card">
       <CardContent>
         <Typography variant="h5" component="h2" className="text-dark">
@@ -32,6 +35,7 @@ function BoardEvent(props) {
         )}
       </CardContent>
     </Card>
+    </Fade>
     </div>
   );
 }

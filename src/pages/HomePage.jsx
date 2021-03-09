@@ -11,10 +11,16 @@ function HomePage() {
 
   return (
     <div className="container">
-      <Link to="/"><img className="logo" src="./images/logo.png"/></Link>
-      <div className="fake-code">
+
+
+    <Link to="/"><img className="logo" src="./images/logo.png"/></Link>
+      
+    <div className="fake-code">
 
       <Typist>
+        
+
+        
         <h2>Hello! Hola! Hallo!
         <br></br>
         <br></br>
@@ -27,9 +33,9 @@ function HomePage() {
       <Link to="/signup" className="link-underline">
         <Button className="my-btn" variant="contained">Join us Today! 🚀 </Button>
       </Link>
-    
+     
       </Typist>
-      </div>
+    </div>
 
     </div>
   );

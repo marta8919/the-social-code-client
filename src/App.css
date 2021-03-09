@@ -264,6 +264,13 @@ body {
   background-color: white;
 }
 
+.line-center {
+  display: flex;
+  align-items: center;
+  justify-content:space-around;
+}
+
+
 @media (max-width: 500px) {
   .container {
     margin: 20px;

@@ -12,61 +12,38 @@ import {
 import { FavoriteBorder, Favorite } from "@material-ui/icons";
 // import SmsIcon from "@material-ui/icons/Sms";
 // import SmsOutlinedIcon from "@material-ui/icons/SmsOutlined";
-import Fade from 'react-reveal/Fade';
-
+import Fade from "react-reveal/Fade";
 
 function BoardPost(props) {
   const { post, user } = props;
-  const [checkedLike, setCheck] = useState(null);
+  const [checkedLike, setCheck] = useState(false);
 
   useEffect(() => {
     if (post.userLikes.includes(user._id)) {
-        setCheck(true)
-    }
-    else {
-        setCheck(false)
+      setCheck(true);
+    } else {
+      setCheck(false);
     }
   }, []);
 
   const handleFunction = () => {
-    if (post.userLikes.includes(user._id)) {
+    if (checkedLike) {
       handleUnlike(post._id);
-      
     } else {
       handleLike(post._id);
-      
     }
   };
 
-  const handleCheck = () => {
-    if (checkedLike) {
-      return (
-        <Checkbox
-          icon={<Favorite />}
-        //   checkedIcon={<FavoriteBorder />}
-          inputProps={{ "aria-label": "Like" }}
-          onClick={handleFunction}
-        />
-      );
-    } else {
-      return (
-        <Checkbox
-          icon={<FavoriteBorder />}
-        //   checkedIcon={<Favorite />}
-          inputProps={{ "aria-label": "Like" }}
-          onClick={handleFunction}
-        />
-      );
-    }
-  };
+ 
   const handleLike = (postId) => {
     console.log("like yeeeey");
     axios.defaults.withCredentials = true;
     axios
       .post(`${config.API_URL}/post/like/${postId}`, { withCredentials: true })
-      .then()
+      .then(() => {
+        setCheck(true);
+      })
       .catch((err) => console.log(err));
-    setCheck(true);
   };
 
   const handleUnlike = (postId) => {
@@ -76,43 +53,51 @@ function BoardPost(props) {
       .post(`${config.API_URL}/post/unlike/${postId}`, {
         withCredentials: true,
       })
-      .then()
+      .then(() => {
+        setCheck(false);
+      })
       .catch((err) => console.log(err));
-    setCheck(false);
   };
 
   return (
     <StylesProvider>
       <Fade bottom>
-      <Card className="my-card">
-        <CardContent className="post-container">
-          <img
-            src={post.userId.picture}
-            alt="Profile"
-            className="profile-pic"
-          />
-          <div className="post-text">
-            <Typography variant="h5" component="h2" className="text-dark">
-              @{post.userId.username}
-            </Typography>
-            <Typography variant="body2" component="p" className="text-dark">
-              {post.description}
-            </Typography>
-            <Typography variant="body2" component="p" className="text-dark">
-              {post.dateString}
-            </Typography>
-            <CardActions disableSpacing>
-              {handleCheck()}
-              {/* 
+        <Card className="my-card">
+          <CardContent className="post-container">
+            <img
+              src={post.userId.picture}
+              alt="Profile"
+              className="profile-pic"
+            />
+            <div className="post-text">
+              <Typography variant="h5" component="h2" className="text-dark">
+                @{post.userId.username}
+              </Typography>
+              <Typography variant="body2" component="p" className="text-dark">
+                {post.description}
+              </Typography>
+              <Typography variant="body2" component="p" className="text-dark">
+                {post.dateString}
+              </Typography>
+              <CardActions disableSpacing>
+                <Checkbox
+                  icon={<FavoriteBorder />}
+                  checked={checkedLike}
+                  checkedIcon={<Favorite/>}
+                  inputProps={{ "aria-label": "Like" }}
+                  onClick={handleFunction}
+                //   color="secondary"
+                />
+                {/* 
               <Checkbox
                 icon={<SmsOutlinedIcon />}
                 checkedIcon={<SmsIcon />}
                 inputProps={{ "aria-label": "Like" }}
               /> */}
-            </CardActions>
-          </div>
-        </CardContent>
-      </Card>
+              </CardActions>
+            </div>
+          </CardContent>
+        </Card>
       </Fade>
     </StylesProvider>
   );

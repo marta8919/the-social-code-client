@@ -17,6 +17,7 @@ import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 import Fade from "react-reveal/Fade";
+import EventDetails from "../components/EventDetails";
 
 function Profile(props) {
   const [userPost, setUserPost] = useState([]);
@@ -150,7 +151,6 @@ function Profile(props) {
         ? userPost.map((singlePost) => {
             return (
               <Fade bottom>
-              <h3 className="header">Your posts</h3>
               <Card className="my-card" key={singlePost._id}>
                 <CardContent className="post-container">
                   <Typography variant="body2" component="p" className="text-dark">
@@ -180,11 +180,11 @@ function Profile(props) {
         : userEvent.map((singleEvent) => {
             return (
               <>
-              <h3 className="header">Your events</h3>
               <Card className="my-card" key={singleEvent._id}>
                 <CardContent className="post-container">
                   <div className="text-card">
-                  <h4>{singleEvent.title}</h4>
+                  {/* <EventDetails popEvent={singleEvent}/> */}
+                  <h3>{singleEvent.title}</h3>
                   <Typography variant="body2" component="p">
                     {singleEvent.dateString}, at {singleEvent.hours}:
                     {singleEvent.minutes}

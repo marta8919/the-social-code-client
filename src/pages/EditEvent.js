@@ -10,7 +10,7 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import { Select } from "@material-ui/core";
 
-export default function EditEvent(props) {
+export default function EventDetails(props) {
   const [singleEvent, setEvent] = useState({});
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export default function EditEvent(props) {
       [event.currentTarget.name]: event.currentTarget.value,
     });
 
-  const handleEditEvent = (event) => {
+  const handleEventDetails = (event) => {
     console.log("editing");
     event.preventDefault()
     let eventId = props.match.params.eventId;
@@ -62,7 +62,7 @@ export default function EditEvent(props) {
           <LinearProgress />
         ) : (
           <form
-            onSubmit={handleEditEvent}
+            onSubmit={handleEventDetails}
             className="form-center"
             noValidate
             autoComplete="off"

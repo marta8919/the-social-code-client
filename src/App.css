@@ -28,6 +28,10 @@ body {
   justify-content: center;
   align-items: center;
 }
+a{
+  margin:0;
+  padding:0;
+}
 
 .transparent {
   background: none;
@@ -68,7 +72,11 @@ body {
   color: white;
 } */
 
+<<<<<<< HEAD
 /* .MuiButton-outlinedPrimary {
+=======
+.MuiButton-outlinedPrimary, .MuiButton-outlinedPrimary {
+>>>>>>> origin/sofia
   color: white;
 } */
 
@@ -132,9 +140,9 @@ body {
   flex-direction: column;
 }
 
-.profile-pic {
-  width: 200px;
-  height: 200px;
+.profile-pic, .board-pic {
+  width: 100px;
+  height: 100px;
   object-fit: cover;
   border: 5px solid white;
   border-radius: 50%;
@@ -188,7 +196,7 @@ body {
 }
 
 .header {
-  margin: 20px auto 20px auto;
+  margin: 5px auto 20px auto;
   text-align: center;
 }
 
@@ -247,8 +255,8 @@ body {
 }
 
 .logo{
-  width: 50px;
-  margin: 40px
+  width: 80px;
+  margin:30px;
 }
 
 .team {
@@ -284,9 +292,6 @@ body {
   }
 }
 
-
-
-
 @media (max-width: 500px) {
   .container {
     margin: 20px;
@@ -299,6 +304,11 @@ body {
     border: 2px solid var(--darkbackground);
   }
 
+  .logo{
+    width: 60px;
+    margin:10px;
+  }
+
   .my-inputfield {
     width: 100%;
   }
@@ -306,6 +316,15 @@ body {
   .profile-pic {
     width: 100px;
     height: 100px;
+  }
+
+  .board-pic {
+    width:60px;
+    height: 60px;
+  }
+
+  .MuiTypography-h5 {
+    font-size: 1em;
   }
 
   .navBar-pic { 
@@ -346,7 +365,7 @@ body {
     min-width: 220px;
     max-width: 220px;
   }
-
+ 
   /* .my-card-content{
     width: 60% ;
   } */

@@ -63,7 +63,7 @@ function BoardPost(props) {
             <img
               src={post.userId.picture}
               alt="Profile"
-              className="profile-pic"
+              className="board-pic"
             />
             <div className="post-text">
               <Typography variant="h5" component="h2" className="text-dark">

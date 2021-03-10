@@ -15,6 +15,7 @@ import BoardPost from "../components/BoardPost";
 import BoardEvent from "../components/BoardEvent";
 import axios from "axios";
 import config from "../config.js";
+import { Style } from "@material-ui/icons";
 
 
 export default function Board(props) {  
@@ -80,7 +81,9 @@ export default function Board(props) {
   }
 
   return (
+    
     <div className="container">
+    <StylesProvider>
       <Fade bottom>
         <Link to="/about">
           <img className="logo" src="./images/logo.png" alt="Main_Logo" />
@@ -182,6 +185,7 @@ export default function Board(props) {
           </div>
         )}
       </Fade>
+      </StylesProvider>
     </div>
   );
 }

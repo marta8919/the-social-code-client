@@ -13,15 +13,16 @@ import Fade from "react-reveal/Fade";
 function BoardEvent(props) {
   const { event, user } = props;
   const [checkedRegister, setCheck] = useState(false);
-  const [countUsers, setCount] = useState(event.registeredUsers.length);
 
   useEffect(() => {
-    if (event.registeredUsers.includes(user._id)) {
+    let presentUsers = event.registeredUsers.filter(u => u._id === user._id)
+    if (presentUsers.length > 0) {
+      console.log('yes')
       setCheck(true);
     } else {
+      console.log(event.registeredUsers)
       setCheck(false);
     }
-    setCount(event.registeredUsers.length)
   }, []);
 
   const handleFunction = () => {
@@ -41,7 +42,6 @@ function BoardEvent(props) {
       })
       .then(() => {
         setCheck(true);
-        setCount(event.registeredUsers.length);
       })
       .catch((err) => console.log(err));
   };
@@ -55,7 +55,6 @@ function BoardEvent(props) {
       })
       .then(() => {
         setCheck(false);
-        setCount(event.registeredUsers.length);
       })
       .catch((err) => console.log(err));
   };
@@ -97,11 +96,6 @@ function BoardEvent(props) {
               ""
             )}
 
-            {/* <div className="article-code">
-              <Typography variant="body2" component="p" className="text-dark">
-                {countUsers} registered users to this tech event
-              </Typography>
-            </div> */}
           </CardContent>
         </Card>
       </Fade>

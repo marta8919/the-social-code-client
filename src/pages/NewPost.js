@@ -24,7 +24,7 @@ export default function NewPost(props) {
       </Link>
       <h1 className="header">Write a post</h1>
 
-      <form className="my-form" noValidate autoComplete="off" onSubmit={onPost}>
+      <form className="form-center" noValidate autoComplete="off" onSubmit={onPost}>
         <TextareaAutosize
           aria-label="minimum height"
           rowsMin={5}
@@ -35,7 +35,7 @@ export default function NewPost(props) {
         />
         <input type="hidden" name="postType" value="post"></input>
         <label>Tags</label>
-        <Select name="tags" native>
+        <Select name="tags" native className="my-select">
           <option value="python">python</option>
           <option value="javascript">javascript</option>
           <option value="react">react</option>

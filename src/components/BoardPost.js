@@ -58,37 +58,6 @@ function BoardPost(props) {
   return (
     <StylesProvider>
       <Fade bottom>
-<<<<<<< HEAD
-      <Card className="my-card">
-        <CardContent className="post-container">
-          <img
-            src={post.userId.picture}
-            alt="Profile"
-            className="profile-pic"
-          />
-          <div className="post-text">
-            <Typography variant="h5" component="h2" className="text-dark">
-              <Link to={`user/${post.userId._id}`}>@{post.userId.username}</Link>
-            </Typography>
-            <Typography variant="body2" component="p" className="text-dark">
-              {post.description}
-            </Typography>
-            <Typography variant="body2" component="p" className="text-dark">
-              {post.dateString}
-            </Typography>
-            <CardActions disableSpacing>
-              {handleCheck()}
-              {/* 
-              <Checkbox
-                icon={<SmsOutlinedIcon />}
-                checkedIcon={<SmsIcon />}
-                inputProps={{ "aria-label": "Like" }}
-              /> */}
-            </CardActions>
-          </div>
-        </CardContent>
-      </Card>
-=======
         <Card className="my-card">
           <CardContent className="post-container">
             <img
@@ -118,7 +87,6 @@ function BoardPost(props) {
             </div>
           </CardContent>
         </Card>
->>>>>>> origin/sofia
       </Fade>
     </StylesProvider>
   );

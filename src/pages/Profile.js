@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from "react";
 import { Redirect, Link } from "react-router-dom";
+import { StylesProvider } from "@material-ui/core/styles";
 
 import axios from "axios";
 import config from "../config";

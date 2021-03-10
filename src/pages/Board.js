@@ -107,6 +107,7 @@ export default function Board(props) {
                   variant="outlined"
                   type="text"
                   onChange={handleSearchPosts}
+                  className="my-inputfield"
                 />
               </span>
             </div>

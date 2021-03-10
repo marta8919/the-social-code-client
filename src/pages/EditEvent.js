@@ -89,6 +89,7 @@ export default function EditEvent(props) {
 
             <label>Tags</label>
             <Select
+            className="my-select"
             name='tags'
             native>
             <option value="python">python</option>

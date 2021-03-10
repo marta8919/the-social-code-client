@@ -45,7 +45,7 @@ export default function NewEvent(props) {
 
         <h1 className="header">Create a digital event!</h1>
       
-      <div class="form-center calendar-form">
+      <div className="form-center calendar-form">
       <form
         noValidate
         autoComplete="off"
@@ -73,7 +73,8 @@ export default function NewEvent(props) {
         <label>Tags</label>
         <Select
         name='tags'
-        native>
+        native
+        className="my-select">
         <option value="python">python</option>
         <option value="javascript">javascript</option>
         <option value="react">react</option>

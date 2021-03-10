@@ -6,7 +6,6 @@ import Typist from 'react-typist';
 import 'react-typist/dist/Typist.css'
 // import 'react-typist/dist/standalone/Typist'
 
-
 function HomePage() {
 
   return (

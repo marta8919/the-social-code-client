@@ -13,8 +13,6 @@
 body {
   background-color: var(--darkbackground);
   color: white;
-  /* display: flex;
-  justify-content: center; */
   margin: 0;
 }
 
@@ -70,7 +68,7 @@ body {
 
 .form-center {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   margin: 10 auto;
@@ -107,6 +105,8 @@ body {
 
 .my-select {
   background-color: white;
+  border-radius: 5px;
+  margin: 10px;
 }
 
 .input-grey {
@@ -192,6 +192,7 @@ body {
   text-align: center;
   margin: 20px;
   font-size: 14px;
+  margin-bottom: 70px;
 }
 
 .my-footer a {
@@ -256,14 +257,16 @@ body {
   padding: 20px;
 }
 
-.form-center select {
-  background-color: white;
-}
 .line-center {
   display: flex;
   align-items: center;
   justify-content:space-around;
 }
+
+.my-inputfield {
+  width: 400px;
+}
+
 @media(min-width: 500px){
   .my-nav {
     top: 0px;

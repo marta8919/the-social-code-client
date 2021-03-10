@@ -4,6 +4,8 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { StylesProvider } from '@material-ui/core/styles';
 import '../App.css'
+import Fade from "react-reveal/Fade";
+
 
 
 export default function EditProfile(props) {
@@ -18,6 +20,7 @@ export default function EditProfile(props) {
 
 
     return (
+        <Fade bottom>
         <div className="container">
             <Link to="/about"><img className="logo" src="../images/logo.png"/></Link>
             <div className="header">
@@ -26,13 +29,14 @@ export default function EditProfile(props) {
             </div>
             <StylesProvider injectFirst>
             <form onSubmit={onEdit} className="form-center" noValidate autoComplete="off">
-                <TextField className="my-inputfield" name="country" label="Country" type="text" variant="filled"  onChange={handleChangeUser} value={loggedInUser.country}/>
-                <TextField className="my-inputfield" name="city" label="City" type="text" variant="filled" value={loggedInUser.city} onChange={handleChangeUser}  />
-                <TextField className="my-inputfield" name="intro" label="Intro" type="text" variant="filled" value={loggedInUser.intro} onChange={handleChangeUser} />
-                <TextField className="my-inputfield" name="hobbies" label="Hobbies" type="text" variant="filled" value={loggedInUser.hobbies}  onChange={handleChangeUser} />
+                <TextField  name="country"  type="text" variant="filled"  label="Country" onChange={handleChangeUser} value={loggedInUser.country}/>
+                <TextField name="city" label="City" type="text" variant="filled" value={loggedInUser.city} onChange={handleChangeUser}  />
+                <TextField name="intro" label="Intro" type="text" variant="filled" value={loggedInUser.intro} onChange={handleChangeUser} />
+                <TextField name="hobbies" label="Hobbies" type="text" variant="filled" value={loggedInUser.hobbies}  onChange={handleChangeUser} />
                 <Button type="submit" variant="contained">Save</Button>
             </form>
             </StylesProvider>
         </div>
+        </Fade>
     )
 }

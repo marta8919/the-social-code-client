@@ -9,6 +9,10 @@ import axios from 'axios'
 import config from '../config.js'
 import { notify } from 'react-notify-toast'
 import CircularProgress from '@material-ui/core/CircularProgress';
+import Notifications from 'react-notify-toast'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 function SignUp (props) {
@@ -31,14 +35,11 @@ function SignUp (props) {
           hobbies: event.target.hobbies.value,
           intro: event.target.intro.value
         } 
-
-        
     
         axios.post(`${config.API_URL}/signup`, user, {withCredentials: true})
           .then((response) => 
-          {console.log("hola client 2")
-              setSendingEmail(false)
-          notify.show(response.msg)
+          {setSendingEmail(false)
+        toast.info("We have sent you an email to confirm your email address")
         //props.history.push('/login')
         })
           .catch((err) => setError(err))
@@ -64,7 +65,7 @@ function SignUp (props) {
                         error ? (
                             <p className="errorMessage">{ error.errorMessage}</p>) : null
                     }
-
+                    <ToastContainer />
                     <Button type="submit" variant="contained" disabled={sendingEmail}>          
                     {sendingEmail 
                         ? <CircularProgress/> 

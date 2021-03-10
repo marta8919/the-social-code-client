@@ -41,6 +41,7 @@ function App(props) {
   const [allPost, setPost] = useState([])
   const [allEvents, setAllEvents] = useState([])
   const [loading, setLoading] = useState(true)
+  const [checkedRegister, setCheck] = useState(false);
 
   useEffect(()=>{
       if(!loggedInUser) {
@@ -180,6 +181,30 @@ function App(props) {
     }
   }
 
+  const handleRegister = (eventId) => {
+    axios.defaults.withCredentials = true;
+    axios
+      .post(`${config.API_URL}/event/register/${eventId}`, {
+        withCredentials: true,
+      })
+      .then((response) => {
+        setlogin(response.data)
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleUnsubscribe = (eventId) => {
+    axios.defaults.withCredentials = true;
+    axios
+      .post(`${config.API_URL}/event/unsubscribe/${eventId}`, {
+        withCredentials: true,
+      })
+      .then((response) => {
+        setlogin(response.data)
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <>
 
@@ -201,7 +226,7 @@ function App(props) {
           return <AboutUs/>
         }} />
         <Route path="/board" render={() => {
-          return <Board user={loggedInUser}/>
+          return <Board user={loggedInUser} handleRegister={handleRegister} handleUnsubscribe={handleUnsubscribe} checkedRegister={checkedRegister}/>
         }} />
         <Route exact path="/profile" render={(routeProps) => {
           return <Profile onLogout={handleLogout} user={loggedInUser} {...routeProps}/>

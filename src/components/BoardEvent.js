@@ -11,16 +11,14 @@ import {
 import Fade from "react-reveal/Fade";
 
 function BoardEvent(props) {
-  const { event, user } = props;
-  const [checkedRegister, setCheck] = useState(false);
+  const { event, user , handleRegister, handleUnsubscribe, checkedRegister} = props;
+  const [register, setCheck]= useState(false)
 
   useEffect(() => {
     let presentUsers = event.registeredUsers.filter(u => u._id === user._id)
     if (presentUsers.length > 0) {
-      console.log('yes')
       setCheck(true);
     } else {
-      console.log(event.registeredUsers)
       setCheck(false);
     }
   }, []);
@@ -28,35 +26,11 @@ function BoardEvent(props) {
   const handleFunction = () => {
     if (checkedRegister) {
       handleUnsubscribe(event._id);
+      setCheck(false)
     } else {
       handleRegister(event._id);
+      setCheck(true)
     }
-  };
-
-  const handleRegister = (eventId) => {
-    console.log("like yeeeey");
-    axios.defaults.withCredentials = true;
-    axios
-      .post(`${config.API_URL}/event/register/${eventId}`, {
-        withCredentials: true,
-      })
-      .then(() => {
-        setCheck(true);
-      })
-      .catch((err) => console.log(err));
-  };
-
-  const handleUnsubscribe = (eventId) => {
-    console.log("unlike no fun");
-    axios.defaults.withCredentials = true;
-    axios
-      .post(`${config.API_URL}/event/unsubscribe/${eventId}`, {
-        withCredentials: true,
-      })
-      .then(() => {
-        setCheck(false);
-      })
-      .catch((err) => console.log(err));
   };
 
   return (
@@ -80,7 +54,7 @@ function BoardEvent(props) {
                   Check to register!
                 </Typography>
                 <Checkbox
-                  checked={checkedRegister}
+                  checked={register}
                   inputProps={{ "aria-label": "Like" }}
                   onClick={handleFunction}
                 />

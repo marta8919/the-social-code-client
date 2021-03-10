@@ -135,12 +135,18 @@ function Profile(props) {
         </Card>
       </Fade>
 
-      <Fade bottom>
-        <h3 className="header">Up domming events</h3>
+     
+        <h3 className="header">Upcoming events</h3>
+        {/* <p>{user.registeredEvents[0].title}</p> */}
+        {
+          user.registeredEvents.map((singleEvent)=>{
+            return (
+              <p>{singleEvent.title}</p>
+            )
+          })
+        }
+
         
-
-      </Fade>
-
       <Fade bottom>
         <div className="group-btn">
           <ButtonGroup
@@ -157,7 +163,6 @@ function Profile(props) {
         ? userPost.map((singlePost) => {
             return (
               <Fade bottom>
-              <h3 className="header">Your posts</h3>
               <Card className="my-card" key={singlePost._id}>
                 <CardContent className="post-container">
                   <Typography variant="body2" component="p" className="text-dark">
@@ -187,7 +192,6 @@ function Profile(props) {
         : userEvent.map((singleEvent) => {
             return (
               <>
-              <h3 className="header">Your events</h3>
               <Card className="my-card" key={singleEvent._id}>
                 <CardContent className="post-container">
                   <div className="text-card">

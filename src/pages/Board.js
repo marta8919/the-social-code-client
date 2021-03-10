@@ -18,7 +18,7 @@ import config from "../config.js";
 
 
 export default function Board(props) {  
-  const { user } = props;
+  const { user , handleUnsubscribe, handleRegister , checkedRegister} = props;
   const [error, setError] = useState(null)
   const [allPost, setPost] = useState([])
   const [filteredPosts, setFilterPosts] = useState([])
@@ -172,6 +172,9 @@ export default function Board(props) {
                     key={singleEvent._id}
                     event={singleEvent}
                     user={user}
+                    handleRegister= {handleRegister}
+                    handleUnsubscribe= {handleUnsubscribe}
+                    checkedRegister={checkedRegister}
                   />
                 ): ""
               })

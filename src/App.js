@@ -2,7 +2,7 @@ import {React, useState, useEffect} from "react";
 import { Switch, Route, withRouter} from "react-router-dom";
 
 //Styles 
-import { LinearProgress } from "@material-ui/core";
+import { CircularProgress, LinearProgress } from "@material-ui/core";
 
 //Components and Pages
 import HomePage from "./pages/HomePage";
@@ -24,6 +24,15 @@ import EditEvent from './pages/EditEvent'
 import NotFound from './pages/NotFound'
 import UserProfile from'./pages/UserProfile'
 
+//toast
+import Notifications from 'react-notify-toast'
+import 'react-toastify/dist/ReactToastify.css'
+
+// import Landing from './components/Landing'
+import Confirm from './components/Confirm'
+// import Spinner from './components/Spinner'
+
+
 
 function App(props) {
 
@@ -31,6 +40,7 @@ function App(props) {
   const [error, setError] = useState(null)
   const [allPost, setPost] = useState([])
   const [allEvents, setAllEvents] = useState([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(()=>{
       if(!loggedInUser) {
@@ -46,6 +56,13 @@ function App(props) {
           })
           .catch((err)=> console.log(err))
       }
+
+      axios.get(`${config.API_URL}/wake-up`)
+      .then(() => {
+        setLoading(false)
+      })
+      .catch(err => console.log(err))
+       
       
   }, []);
 
@@ -157,11 +174,21 @@ function App(props) {
     }
   }
 
+  const content = () => {
+    if (loading) {
+      return <CircularProgress />
+    }
+
+  }
+
   return (
     <>
 
     <div className="main">
+    <Notifications />
+    {content()}
       <Switch>
+        <Route exact path='/confirm/:id' component={Confirm} />
         <Route exact path="/" render={() => {
           return <HomePage/>
         }} />

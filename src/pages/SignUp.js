@@ -7,13 +7,19 @@ import { Link } from 'react-router-dom';
 
 import axios from 'axios'
 import config from '../config.js'
+import { notify } from 'react-notify-toast'
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 
 function SignUp (props) {
 
     const [error, setError] = useState(null)
+    const [sendingEmail, setSendingEmail] = useState(false)
 
     const handleSignUp = (event) => {
+        console.log("hola client")
         event.preventDefault()
+        setSendingEmail(true)
     
         let user = {
           username: event.target.username.value,
@@ -25,10 +31,17 @@ function SignUp (props) {
           hobbies: event.target.hobbies.value,
           intro: event.target.intro.value
         } 
+
+        
     
-        axios.post(`${config.API_URL}/signup`, user)
-          .then((response) => props.history.push('/login'))
-          .catch((err) => setError(err.response.data))
+        axios.post(`${config.API_URL}/signup`, user, {withCredentials: true})
+          .then((response) => 
+          {console.log("hola client 2")
+              setSendingEmail(false)
+          notify.show(response.msg)
+        //props.history.push('/login')
+        })
+          .catch((err) => setError(err))
       }
 
     return(
@@ -52,12 +65,16 @@ function SignUp (props) {
                             <p className="errorMessage">{ error.errorMessage}</p>) : null
                     }
 
-                    <Button type="submit" variant="contained">Sign up</Button>
+                    <Button type="submit" variant="contained" disabled={sendingEmail}>          
+                    {sendingEmail 
+                        ? <CircularProgress/> 
+                        : "Sign up"
+                        }
+                    </Button>
                     <Link className="text-white" to="/login">Do you already have an account with us? Log in!</Link>
                 </form>
             </StylesProvider>
         </div>
-
     )
 }
 

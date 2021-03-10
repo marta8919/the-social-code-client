@@ -9,7 +9,7 @@ import { Select } from "@material-ui/core";
 
 export default function NewPost(props) {
   const { user } = props;
-  const { onPost, saveDraft } = props;
+  const { onPost } = props;
 
   if (!user) {
     return <LinearProgress />;
@@ -43,6 +43,9 @@ export default function NewPost(props) {
           <option value="java">java</option>
           <option value="c++">c++</option>
         </Select>
+        <label>Add a picture!</label>
+        <input type="file" name="imageUrl" accept="image/png, image/jpg" className="my-inputfield"></input>
+
         {props.error ? (
           <p className="errorMessage">{props.error.errorMessage}</p>
         ) : null}

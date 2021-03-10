@@ -126,9 +126,7 @@ function Profile(props) {
             <Link to="/profile/edit" className="my-link">
               <EditIcon className="my-icon" />
             </Link>
-            <Link to="/profile/delete" className="my-link">
-              <DeleteForeverIcon className="my-icon" />
-            </Link>
+            
             <button className="transparent" onClick={onLogout}>
               <ExitToAppIcon />
             </button>

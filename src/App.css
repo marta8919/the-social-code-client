@@ -151,6 +151,15 @@ a{
   margin: 5px
 }
 
+.post-picture{
+  width: 150px;
+  object-fit: cover;
+}
+
+.post-picture-details{
+  width: 300px;
+}
+
 .my-icon {
   margin: 10px;
 }

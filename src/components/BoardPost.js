@@ -3,7 +3,7 @@ import axios from "axios";
 import config from "../config";
 import { StylesProvider } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 import {
   CardContent,
   Typography,
@@ -12,6 +12,7 @@ import {
 } from "@material-ui/core";
 import { FavoriteBorder, Favorite } from "@material-ui/icons";
 import Fade from "react-reveal/Fade";
+import { Popover } from "@varld/popover";
 
 function BoardPost(props) {
   const { post, user } = props;
@@ -67,7 +68,9 @@ function BoardPost(props) {
             />
             <div className="post-text">
               <Typography variant="h5" component="h2" className="text-dark">
-              <Link to={`user/${post.userId._id}`}>@{post.userId.username}</Link>
+                <Link to={`user/${post.userId._id}`}>
+                  @{post.userId.username}
+                </Link>
               </Typography>
               <Typography variant="body2" component="p" className="text-dark">
                 {post.description}
@@ -75,11 +78,32 @@ function BoardPost(props) {
               <Typography variant="body2" component="p" className="text-dark">
                 {post.dateString}
               </Typography>
+              {post.picture != "" ? (
+                <Popover
+                  popover={({ visible, open, close }) => {
+                    return (
+                      <img
+                        className="post-picture-details"
+                        src={post.picture}
+                        alt="Post_pic"
+                      />
+                    );
+                  }}
+                >
+                  <img
+                    className="post-picture"
+                    src={post.picture}
+                    alt="Post_pic"
+                  />
+                </Popover>
+              ) : (
+                ""
+              )}
               <CardActions disableSpacing>
                 <Checkbox
                   icon={<FavoriteBorder />}
                   checked={checkedLike}
-                  checkedIcon={<Favorite/>}
+                  checkedIcon={<Favorite />}
                   inputProps={{ "aria-label": "Like" }}
                   onClick={handleFunction}
                 />

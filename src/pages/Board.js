@@ -38,7 +38,7 @@ export default function Board(props) {
         setPost(response.data);
         setFilterPosts(response.data);
       })
-      .catch((err) => setError(err.response.data));
+      .catch((err) => setError(err));
   };
 
   const getBoardEvent = () => {
@@ -48,7 +48,7 @@ export default function Board(props) {
         setAllEvents(response.data);
         setFilterEvents(response.data);
       })
-      .catch((err) => setError(err.response.data));
+      .catch((err) => setError(err));
   };
 
   const handlePosts = () => {

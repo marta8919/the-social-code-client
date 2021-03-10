@@ -43,12 +43,12 @@ export default function NewEvent(props) {
       <div className="container">
         <Link to="/about"><img className="logo" src="./images/logo.png" alt="Main_Logo"/></Link>
 
-        <h1 className="header">Create a digital event!</h1>
+      <h1 className="header">Create a digital event!</h1>
       
-      <div className="form-center calendar-form">
+      <div>
       <form
+        className="calendar-form"
         noValidate
-        autoComplete="off"
         onSubmit={onAdd}
       >
         <label>Title</label>
@@ -70,17 +70,22 @@ export default function NewEvent(props) {
           className="my-inputfield"
         />
 
+
         <label>Tags</label>
         <Select
         name='tags'
         native
         className="my-select">
-        <option value="python">python</option>
-        <option value="javascript">javascript</option>
-        <option value="react">react</option>
-        <option value="html">html</option>
-        <option value="java">java</option>
-        <option value="c++">c++</option>
+        <option selected>Choose one..</option>
+        <option value="python"># python</option>
+        <option value="javascript"># javascript</option>
+        <option value="react"># react</option>
+        <option value="html"># html</option>
+        <option value="java"># java</option>
+        <option value="c++"># c++</option>
+        <option value="career"># career</option>
+        <option value="frontend"># frontend</option>
+        <option value="backend"># backend</option>
         </Select>
         {/* <TextareaAutosize
           aria-label="minimum height"
@@ -100,6 +105,7 @@ export default function NewEvent(props) {
           maxLength="100"
           className="my-inputfield"
         />
+    
 
         <label>Date</label>
         <Calendar 
@@ -109,7 +115,7 @@ export default function NewEvent(props) {
         <p>Date selected (dd/m/yyyy): <strong>{date.getDate()}/{date.getMonth() + 1}/{date.getFullYear()}</strong></p>
         <input type="hidden" name="dateOriginal" value={date} onChange={onChangeDate} ></input>
         <input type="hidden" name="dateString" value={dateString} onChange={onChangeDate} ></input>
-        <br/>
+     
         <label>Time</label>
         <div className="time-field">
           <Select 

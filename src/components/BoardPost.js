@@ -67,7 +67,7 @@ function BoardPost(props) {
             />
             <div className="post-text">
               <Typography variant="h5" component="h2" className="text-dark">
-                @{post.userId.username}
+              <Link to={`user/${post.userId._id}`}>@{post.userId.username}</Link>
               </Typography>
               <Typography variant="body2" component="p" className="text-dark">
                 {post.description}

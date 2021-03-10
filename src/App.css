@@ -10,6 +10,11 @@
   margin: 0;
 }
 
+.calendar-form {
+  display: flex;
+  flex-direction: column;
+}
+
 
 body {
   background-color: var(--darkbackground);
@@ -53,19 +58,19 @@ body {
     rgba(41, 237, 198, 1) 0%,
     rgba(6, 150, 210, 1) 86%
   );
-  color: white;
+  /* color: white; */
   font-weight: 600;
 }
 
-.MuiOutlinedInput-input {
+/* .MuiOutlinedInput-input {
   background-color: white;
   border-radius: 5px;
   color: white;
-}
+} */
 
-.MuiButton-outlinedPrimary {
+/* .MuiButton-outlinedPrimary {
   color: white;
-}
+} */
 
 .form-center {
   display: flex;
@@ -106,8 +111,6 @@ body {
 
 .my-select {
   background-color: white;
-  border-radius: 5px;
-  margin: 10px;
 }
 
 .input-grey {

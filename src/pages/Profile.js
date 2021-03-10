@@ -134,6 +134,13 @@ function Profile(props) {
           </div>
         </Card>
       </Fade>
+
+      <Fade bottom>
+        <h3 className="header">Up domming events</h3>
+        
+
+      </Fade>
+
       <Fade bottom>
         <div className="group-btn">
           <ButtonGroup

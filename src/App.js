@@ -26,7 +26,7 @@ import UserProfile from'./pages/UserProfile'
 
 //toast
 import Notifications from 'react-notify-toast'
-import 'react-toastify/dist/ReactToastify.css'
+// import 'react-toastify/dist/ReactToastify.css'
 
 // import Landing from './components/Landing'
 import Confirm from './components/Confirm'
@@ -178,14 +178,13 @@ function App(props) {
     if (loading) {
       return <CircularProgress />
     }
-
   }
 
   return (
     <>
 
     <div className="main">
-    <Notifications />
+    {/* <Notifications options={{color: 'red', top: '50px'}} /> */}
     {content()}
       <Switch>
         <Route exact path='/confirm/:id' component={Confirm} />

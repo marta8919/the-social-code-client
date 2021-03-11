@@ -54,12 +54,12 @@ function App(props) {
         .catch((err) => console.log(err));
     }
 
-    axios
-      .get(`${config.API_URL}/wake-up`)
-      .then(() => {
-        setLoading(false);
-      })
-      .catch((err) => console.log(err));
+    // axios
+    //   .get(`${config.API_URL}/wake-up`)
+    //   .then(() => {
+    //     setLoading(false);
+    //   })
+    //   .catch((err) => console.log(err));
   }, []);
 
   const handleLogIn = (event) => {
@@ -180,21 +180,22 @@ function App(props) {
     }
   };
 
-  const content = () => {
-    if (loading) {
-      return <CircularProgress />;
-    }
-  };
+  // const content = () => {
+  //   if (loading) {
+  //     return <CircularProgress />;
+  //   }
+  // };
 
   const handleRegister = (eventId) => {
     axios.defaults.withCredentials = true;
     axios
-      .post(`${config.API_URL}/event/register/${eventId}`, {
+      .post(`${config.API_URL}/event/register/${eventId}`,{}, {
         withCredentials: true,
       })
       .then((response) => {
+        console.log('Updating user')
         setlogin(response.data);
-        setCheck(true)
+        //setCheck(true)
       })
       .catch((err) => console.log(err));
       
@@ -208,7 +209,7 @@ function App(props) {
       })
       .then((response) => {
         setlogin(response.data);
-        setCheck(false)
+        //setCheck(false)
       })
       .catch((err) => console.log(err));
   };
@@ -217,7 +218,7 @@ function App(props) {
     <>
       <div className="main">
         {/* <Notifications options={{color: 'red', top: '50px'}} /> */}
-        {content()}
+        {/* {content()} */}
         <Switch>
           <Route exact path="/confirm/:id" component={Confirm} />
           <Route
@@ -254,6 +255,7 @@ function App(props) {
                   handleRegister={handleRegister}
                   handleUnsubscribe={handleUnsubscribe}
                   checkedRegister={checkedRegister}
+                  setCheck = {setCheck}
                 />
               );
             }}

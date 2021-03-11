@@ -19,7 +19,7 @@ import { Style } from "@material-ui/icons";
 
 
 export default function Board(props) {  
-  const { user , handleUnsubscribe, handleRegister , checkedRegister} = props;
+  const { user , handleUnsubscribe, handleRegister , checkedRegister, setCheck} = props;
   const [error, setError] = useState(null)
   const [allPost, setPost] = useState([])
   const [filteredPosts, setFilterPosts] = useState([])
@@ -179,6 +179,7 @@ export default function Board(props) {
                     handleRegister= {handleRegister}
                     handleUnsubscribe= {handleUnsubscribe}
                     checkedRegister={checkedRegister}
+                    setCheck={setCheck}
                   />
                 ): ""
               })

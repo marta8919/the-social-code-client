@@ -9,6 +9,7 @@ import Typography from "@material-ui/core/Typography";
 import CardContent from "@material-ui/core/CardContent";
 import Fade from 'react-reveal/Fade';
 import CardActions from "@material-ui/core/CardActions";
+import { StylesProvider } from "@material-ui/core/styles";
 
 export default function UserProfile(props) {
 
@@ -45,12 +46,14 @@ export default function UserProfile(props) {
 
 
     return (
+        <StylesProvider>
         <div className="container">
             <Link to="/about"><img className="logo" src="https://res.cloudinary.com/martacloud/image/upload/v1615454848/Logo_kzn2xu.png"/></Link>
-            <h1>User profile</h1>
-            <Card className="my-card">
-                <img src={singleUser.picture} alt="user" className="profile-pic"></img>
-                <div>
+            <h1 className="header">User profile</h1>
+            <Card className="profile-card">
+                <img src={singleUser.picture} alt="user" className="profile-pic">
+                </img>
+                <div className="text-card">
                 <p>
                     <strong>@{singleUser.username}</strong>
                 </p>
@@ -66,7 +69,8 @@ export default function UserProfile(props) {
                 <p>
                     <strong>Intro: </strong> {singleUser.intro}
                 </p>
-                <p>Part of TSC since {singleUser.dateRegistered}</p>
+                {/* <p>
+                    <strong>Part of TSC since {singleUser.dateRegistered}</strong></p> */}
 
                 </div>
             </Card>
@@ -77,6 +81,7 @@ export default function UserProfile(props) {
             <Button className="my-btn" onClick={handlePosts}>Posts</Button>
             <Button className="my-btn" onClick={handleEvents}>Events</Button>
             </ButtonGroup>
+            </div> 
 
             {publishedVisible === "posts"
             ? userPost.map((singlePost) => {
@@ -131,7 +136,8 @@ export default function UserProfile(props) {
                 );
             })
         }
-            </div> 
+            
         </div>
+        </StylesProvider>
     )
 }

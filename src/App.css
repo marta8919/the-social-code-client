@@ -111,9 +111,9 @@ body {
   color: black;
 }
 
-/* .searchbar {
+.searchbar {
   width: 400px;
-} */
+}
 
 .searchbar input {
   background-color: white;
@@ -376,6 +376,7 @@ body {
 .board-card {
   padding: 20px;
   margin-top: 20px;
+  width: 400px;
 }
 
 .post-screenshot {
@@ -492,6 +493,11 @@ my-nav {
   }
 
   .board-event-card{
+    width: 275px;
+    padding: 10px;
+  }
+
+  .board-card{
     width: 295px;
     padding: 10px;
   }
@@ -499,6 +505,14 @@ my-nav {
   .board-event-bottom{
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .post-picture{
+    max-width: 270px;
+  }
+
+  .searchbar {
+    width: 300px;
   }
  
   /* .my-card-content{

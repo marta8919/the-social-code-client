@@ -30,7 +30,7 @@ export default function NewPost(props) {
           rowsMin={5}
           placeholder="Write your article here"
           name="description"
-          maxLength="100"
+          maxLength="500"
           className="my-inputfield"
         />
         <input type="hidden" name="postType" value="post"></input>

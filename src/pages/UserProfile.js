@@ -74,8 +74,8 @@ export default function UserProfile(props) {
             <div className="group-btn">
             
             <ButtonGroup color="primary" aria-label="outlined primary button group">
-            <Button onClick={handlePosts}>Posts</Button>
-            <Button onClick={handleEvents}>Events</Button>
+            <Button className="my-btn" onClick={handlePosts}>Posts</Button>
+            <Button className="my-btn" onClick={handleEvents}>Events</Button>
             </ButtonGroup>
 
             {publishedVisible === "posts"

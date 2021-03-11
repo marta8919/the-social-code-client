@@ -69,15 +69,8 @@ a {
     rgba(41, 237, 198, 1) 0%,
     rgba(6, 150, 210, 1) 86%
   );
-  /* color: white; */
   font-weight: 600;
 }
-
-/* .MuiOutlinedInput-input {
-  background-color: white;
-  border-radius: 5px;
-  color: white;
-} */
 
 .MuiButton-outlinedPrimary,
 .MuiButton-outlinedPrimary {
@@ -344,6 +337,12 @@ a {
 my-nav {
   align-items: center;
   justify-content: space-between;
+}
+
+/* Buttons override MUI */
+.MuiButton-label{
+  color:white;
+  font-weight: 600;
 }
 
 @media (min-width: 500px) {

@@ -194,8 +194,10 @@ function App(props) {
       })
       .then((response) => {
         setlogin(response.data);
+        setCheck(true)
       })
       .catch((err) => console.log(err));
+      
   };
 
   const handleUnsubscribe = (eventId) => {
@@ -206,6 +208,7 @@ function App(props) {
       })
       .then((response) => {
         setlogin(response.data);
+        setCheck(false)
       })
       .catch((err) => console.log(err));
   };

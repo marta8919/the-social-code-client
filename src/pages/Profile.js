@@ -94,7 +94,7 @@ function Profile(props) {
     <div className="container">
       <Fade bottom>
         <Link to="/about">
-          <img className="logo" src="./images/logo.png" alt="Main_Logo"/>
+          <img className="logo" src="https://res.cloudinary.com/martacloud/image/upload/v1615454848/Logo_kzn2xu.png" alt="Main_Logo"/>
         </Link>
         <div className="header">
           <h1>Hey @{user.username} !</h1>

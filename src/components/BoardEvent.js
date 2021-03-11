@@ -9,6 +9,7 @@ import {
   Checkbox,
 } from "@material-ui/core";
 import Fade from "react-reveal/Fade";
+import { StylesProvider } from "@material-ui/core/styles";
 
 function BoardEvent(props) {
   const { event, user , handleRegister, handleUnsubscribe, checkedRegister} = props;
@@ -34,46 +35,42 @@ function BoardEvent(props) {
   };
 
   return (
+    <StylesProvider>
     <div className="container">
       <Fade bottom>
-        <Card className="my-card">
-          <CardContent>
-            <Typography variant="h5" component="h2" className="text-dark">
-              {event.title}
-            </Typography>
-            <Typography variant="body2" component="p" className="text-dark">
-              {event.description}
-            </Typography>
-            <Typography variant="body2" component="p" className="text-dark">
-              Date: {event.dateString}, at {event.hours}:{event.minutes}
-            </Typography>
-            <CardActions>
+        <Card className="board-event-card">
+            <h4>{event.title}</h4>
+            <p>{event.description}</p>
+            <p>Date: {event.dateString}, at {event.hours}:{event.minutes}</p>
+
+            <div className="board-event-bottom">
+           
               <a href="{event.link}">Link to the event</a>
-              <span>
+ 
+            
+            {event.tags ? (
+              <div className="article-code">
                 <Typography variant="body2" component="p" className="text-dark">
-                  Check to register!
+                  #{event.tags}
                 </Typography>
+              </div>
+            ) : (
+              ""
+            )}
+             <span>Check to register!
                 <Checkbox
                   checked={register}
                   inputProps={{ "aria-label": "Like" }}
                   onClick={handleFunction}
                 />
               </span>
-            </CardActions>
-            {event.tags ? (
-              <div className="article-code">
-                <Typography variant="body2" component="p" className="text-dark">
-                  Tags: #{event.tags}
-                </Typography>
-              </div>
-            ) : (
-              ""
-            )}
+            </div>
 
-          </CardContent>
+
         </Card>
       </Fade>
     </div>
+    </StylesProvider>
   );
 }
 

@@ -13,7 +13,7 @@ export default function Login(props) {
 
     return (
       <div className="container">
-      <Link to="/"><img className="logo" src="./images/logo.png" alt="Main_Logo"/></Link>
+      <Link to="/"><img className="logo" src="https://res.cloudinary.com/martacloud/image/upload/v1615454848/Logo_kzn2xu.png" alt="Main_Logo"/></Link>
       <h1 className="header">Log In</h1>
       <StylesProvider injectFirst>
       <form className="form-center" noValidate autoComplete="off" onSubmit={loginUser}>

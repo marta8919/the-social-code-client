@@ -10,7 +10,7 @@ export default function EditPic(props) {
     return (
         <div className="container">
             <Fade bottom>
-            <Link to="/about"><img className="logo" src="../images/logo.png"/></Link>
+            <Link to="/about"><img className="logo" src="https://res.cloudinary.com/martacloud/image/upload/v1615454848/Logo_kzn2xu.png"/></Link>
             <div className="header">
              <h1>Hello @{user.username}</h1>
              <h3>Here you can edit your profile picture.</h3>

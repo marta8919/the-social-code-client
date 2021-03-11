@@ -54,7 +54,7 @@ export default function EventDetails(props) {
 
   return (
     <div className="container">
-      <Link to="/about"><img className="logo" src="../images/logo.png"/></Link>
+      <Link to="/about"><img className="logo" src="https://res.cloudinary.com/martacloud/image/upload/v1615454848/Logo_kzn2xu.png"/></Link>
       <div className="header">
         <h1>Hello</h1>
         <h3>Let's edit the event </h3>

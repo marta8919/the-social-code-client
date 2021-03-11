@@ -12,6 +12,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import Notifications from "react-notify-toast";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Fade from "react-reveal/Fade";
 
 function SignUp(props) {
   const [error, setError] = useState(null);
@@ -46,6 +47,7 @@ function SignUp(props) {
   };
 
   return (
+    <Fade bottom>
     <div className="container">
       <Link to="/">
         <img className="logo" src="https://res.cloudinary.com/martacloud/image/upload/v1615454848/Logo_kzn2xu.png" alt="Main_Logo" />
@@ -106,6 +108,7 @@ function SignUp(props) {
         </form>
       </StylesProvider>
     </div>
+    </Fade>
   );
 }
 

@@ -36,12 +36,16 @@ export default function NewPost(props) {
         <input type="hidden" name="postType" value="post"></input>
         <label>Tags</label>
         <Select name="tags" native className="my-select">
-          <option value="python">python</option>
-          <option value="javascript">javascript</option>
-          <option value="react">react</option>
-          <option value="html">html</option>
-          <option value="java">java</option>
-          <option value="c++">c++</option>
+        <option selected>Choose one..</option>
+        <option value="python"># python</option>
+        <option value="javascript"># javascript</option>
+        <option value="react"># react</option>
+        <option value="html"># html</option>
+        <option value="java"># java</option>
+        <option value="c++"># c++</option>
+        <option value="career"># career</option>
+        <option value="frontend"># frontend</option>
+        <option value="backend"># backend</option>
         </Select>
         <label>Add a screenshot</label>
         <input type="file" name="imageUrl" accept="image/png, image/jpg" className="my-inputfield"></input>

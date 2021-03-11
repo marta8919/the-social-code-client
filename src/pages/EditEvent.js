@@ -2,7 +2,7 @@ import axios from "axios";
 import config from "../config";
 
 import React, { useEffect, useState } from "react";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 import LinearProgress from "@material-ui/core/LinearProgress";
 import { StylesProvider } from "@material-ui/styles";
@@ -35,83 +35,92 @@ export default function EventDetails(props) {
 
   const handleEventDetails = (event) => {
     console.log("editing");
-    event.preventDefault()
+    event.preventDefault();
     let eventId = props.match.params.eventId;
 
-    let editedEvent= {
+    let editedEvent = {
       title: event.target.title.value,
       description: event.target.description.value,
       tags: event.target.tags.value,
-      link: event.target.link.value
-    }
+      link: event.target.link.value,
+    };
 
-    axios.patch(`${config.API_URL}/event/edit/${eventId}`, editedEvent, {withCredentials: true})
-     .then((response)=>{
-       setEvent(response.data)
-       props.history.push('/profile')
-     })
-     .catch((err)=> console.log(err))
+    axios
+      .patch(`${config.API_URL}/event/edit/${eventId}`, editedEvent, {
+        withCredentials: true,
+      })
+      .then((response) => {
+        setEvent(response.data);
+        props.history.push("/profile");
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
     <div className="container">
-      <Link to="/about"><img className="logo" src="https://res.cloudinary.com/martacloud/image/upload/v1615454848/Logo_kzn2xu.png"/></Link>
+      <Link to="/about">
+        <img
+          className="logo"
+          src="https://res.cloudinary.com/martacloud/image/upload/v1615454848/Logo_kzn2xu.png"
+        />
+      </Link>
       <div className="header">
         <h1>Let's edit the event </h1>
       </div>
-        {!singleEvent ? (
-          <LinearProgress />
-        ) : (
-          <form
-            onSubmit={handleEventDetails}
-            className="calendar-form"
-            noValidate
-            autoComplete="off"
-          >
-            <label>Title</label>
-            <TextareaAutosize
-              className="my-inputfield"
-              name="title"
-              type="text"
-              variant="filled"
-              onChange={handleChange}
-              value={singleEvent.title}
-            />
+      {!singleEvent ? (
+        <LinearProgress />
+      ) : (
+        <form
+          onSubmit={handleEventDetails}
+          className="calendar-form"
+          noValidate
+          autoComplete="off"
+        >
+          <label>Title</label>
+          <TextareaAutosize
+            className="my-inputfield"
+            name="title"
+            type="text"
+            variant="filled"
+            onChange={handleChange}
+            value={singleEvent.title}
+          />
 
-            <label>Description</label>
-            <TextareaAutosize
-              className="my-inputfield"
-              name="description"
-              type="text"
-              variant="filled"
-              onChange={handleChange}
-              value={singleEvent.description}
-            />
+          <label>Description</label>
+          <TextareaAutosize
+            className="my-inputfield"
+            name="description"
+            type="text"
+            variant="filled"
+            onChange={handleChange}
+            value={singleEvent.description}
+          />
 
-            <label>Link</label>
-            <TextareaAutosize
-              className="my-inputfield"
-              name="link"
-              type="text"
-              variant="filled"
-              onChange={handleChange}
-              value={singleEvent.link}
-            />
+          <label>Link</label>
+          <TextareaAutosize
+            className="my-inputfield"
+            name="link"
+            type="text"
+            variant="filled"
+            onChange={handleChange}
+            value={singleEvent.link}
+          />
 
-            <label>Tags</label>
-            <Select
-            className="my-select"
-            name='tags'
-            native>
-            <option value="python">python</option>
-            <option value="javascript">javascript</option>
-            <option value="react">react</option>
-            <option value="html">html</option>
-            <option value="java">java</option>
-            <option value="c++">c++</option>
-            </Select>
-            <br></br>
-            {/* <TextField
+          <label>Tags</label>
+          <Select className="my-select" name="tags" native>
+            <option selected>Choose one..</option>
+            <option value="python"># python</option>
+            <option value="javascript"># javascript</option>
+            <option value="react"># react</option>
+            <option value="html"># html</option>
+            <option value="java"># java</option>
+            <option value="c++"># c++</option>
+            <option value="career"># career</option>
+            <option value="frontend"># frontend</option>
+            <option value="backend"># backend</option>
+          </Select>
+          <br></br>
+          {/* <TextField
               className="my-inputfield"
               name="tags"
               type="text"
@@ -120,7 +129,7 @@ export default function EventDetails(props) {
               value={singleEvent.tags}
             /> */}
 
-            {/* <label>Date</label>
+          {/* <label>Date</label>
             <Calendar onChange={onChangeDate} value={singleEvent.dateOriginal} />
             <p>
               Date selected (dd/m/yyyy):{" "}
@@ -128,7 +137,7 @@ export default function EventDetails(props) {
                 {singleEvent.dateOriginal.getDate()}/{singleEvent.dateOriginal.getMonth() + 1}/{singleEvent.dateOriginal.getFullYear()}
               </strong>
             </p> */}
-            {/* <input
+          {/* <input
               type="hidden"
               name="dateOriginal"
               value={singleEvent.dateOriginal}
@@ -191,17 +200,16 @@ export default function EventDetails(props) {
             </div>
             <br /> */}
 
-
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              className="my-btn"
-            >
-              Push edited event
-            </Button>
-          </form>
-        )}
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            className="my-btn"
+          >
+            Push edited event
+          </Button>
+        </form>
+      )}
     </div>
   );
 }

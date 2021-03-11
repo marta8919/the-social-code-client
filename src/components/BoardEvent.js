@@ -62,7 +62,7 @@ function BoardEvent(props) {
                     component="p"
                     className="text-dark"
                   >
-                    #{event.tags}
+                    {event.tags}
                   </Typography>
                 </div>
               ) : (

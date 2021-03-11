@@ -102,7 +102,7 @@ function BoardPost(props) {
               </div>
               </div>
               <div className="board-vote-date">
-              <Typography variant="body2" component="p" className="text-dark">
+              <Typography variant="body2" component="p" className="my-tags text-dark">
                 #{post.tags}
               </Typography>
               <Typography variant="body2" component="p" className="text-dark">

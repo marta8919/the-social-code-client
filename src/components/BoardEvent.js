@@ -61,11 +61,9 @@ function BoardEvent(props) {
               </span>
             </CardActions>
             {event.tags ? (
-              <div className="article-code">
-                <Typography variant="body2" component="p" className="text-dark">
-                  Tags: #{event.tags}
-                </Typography>
-              </div>
+                <Typography variant="body2" component="p" className="my-tags text-dark">
+                  #{event.tags}
+                </Typography> 
             ) : (
               ""
             )}

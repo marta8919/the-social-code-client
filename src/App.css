@@ -15,22 +15,29 @@
   flex-direction: column;
 }
 
-
 body {
   background-color: var(--darkbackground);
   margin: 0;
   color: white;
 }
 
-.main{
+.main {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-a{
-  margin:0;
-  padding:0;
+
+a {
+  margin: 0;
+  padding: 0;
+}
+
+.my-tags {
+  font-style: italic;
+  background: rgba(41, 237, 198, 0.3);
+  padding: 1px 4px;
+  border-radius: 5px;
 }
 
 .transparent {
@@ -72,11 +79,11 @@ a{
   color: white;
 } */
 
-.MuiButton-outlinedPrimary, .MuiButton-outlinedPrimary {
+.MuiButton-outlinedPrimary,
+.MuiButton-outlinedPrimary {
   color: white;
-} */
-
-.form-center {
+}
+*/ .form-center {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -148,16 +155,18 @@ a{
   width: 40px;
   height: 40px;
   border: 3px solid var(--darkbackground);
-  margin: 5px
+  margin: 5px;
+
+  margin-bottom: 12px;
 }
 
-.post-picture{
+.post-picture {
   width: 300px;
   justify-content: center;
   object-fit: cover;
 }
 
-.post-picture-details{
+.post-picture-details {
   width: 100%;
 }
 
@@ -201,7 +210,6 @@ a{
   margin: 10px auto;
 }
 
-
 .header {
   margin: 5px auto 20px auto;
   text-align: center;
@@ -231,10 +239,6 @@ a{
   margin-top: 20px;
 }
 
-.MuiBottomNavigation-root{
-  justify-content: space-between;
-}
-
 .fake-code {
   border: 1px solid white;
   font-family: monospace;
@@ -253,13 +257,13 @@ a{
   align-items: center;
 }
 
-.big-title{
+.big-title {
   font-size: 10em;
 }
 
-.logo{
+.logo {
   width: 80px;
-  margin:30px;
+  margin: 30px;
 }
 
 .team {
@@ -267,7 +271,7 @@ a{
   justify-content: space-between;
 }
 
-.team-card{
+.team-card {
   width: 400px;
   padding: 20px;
 }
@@ -275,7 +279,7 @@ a{
 .line-center {
   display: flex;
   align-items: center;
-  justify-content:space-around;
+  justify-content: space-around;
 }
 
 .my-inputfield {
@@ -289,7 +293,7 @@ a{
   justify-content: center;
 }
 
-.profile-card{
+.profile-card {
   padding: 10px;
   display: flex;
   justify-content: space-between;
@@ -297,18 +301,18 @@ a{
 }
 
 .board-pic {
-  width:40px;
+  width: 40px;
   height: 40px;
   object-fit: cover;
   border: 5px solid white;
   border-radius: 50%;
 }
 
-.pic-name-board{
+.pic-name-board {
   display: flex;
 }
 
-.small-link{
+.small-link {
   font-size: 18px;
   text-decoration: none;
   color: black;
@@ -319,24 +323,30 @@ a{
   color: var(--gradient1B);
 }
 
-.board-vote-date{
+.board-vote-date {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 10px;
 }
 
-.board-card{
+.board-card {
   padding: 20px;
   margin-top: 20px;
 }
 
-.post-screenshot{
+.post-screenshot {
   margin-top: 10px;
   justify-items: center;
 }
 
-@media(min-width: 500px){
+.MuiBottomNavigation-root,
+my-nav {
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (min-width: 500px) {
   .my-nav {
     top: 0px;
     position: fixed;
@@ -370,9 +380,9 @@ a{
     border: 2px solid var(--darkbackground);
   }
 
-  .logo{
+  .logo {
     width: 60px;
-    margin:10px;
+    margin: 10px;
   }
 
   .my-inputfield {
@@ -384,23 +394,15 @@ a{
     height: 100px;
   }
 
-  /* .board-pic {
-    width:40px;
-    height: 40px;
-    object-fit: cover;
-    border: 5px solid white;
-    border-radius: 50%;
-  } */
-
   .MuiTypography-h5 {
     font-size: 1em;
   }
 
-  .navBar-pic { 
+  .navBar-pic {
     width: 40px;
     height: 40px;
     border: 3px solid var(--darkbackground);
-    margin: 5px;
+    margin-right: auto;
   }
 
   .text-card {
@@ -416,15 +418,15 @@ a{
     padding: 10px;
   }
 
-  .fake-code{
+  .fake-code {
     width: 300px;
   }
 
-  .team{
+  .team {
     flex-direction: column;
   }
 
-  .team-card{
+  .team-card {
     width: 90%;
   }
 
@@ -440,9 +442,8 @@ a{
     flex-direction: column;
     justify-content: center;
   }
- 
+
   /* .my-card-content{
     width: 60% ;
   } */
-
 }

@@ -15,7 +15,7 @@ export default function NotFound(props) {
             <h3>You know what this means, your page was not found!</h3>
             </div>
             <br></br>
-            <img className="myError-img" src="./images/error404.png" alt="not_found"/>
+            <img className="myError-img" src="https://res.cloudinary.com/martacloud/image/upload/v1615468839/error404_itchc7.png" alt="not_found"/>
             <br></br>
             
         </div>

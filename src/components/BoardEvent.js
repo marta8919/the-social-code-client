@@ -63,14 +63,14 @@ function BoardEvent(props) {
             </p>
 
             <div className="board-event-bottom">
-              <a href={event.link}>Link to the event</a>
+              <a href={event.link}>Link</a>
 
               {event.tags ? (
                 <div className="article-code">
                   <Typography
                     variant="body2"
                     component="p"
-                    className="text-dark"
+                    className="my-tags  text-dark"
                   >
                     # {event.tags}
                   </Typography>

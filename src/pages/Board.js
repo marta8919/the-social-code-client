@@ -7,7 +7,6 @@ import { StylesProvider } from "@material-ui/core/styles";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import { Button, TextField } from "@material-ui/core";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
-import { makeStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 
 //Internal files
@@ -15,7 +14,6 @@ import BoardPost from "../components/BoardPost";
 import BoardEvent from "../components/BoardEvent";
 import axios from "axios";
 import config from "../config.js";
-import { Style } from "@material-ui/icons";
 
 
 export default function Board(props) {  
@@ -115,7 +113,7 @@ export default function Board(props) {
               </span>
             </div>
             {filteredPosts.length === 0 ? (
-              <Fade bottom>
+             
                 <div className="container">
                   <img
                     className="myError-img"
@@ -124,7 +122,7 @@ export default function Board(props) {
                   />
                   <h3>Sorry! Try with a new search!</h3>
                 </div>
-              </Fade>
+              
             ) : (
               filteredPosts.map((singlePost) => {
                 return (
@@ -153,7 +151,7 @@ export default function Board(props) {
               </span>
             </div>
             {filteredEvents.length === 0 ? (
-              <Fade bottom>
+              
                 <div className="container">
                   <img
                     className="myError-img"
@@ -162,7 +160,7 @@ export default function Board(props) {
                   />
                   <h3>Sorry! Try with a new search!</h3>
                 </div>
-              </Fade>
+              
             ) : (
               filteredEvents.map((singleEvent) => {
                 const {dateString} = singleEvent

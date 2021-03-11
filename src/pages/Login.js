@@ -3,15 +3,14 @@ import {Link} from 'react-router-dom'
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { StylesProvider } from '@material-ui/core/styles';
-
-
-
+import Fade from "react-reveal/Fade";
 
 export default function Login(props) {
 
     const {loginUser} = props
 
     return (
+      <Fade bottom>
       <div className="container">
       <Link to="/"><img className="logo" src="https://res.cloudinary.com/martacloud/image/upload/v1615454848/Logo_kzn2xu.png" alt="Main_Logo"/></Link>
       <h1 className="header">Log In</h1>
@@ -28,5 +27,6 @@ export default function Login(props) {
       </form>
       </StylesProvider>
       </div>
+      </Fade>
     );
 }

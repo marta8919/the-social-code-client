@@ -24,13 +24,9 @@ import EditEvent from "./pages/EditEvent";
 import NotFound from "./pages/NotFound";
 import UserProfile from "./pages/UserProfile";
 
-//toast
-import Notifications from "react-notify-toast";
-// import 'react-toastify/dist/ReactToastify.css'
-
-// import Landing from './components/Landing'
 import Confirm from "./components/Confirm";
-// import Spinner from './components/Spinner'
+
+
 
 function App(props) {
   const [loggedInUser, setlogin] = useState(null);
@@ -53,13 +49,6 @@ function App(props) {
         })
         .catch((err) => console.log(err));
     }
-
-    // axios
-    //   .get(`${config.API_URL}/wake-up`)
-    //   .then(() => {
-    //     setLoading(false);
-    //   })
-    //   .catch((err) => console.log(err));
   }, []);
 
   const handleLogIn = (event) => {

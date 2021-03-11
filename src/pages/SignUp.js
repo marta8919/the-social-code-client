@@ -7,9 +7,7 @@ import { Link } from "react-router-dom";
 
 import axios from "axios";
 import config from "../config.js";
-import { notify } from "react-notify-toast";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import Notifications from "react-notify-toast";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Fade from "react-reveal/Fade";
@@ -38,11 +36,10 @@ function SignUp(props) {
       .then((response) => {
         setSendingEmail(true);
         setSendingEmail(false);
-        toast.info("We have sent you an email to confirm your email address");
-        //props.history.push('/login')
+        toast.info("We have sent you an email 📩. Please complete your registration clicking on the link we shared.");
       })
-      .catch((err) => {
-        setError(err.response.data);
+      .catch(() => {
+        toast.error("Ups....you wrote something wrong, try again!")
       });
   };
 
@@ -98,7 +95,7 @@ function SignUp(props) {
           />
 
           {error ? <p className="errorMessage">{error.errorMessage}</p> : null}
-          <ToastContainer />
+          <ToastContainer closeOnClick />
           <Button className="my-btn" type="submit" variant="contained" disabled={sendingEmail}>
             {sendingEmail ? <CircularProgress /> : "Sign up"}
           </Button>

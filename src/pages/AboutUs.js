@@ -23,6 +23,7 @@ export default function AboutUs() {
             network and share knowledge with other people. <br></br>
             Would you like to join our network?
           </p>
+          <br></br>
 
           <Link to="/signup" className="link-underline">
             <Button className="my-btn" variant="contained">

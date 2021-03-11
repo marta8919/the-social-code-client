@@ -7,7 +7,7 @@ import LinearProgress from "@material-ui/core/LinearProgress";
 import Button from "@material-ui/core/Button";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import { Select } from "@material-ui/core";
-import { StylesProvider } from '@material-ui/core/styles';
+import Fade from "react-reveal/Fade";
 
 //import calendar styles
 import 'react-calendar/dist/Calendar.css';
@@ -40,6 +40,7 @@ export default function NewEvent(props) {
   }
 
   return (
+    <Fade bottom>
       <div className="container">
         <Link to="/about"><img className="logo" src="https://res.cloudinary.com/martacloud/image/upload/v1615454848/Logo_kzn2xu.png" alt="Main_Logo"/></Link>
 
@@ -76,10 +77,9 @@ export default function NewEvent(props) {
         name='tags'
         native
         className="my-select">
-        <option selected>Choose one..</option>
+        <option value="react"># react</option>
         <option value="python"># python</option>
         <option value="javascript"># javascript</option>
-        <option value="react"># react</option>
         <option value="html"># html</option>
         <option value="java"># java</option>
         <option value="c++"># c++</option>
@@ -175,6 +175,7 @@ export default function NewEvent(props) {
       </div>
 
     </div>
+    </Fade>
       
   );
 }

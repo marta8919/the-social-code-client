@@ -10,6 +10,7 @@
   margin: 0;
 }
 
+
 .calendar-form {
   display: flex;
   flex-direction: column;
@@ -337,6 +338,7 @@ body {
 }
 
 .profile-card {
+  width: 500px;
   padding: 10px;
   display: flex;
   justify-content: space-between;
@@ -401,6 +403,11 @@ my-nav {
   justify-content: space-between;
 }
 
+.Toastify {
+  position: absolute;
+  z-index: 5;
+}
+
 @media (min-width: 500px) {
   .my-nav {
     top: 0px;
@@ -421,6 +428,7 @@ my-nav {
 
   .profile-card {
     flex-direction: column;
+    width: 300px;
   }
 
   .control-btns {

@@ -6,6 +6,8 @@ import LinearProgress from "@material-ui/core/LinearProgress";
 import Button from "@material-ui/core/Button";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import { Select } from "@material-ui/core";
+import Fade from "react-reveal/Fade";
+
 
 export default function NewPost(props) {
   const { user } = props;
@@ -18,6 +20,7 @@ export default function NewPost(props) {
   }
 
   return (
+    <Fade bottom>
     <div className="container">
       <Link to="/about">
         <img className="logo" src="https://res.cloudinary.com/martacloud/image/upload/v1615454848/Logo_kzn2xu.png" alt="Main_Logo"/>
@@ -36,10 +39,9 @@ export default function NewPost(props) {
         <input type="hidden" name="postType" value="post"></input>
         <label>Tags</label>
         <Select name="tags" native className="my-select">
-        <option selected>Choose one..</option>
+        <option value="react"># react</option>
         <option value="python"># python</option>
         <option value="javascript"># javascript</option>
-        <option value="react"># react</option>
         <option value="html"># html</option>
         <option value="java"># java</option>
         <option value="c++"># c++</option>
@@ -64,5 +66,6 @@ export default function NewPost(props) {
         </Button>
       </form>
     </div>
+    </Fade>
   );
 }

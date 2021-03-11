@@ -48,7 +48,7 @@ function BoardEvent(props) {
               Date: {event.dateString}, at {event.hours}:{event.minutes}
             </Typography>
             <CardActions>
-              <a href="{event.link}">Link to the event</a>
+              <a href={event.link}>Link to the event</a>
               <span>
                 <Typography variant="body2" component="p" className="text-dark">
                   Check to register!

@@ -5,7 +5,8 @@ import { StylesProvider } from "@material-ui/core/styles";
 import axios from "axios";
 import config from "../config";
 
-import { LinearProgress } from "@material-ui/core";
+import { LinearProgress} from "@material-ui/core";
+import { Popover } from "@varld/popover";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -90,140 +91,179 @@ function Profile(props) {
 
   return (
     <StylesProvider>
-    
-    <div className="container">
-      <Fade bottom>
-        <Link to="/about">
-          <img className="logo" src="https://res.cloudinary.com/martacloud/image/upload/v1615454848/Logo_kzn2xu.png" alt="Main_Logo"/>
-        </Link>
-        <div className="header">
-          <h1>Hey @{user.username} !</h1>
-          <h3>Welcome to your profile </h3>
-        </div>
-        <Card className="profile-card">
-          <div className="image-btn">
-            <img src={user.picture} alt="user" className="profile-pic"></img>
-            <Link to="/profile/editPic">Edit picture</Link>
+      <div className="container">
+        <Fade bottom>
+          <Link to="/about">
+            <img
+              className="logo"
+              src="https://res.cloudinary.com/martacloud/image/upload/v1615454848/Logo_kzn2xu.png"
+              alt="Main_Logo"
+            />
+          </Link>
+          <div className="header">
+            <h1>Hey @{user.username} !</h1>
+            <h3>Welcome to your profile </h3>
           </div>
+          <Card className="profile-card">
+            <div className="image-btn">
+              <img src={user.picture} alt="user" className="profile-pic"></img>
+              <Link to="/profile/editPic">Edit picture</Link>
+            </div>
 
-          <div className="text-card">
-            <p>
-              <strong>City: </strong> {user.city}
-            </p>
-            <p>
-              <strong>Country: </strong> {user.country}
-            </p>
-            <p>
-              <strong>Hobbies: </strong> {user.hobbies}
-            </p>
-            <p>
-              <strong>Intro: </strong> {user.intro}
-            </p>
-            <p><strong>Part of TSC since {user.dateString}</strong></p>
-          </div>
+            <div className="text-card">
+              <p>
+                <strong>City: </strong> {user.city}
+              </p>
+              <p>
+                <strong>Country: </strong> {user.country}
+              </p>
+              <p>
+                <strong>Hobbies: </strong> {user.hobbies}
+              </p>
+              <p>
+                <strong>Intro: </strong> {user.intro}
+              </p>
+              <p>
+                <strong>Part of TSC since {user.dateString}</strong>
+              </p>
+            </div>
 
-          <div className="control-btns">
-            <Link to="/profile/edit" className="my-link">
-              <EditIcon className="my-icon" />
-            </Link>
-            
-            <button className="transparent" onClick={onLogout}>
-              <ExitToAppIcon />
-            </button>
-          </div>
-        </Card>
-      </Fade>
+            <div className="control-btns">
+              <Link to="/profile/edit" className="my-link">
+                <EditIcon className="my-icon" />
+              </Link>
 
-     
+              <button className="transparent" onClick={onLogout}>
+                <ExitToAppIcon />
+              </button>
+            </div>
+          </Card>
+        </Fade>
+
         <h3 className="header">Upcoming events</h3>
         {/* <p>{user.registeredEvents[0].title}</p> */}
-        {
-          user.registeredEvents.map((singleEvent)=>{
-            return (
-              <p>{singleEvent.title}</p>
-            )
-          })
-        }
+        {user.registeredEvents.map((singleEvent) => {
+          return <p>{singleEvent.title}</p>;
+        })}
 
-        
-      <Fade bottom>
-        <div className="group-btn">
-          <ButtonGroup
-            color="primary"
-            aria-label="outlined primary button group"
-          >
-            <Button onClick={handlePosts}>Posts</Button>
-            <Button onClick={handleEvents}>Events</Button>
-          </ButtonGroup>
-        </div>
-      </Fade>
+        <Fade bottom>
+          <div className="group-btn">
+            <ButtonGroup
+              color="primary"
+              aria-label="outlined primary button group"
+            >
+              <Button className="my-btn" onClick={handlePosts}>
+                Posts
+              </Button>
+              <Button className="my-btn" onClick={handleEvents}>
+                Events
+              </Button>
+            </ButtonGroup>
+          </div>
+        </Fade>
 
-      {publishedVisible === "posts"
-        ? userPost.map((singlePost) => {
-            return (
-              <Fade bottom>
-              <Card className="my-card" key={singlePost._id}>
-                <CardContent className="post-container">
-                  <div>
-                  <Typography variant="body2" component="p" className="text-dark">
-                    {singlePost.description}
-                    <br />
-                  </Typography>
-                  <Typography variant="body2" component="p" className="text-dark">
-                    {singlePost.dateString}
-                    <br />
-                  </Typography>
+        {publishedVisible === "posts"
+          ? userPost.map((singlePost) => {
+              return (
+                <Fade bottom key={singlePost._id}>
+                  <div className="container">
+                  <Card className="board-event-card" >
+                    <div className="post-text">
+                      <Typography
+                        variant="body2"
+                        component="p"
+                        className="text-dark"
+                      >
+                        {singlePost.description}
+                        <br />
+                      </Typography>
+                      <div className="post-screenshot">
+                        {singlePost.picture != "" ? (
+                          <Popover
+                            popover={({ visible, open, close }) => {
+                              return (
+                                <img
+                                  className="post-picture-details"
+                                  src={singlePost.picture}
+                                  alt="Post_pic"
+                                />
+                              );
+                            }}
+                          >
+                            <img
+                              className="post-picture"
+                              src={singlePost.picture}
+                              alt="Post_pic"
+                            />
+                          </Popover>
+                        ) : (
+                          ""
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="board-vote-date">
+                      <Typography
+                        variant="body2"
+                        component="p"
+                        className="my-tags text-dark"
+                      >
+                        #{singlePost.tags}
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        component="p"
+                        className="text-dark"
+                      >
+                        {singlePost.dateString}
+                      </Typography>
+                      <CardActions disableSpacing>
+                        <Button
+                          onClick={() => {
+                            handleDeletePost(singlePost._id);
+                          }}
+                          size="small"
+                        >
+                          pop()
+                        </Button>
+                      </CardActions>
+                    </div>
+                  </Card>
                   </div>
-                <CardActions disableSpacing>
-                  <Button
-                    onClick={() => {
-                      handleDeletePost(singlePost._id);
-                    }}
-                    size="small"
-                  >
-                    pop()
-                  </Button>
-                </CardActions>
-                </CardContent>
-              </Card>
-              </Fade>
-            );
-          })
-        : userEvent.map((singleEvent) => {
-            return (
-              <>
-              <Card className="my-card" key={singleEvent._id}>
-                <CardContent className="post-container">
-                  <div className="text-card">
-                  {/* <EventDetails popEvent={singleEvent}/> */}
-                  <h3>{singleEvent.title}</h3>
-                  <Typography variant="body2" component="p">
-                    {singleEvent.dateString}, at {singleEvent.hours}:
-                    {singleEvent.minutes}
-                  </Typography>
-                  </div>
-                <CardActions className="btn-list-event">
-                  <Button
-                    onClick={() => {
-                      handleDeleteEvent(singleEvent._id);
-                    }}
-                    size="small"
-                  >
-                    pop()
-                  </Button>
-                  <Link
-                    to={`event/${singleEvent._id}/edit`}
-                    className="my-link"
-                  >
-                    Edit
-                  </Link>
-                </CardActions>
-                </CardContent>
-              </Card>
-              </>
-            );
-          })}
-    </div>
+                </Fade>
+              );
+            })
+          : userEvent.map((singleEvent) => {
+              return (
+                <div className="container" key={singleEvent._id}>
+                  <Card className="board-event-card" >
+                    <h4>{singleEvent.title}</h4>
+                    <p>
+                      {singleEvent.dateString}, at {singleEvent.hours}:
+                      {singleEvent.minutes}
+                    </p>
+
+                    <div className="profile-groupbtn">
+                      <Button
+                        onClick={() => {
+                          handleDeleteEvent(singleEvent._id);
+                        }}
+                        size="small"
+                      >
+                        pop()
+                      </Button>
+                      <Link
+                        to={`event/${singleEvent._id}/edit`}
+                        className="my-link"
+                      >
+                        Edit
+                      </Link>
+                    </div>
+                  </Card>
+                </div>
+              );
+            })}
+      </div>
     </StylesProvider>
   );
 }

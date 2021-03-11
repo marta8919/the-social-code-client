@@ -97,7 +97,7 @@ function SignUp(props) {
 
           {error ? <p className="errorMessage">{error.errorMessage}</p> : null}
           <ToastContainer />
-          <Button type="submit" variant="contained" disabled={sendingEmail}>
+          <Button className="my-btn" type="submit" variant="contained" disabled={sendingEmail}>
             {sendingEmail ? <CircularProgress /> : "Sign up"}
           </Button>
           <Link className="text-white" to="/login">

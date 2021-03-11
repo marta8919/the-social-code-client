@@ -95,8 +95,8 @@ export default function Board(props) {
             color="primary"
             aria-label="outlined primary button group"
           >
-            <Button onClick={handlePosts}>Posts</Button>
-            <Button onClick={handleEvents}>Events</Button>
+            <Button className="my-btn" onClick={handlePosts}>Posts</Button>
+            <Button className="my-btn" onClick={handleEvents}>Events</Button>
           </ButtonGroup>
         </div>
         {publishedVisible === "posts" ? (

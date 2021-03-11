@@ -33,7 +33,7 @@ export default function EditProfile(props) {
                 <TextField name="city" label="City" type="text" variant="filled" value={loggedInUser.city} onChange={handleChangeUser}  />
                 <TextField name="intro" label="Intro" type="text" variant="filled" value={loggedInUser.intro} onChange={handleChangeUser} />
                 <TextField name="hobbies" label="Hobbies" type="text" variant="filled" value={loggedInUser.hobbies}  onChange={handleChangeUser} />
-                <Button type="submit" variant="contained">Save</Button>
+                <Button className="my-btn" type="submit" variant="contained">Save</Button>
             </form>
             </StylesProvider>
         </div>

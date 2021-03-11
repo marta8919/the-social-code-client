@@ -45,7 +45,7 @@ export default function AboutUs() {
                   className="about-img-card"
                   src="https://res.cloudinary.com/martacloud/image/upload/v1615453937/undraw_Online_calendar_re_wk3t_xpffxp.png"
                 ></img>
-                <p>Participate in online events</p>
+                <p>Participate in events</p>
               </Card>
               <Card className="about-card">
                 <img

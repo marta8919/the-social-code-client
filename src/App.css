@@ -35,13 +35,13 @@ body {
 }
 
 .about-img-card{
-  width: 200px;
+  width: 150px;
   height: auto;
 }
 
 .about-card{
   margin: 20px;
-  width: 200px;
+  width: 180px;
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -89,15 +89,8 @@ body {
     rgba(41, 237, 198, 1) 0%,
     rgba(6, 150, 210, 1) 86%
   );
-  color: white;
   font-weight: 600;
 }
-
-/* .MuiOutlinedInput-input {
-  background-color: white;
-  border-radius: 5px;
-  color: white;
-} */
 
 .MuiButton-outlinedPrimary,
 .MuiButton-outlinedPrimary {
@@ -394,16 +387,27 @@ my-nav {
   justify-content: space-between;
 }
 
+/* Buttons override MUI */
+.MuiButton-label{
+  color:white;
+  font-weight: 600;
+}
+
+.profile-groupbtn{
+  display: flex;
+  justify-content: space-between;
+}
+
 @media (min-width: 500px) {
   .my-nav {
     top: 0px;
     position: fixed;
     width: 100%;
-    border: 2px solid var(--darkbackground);
+    border-bottom: 2px solid var(--darkbackground);
   }
 
   .container {
-    margin-top: 60px;
+    margin: 60px 20px 20px 20px;
   }
 }
 
@@ -425,7 +429,7 @@ my-nav {
     bottom: 0px;
     position: fixed;
     width: 100%;
-    border: 2px solid var(--darkbackground);
+    border-top: 2px solid var(--darkbackground);
   }
 
   .logo {
@@ -483,12 +487,6 @@ my-nav {
     justify-content: space-between;
     min-width: 220px;
     max-width: 220px;
-  }
-
-  .btn-list-event {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
   }
 
   .board-event-card{

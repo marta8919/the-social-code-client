@@ -17,27 +17,37 @@ function BoardEvent(props) {
     user,
     handleRegister,
     handleUnsubscribe,
-    checkedRegister,
   } = props;
-  const [register, setCheck] = useState(false);
+  const [register, setCheckRegister] = useState(false);
 
   useEffect(() => {
     let presentUsers = event.registeredUsers.filter((u) => u._id === user._id);
     if (presentUsers.length > 0) {
-      setCheck(true);
+      setCheckRegister(true);
     } else {
-      setCheck(false);
+      setCheckRegister(false);
     }
   }, []);
 
+
+  // useEffect(() => {
+  //   console.log(register)
+  //   if (register) {
+  //     handleUnsubscribe(event._id);
+  //   } 
+  //   else {
+  //     handleRegister(event._id);
+  //   }
+  // }, [register])
+
   const handleFunction = () => {
-    if (checkedRegister) {
-      // handleUnsubscribe(event._id);
-      setCheck(checkedRegister);
+    if (register) {
+      setCheckRegister(false);
+      handleUnsubscribe(event._id);
     } 
     else {
+      setCheckRegister(true);
       handleRegister(event._id);
-      // setCheck(checkedRegister);
     }
   };
 

@@ -3,7 +3,7 @@ import axios from "axios";
 import config from "../config";
 import { StylesProvider } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 import {
   CardContent,
   Typography,
@@ -67,7 +67,9 @@ function BoardPost(props) {
             />
             <div className="post-text">
               <Typography variant="h5" component="h2" className="text-dark">
-              <Link to={`user/${post.userId._id}`}>@{post.userId.username}</Link>
+                <Link to={`user/${post.userId._id}`}>
+                  @{post.userId.username}
+                </Link>
               </Typography>
               <Typography variant="body2" component="p" className="text-dark">
                 {post.description}
@@ -79,7 +81,7 @@ function BoardPost(props) {
                 <Checkbox
                   icon={<FavoriteBorder />}
                   checked={checkedLike}
-                  checkedIcon={<Favorite/>}
+                  checkedIcon={<Favorite />}
                   inputProps={{ "aria-label": "Like" }}
                   onClick={handleFunction}
                 />

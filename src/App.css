@@ -28,10 +28,30 @@ body {
   align-items: center;
 }
 
-a {
-  margin: 0;
-  padding: 0;
+.section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
+
+.about-img-card{
+  width: 200px;
+  height: auto;
+}
+
+.about-card{
+  margin: 20px;
+  width: 200px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* a{
+  margin:0;
+  padding:0;
+} */
 
 .my-tags {
   font-style: italic;
@@ -69,6 +89,7 @@ a {
     rgba(41, 237, 198, 1) 0%,
     rgba(6, 150, 210, 1) 86%
   );
+  color: white;
   font-weight: 600;
 }
 
@@ -85,6 +106,15 @@ a {
 }
 
 .form-center input {
+  background-color: white;
+  color: black;
+}
+
+/* .searchbar {
+  width: 400px;
+} */
+
+.searchbar input {
   background-color: white;
   color: black;
 }
@@ -203,6 +233,17 @@ a {
   margin: 10px auto;
 }
 
+.board-event-card{
+  width: 400px;
+  padding: 15px;
+}
+
+.board-event-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .header {
   margin: 5px auto 20px auto;
   text-align: center;
@@ -264,9 +305,17 @@ a {
   justify-content: space-between;
 }
 
-.team-card {
-  width: 400px;
+.contact a {
+  margin: 10px;
+}
+
+.team-card{
+  width: 300px;
   padding: 20px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .line-center {
@@ -442,6 +491,16 @@ my-nav {
     justify-content: center;
   }
 
+  .board-event-card{
+    width: 295px;
+    padding: 10px;
+  }
+
+  .board-event-bottom{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+ 
   /* .my-card-content{
     width: 60% ;
   } */

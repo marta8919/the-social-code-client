@@ -86,7 +86,7 @@ export default function Board(props) {
     <StylesProvider>
       <Fade bottom>
         <Link to="/about">
-          <img className="logo" src="./images/logo.png" alt="Main_Logo" />
+          <img className="logo" src="https://res.cloudinary.com/martacloud/image/upload/v1615454848/Logo_kzn2xu.png" alt="Main_Logo" />
         </Link>
 
         <h1 className="header">Board</h1>
@@ -101,7 +101,7 @@ export default function Board(props) {
         </div>
         {publishedVisible === "posts" ? (
           <div>
-            <div className="form-center">
+            <div className="searchbar">
               <span className="line-center">
                 <SearchIcon />
                 <TextField
@@ -139,7 +139,7 @@ export default function Board(props) {
           </div>
         ) : (
           <div>
-            <div className="form-center">
+            <div className="searchbar">
               <span className="line-center">
                 <SearchIcon />
                 <TextField
@@ -148,6 +148,7 @@ export default function Board(props) {
                   variant="outlined"
                   type="text"
                   onChange={handleSearchEvents}
+                  className="my-inputfield"
                 />
               </span>
             </div>

@@ -7,7 +7,7 @@ export default function NotFound(props) {
     return (
         <Fade bottom>
         <div className="container">
-            <Link to="/profile"><img className="logo" src="./images/logo.png" alt="Main_Logo"/></Link>
+            <Link to="/profile"><img className="logo" src="https://res.cloudinary.com/martacloud/image/upload/v1615454848/Logo_kzn2xu.png" alt="Main_Logo"/></Link>
 
             <div className="header">
             <h1>404</h1>

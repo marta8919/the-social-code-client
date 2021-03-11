@@ -46,7 +46,7 @@ export default function UserProfile(props) {
 
     return (
         <div className="container">
-            <Link to="/about"><img className="logo" src="../images/logo.png"/></Link>
+            <Link to="/about"><img className="logo" src="https://res.cloudinary.com/martacloud/image/upload/v1615454848/Logo_kzn2xu.png"/></Link>
             <h1>User profile</h1>
             <Card className="my-card">
                 <img src={singleUser.picture} alt="user" className="profile-pic"></img>

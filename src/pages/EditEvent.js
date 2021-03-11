@@ -9,6 +9,7 @@ import { StylesProvider } from "@material-ui/styles";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import { Select } from "@material-ui/core";
+import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 
 export default function EventDetails(props) {
   const [singleEvent, setEvent] = useState({});
@@ -56,19 +57,19 @@ export default function EventDetails(props) {
     <div className="container">
       <Link to="/about"><img className="logo" src="https://res.cloudinary.com/martacloud/image/upload/v1615454848/Logo_kzn2xu.png"/></Link>
       <div className="header">
-        <h1>Hello</h1>
-        <h3>Let's edit the event </h3>
+        <h1>Let's edit the event </h1>
+      </div>
         {!singleEvent ? (
           <LinearProgress />
         ) : (
           <form
             onSubmit={handleEventDetails}
-            className="form-center"
+            className="calendar-form"
             noValidate
             autoComplete="off"
           >
             <label>Title</label>
-            <TextField
+            <TextareaAutosize
               className="my-inputfield"
               name="title"
               type="text"
@@ -78,13 +79,23 @@ export default function EventDetails(props) {
             />
 
             <label>Description</label>
-            <TextField
+            <TextareaAutosize
               className="my-inputfield"
               name="description"
               type="text"
               variant="filled"
               onChange={handleChange}
               value={singleEvent.description}
+            />
+
+            <label>Link</label>
+            <TextareaAutosize
+              className="my-inputfield"
+              name="link"
+              type="text"
+              variant="filled"
+              onChange={handleChange}
+              value={singleEvent.link}
             />
 
             <label>Tags</label>
@@ -99,6 +110,7 @@ export default function EventDetails(props) {
             <option value="java">java</option>
             <option value="c++">c++</option>
             </Select>
+            <br></br>
             {/* <TextField
               className="my-inputfield"
               name="tags"
@@ -107,17 +119,6 @@ export default function EventDetails(props) {
               onChange={handleChange}
               value={singleEvent.tags}
             /> */}
-
-            <label>Link</label>
-            <TextField
-              className="my-inputfield"
-              name="link"
-              type="text"
-              variant="filled"
-              onChange={handleChange}
-              value={singleEvent.link}
-            />
-            
 
             {/* <label>Date</label>
             <Calendar onChange={onChangeDate} value={singleEvent.dateOriginal} />
@@ -201,7 +202,6 @@ export default function EventDetails(props) {
             </Button>
           </form>
         )}
-      </div>
     </div>
   );
 }

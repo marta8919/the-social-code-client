@@ -140,11 +140,11 @@ function Profile(props) {
           </Card>
         </Fade>
 
-        <h3 className="header">Upcoming events</h3>
+        {/* <h3 className="header">Upcoming events</h3> */}
         {/* <p>{user.registeredEvents[0].title}</p> */}
-        {user.registeredEvents.map((singleEvent) => {
+        {/* {user.registeredEvents.map((singleEvent) => {
           return <p>{singleEvent.title}</p>;
-        })}
+        })} */}
 
         <Fade bottom>
           <div className="group-btn">

@@ -12,11 +12,17 @@ import Fade from "react-reveal/Fade";
 import { StylesProvider } from "@material-ui/core/styles";
 
 function BoardEvent(props) {
-  const { event, user , handleRegister, handleUnsubscribe, checkedRegister} = props;
-  const [register, setCheck]= useState(false)
+  const {
+    event,
+    user,
+    handleRegister,
+    handleUnsubscribe,
+    checkedRegister,
+  } = props;
+  const [register, setCheck] = useState(false);
 
   useEffect(() => {
-    let presentUsers = event.registeredUsers.filter(u => u._id === user._id)
+    let presentUsers = event.registeredUsers.filter((u) => u._id === user._id);
     if (presentUsers.length > 0) {
       setCheck(true);
     } else {
@@ -26,38 +32,44 @@ function BoardEvent(props) {
 
   const handleFunction = () => {
     if (checkedRegister) {
-      handleUnsubscribe(event._id);
-      setCheck(false)
-    } else {
+      // handleUnsubscribe(event._id);
+      setCheck(checkedRegister);
+    } 
+    else {
       handleRegister(event._id);
-      setCheck(true)
+      // setCheck(checkedRegister);
     }
   };
 
   return (
     <StylesProvider>
-    <div className="container">
-      <Fade bottom>
-        <Card className="board-event-card">
+      <div className="container">
+        <Fade bottom>
+          <Card className="board-event-card">
             <h4>{event.title}</h4>
             <p>{event.description}</p>
-            <p>Date: {event.dateString}, at {event.hours}:{event.minutes}</p>
+            <p>
+              Date: {event.dateString}, at {event.hours}:{event.minutes}
+            </p>
 
             <div className="board-event-bottom">
-           
               <a href="{event.link}">Link to the event</a>
- 
-            
-            {event.tags ? (
-              <div className="article-code">
-                <Typography variant="body2" component="p" className="text-dark">
-                  #{event.tags}
-                </Typography>
-              </div>
-            ) : (
-              ""
-            )}
-             <span>Check to register!
+
+              {event.tags ? (
+                <div className="article-code">
+                  <Typography
+                    variant="body2"
+                    component="p"
+                    className="text-dark"
+                  >
+                    #{event.tags}
+                  </Typography>
+                </div>
+              ) : (
+                ""
+              )}
+              <span>
+                Check to register!
                 <Checkbox
                   checked={register}
                   inputProps={{ "aria-label": "Like" }}
@@ -65,11 +77,9 @@ function BoardEvent(props) {
                 />
               </span>
             </div>
-
-
-        </Card>
-      </Fade>
-    </div>
+          </Card>
+        </Fade>
+      </div>
     </StylesProvider>
   );
 }

@@ -338,7 +338,6 @@ body {
 }
 
 .profile-card {
-  width: 500px;
   padding: 10px;
   display: flex;
   justify-content: space-between;
@@ -428,7 +427,6 @@ my-nav {
 
   .profile-card {
     flex-direction: column;
-    width: 300px;
   }
 
   .control-btns {

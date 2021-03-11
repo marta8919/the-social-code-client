@@ -38,8 +38,8 @@ function SignUp(props) {
         setSendingEmail(false);
         toast.info("We have sent you an email 📩. Please complete your registration clicking on the link we shared.");
       })
-      .catch(() => {
-        toast.error("Ups....you wrote something wrong, try again!")
+      .catch((err) => {
+        setError(err.response.data);
       });
   };
 

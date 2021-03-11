@@ -12,6 +12,7 @@ import {
 } from "@material-ui/core";
 import { FavoriteBorder, Favorite } from "@material-ui/icons";
 import Fade from "react-reveal/Fade";
+import { Popover } from "@varld/popover";
 
 function BoardPost(props) {
   const { post, user } = props;
@@ -58,21 +59,51 @@ function BoardPost(props) {
   return (
     <StylesProvider>
       <Fade bottom>
-        <Card className="my-card">
-          <CardContent className="post-container">
-            <img
-              src={post.userId.picture}
-              alt="Profile"
-              className="board-pic"
-            />
+        <Card className="board-card">
+            <div className="pic-name-board">
+            <a href={`user/${post.userId._id}`} className="board-pic-post">
+              <img
+                src={post.userId.picture}
+                alt="Profile"
+                className="board-pic"
+              />
+              </a>
+              <a href={`user/${post.userId._id}`} className="small-link">
+                @{post.userId.username}
+              </a>
+            </div>
             <div className="post-text">
-              <Typography variant="h5" component="h2" className="text-dark">
-                <Link to={`user/${post.userId._id}`}>
-                  @{post.userId.username}
-                </Link>
-              </Typography>
               <Typography variant="body2" component="p" className="text-dark">
                 {post.description}
+              </Typography>
+              <div className="post-screenshot">
+              {post.picture != "" ? (
+                <Popover
+                  popover={({ visible, open, close }) => {
+                    return (
+                      <img
+                        className="post-picture-details"
+                        src={post.picture}
+                        alt="Post_pic"
+                      />
+                      
+                    );
+                  }}
+                >
+                  <img
+                    className="post-picture"
+                    src={post.picture}
+                    alt="Post_pic"
+                  />
+                </Popover>
+              ) : (
+                ""
+              )}
+              </div>
+              </div>
+              <div className="board-vote-date">
+              <Typography variant="body2" component="p" className="text-dark">
+                #{post.tags}
               </Typography>
               <Typography variant="body2" component="p" className="text-dark">
                 {post.dateString}
@@ -86,8 +117,9 @@ function BoardPost(props) {
                   onClick={handleFunction}
                 />
               </CardActions>
-            </div>
-          </CardContent>
+              </div>
+            
+          
         </Card>
       </Fade>
     </StylesProvider>

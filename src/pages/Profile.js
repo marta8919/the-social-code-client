@@ -100,7 +100,7 @@ function Profile(props) {
           <h1>Hey @{user.username} !</h1>
           <h3>Welcome to your profile </h3>
         </div>
-        <Card className="my-card">
+        <Card className="profile-card">
           <div className="image-btn">
             <img src={user.picture} alt="user" className="profile-pic"></img>
             <Link to="/profile/editPic">Edit picture</Link>
@@ -119,16 +119,14 @@ function Profile(props) {
             <p>
               <strong>Intro: </strong> {user.intro}
             </p>
-            <p>Part of TSC since {user.dateString}</p>
+            <p><strong>Part of TSC since {user.dateString}</strong></p>
           </div>
 
           <div className="control-btns">
             <Link to="/profile/edit" className="my-link">
               <EditIcon className="my-icon" />
             </Link>
-            <Link to="/profile/delete" className="my-link">
-              <DeleteForeverIcon className="my-icon" />
-            </Link>
+            
             <button className="transparent" onClick={onLogout}>
               <ExitToAppIcon />
             </button>
@@ -166,6 +164,7 @@ function Profile(props) {
               <Fade bottom>
               <Card className="my-card" key={singlePost._id}>
                 <CardContent className="post-container">
+                  <div>
                   <Typography variant="body2" component="p" className="text-dark">
                     {singlePost.description}
                     <br />
@@ -174,7 +173,7 @@ function Profile(props) {
                     {singlePost.dateString}
                     <br />
                   </Typography>
-                
+                  </div>
                 <CardActions disableSpacing>
                   <Button
                     onClick={() => {
@@ -203,7 +202,7 @@ function Profile(props) {
                     {singleEvent.minutes}
                   </Typography>
                   </div>
-                <CardActions>
+                <CardActions className="btn-list-event">
                   <Button
                     onClick={() => {
                       handleDeleteEvent(singleEvent._id);

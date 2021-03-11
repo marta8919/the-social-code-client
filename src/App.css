@@ -72,11 +72,7 @@ a{
   color: white;
 } */
 
-<<<<<<< HEAD
-/* .MuiButton-outlinedPrimary {
-=======
 .MuiButton-outlinedPrimary, .MuiButton-outlinedPrimary {
->>>>>>> origin/sofia
   color: white;
 } */
 
@@ -140,7 +136,7 @@ a{
   flex-direction: column;
 }
 
-.profile-pic, .board-pic {
+.profile-pic {
   width: 100px;
   height: 100px;
   object-fit: cover;
@@ -153,6 +149,16 @@ a{
   height: 40px;
   border: 3px solid var(--darkbackground);
   margin: 5px
+}
+
+.post-picture{
+  width: 300px;
+  justify-content: center;
+  object-fit: cover;
+}
+
+.post-picture-details{
+  width: 100%;
 }
 
 .my-icon {
@@ -195,6 +201,7 @@ a{
   margin: 10px auto;
 }
 
+
 .header {
   margin: 5px auto 20px auto;
   text-align: center;
@@ -210,11 +217,6 @@ a{
 .my-footer a {
   color: white;
 }
-
-/* .my-nav a {
-  margin: 10px 50px;
-  justify-content: center;
-} */
 
 .my-inputfield {
   margin-bottom: 20px;
@@ -232,6 +234,7 @@ a{
 .MuiBottomNavigation-root{
   justify-content: space-between;
 }
+
 .fake-code {
   border: 1px solid white;
   font-family: monospace;
@@ -279,6 +282,60 @@ a{
   width: 400px;
 }
 
+.image-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-card{
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px auto;
+}
+
+.board-pic {
+  width:40px;
+  height: 40px;
+  object-fit: cover;
+  border: 5px solid white;
+  border-radius: 50%;
+}
+
+.pic-name-board{
+  display: flex;
+}
+
+.small-link{
+  font-size: 18px;
+  text-decoration: none;
+  color: black;
+  font-weight: normal;
+}
+
+.small-link:hover {
+  color: var(--gradient1B);
+}
+
+.board-vote-date{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+}
+
+.board-card{
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.post-screenshot{
+  margin-top: 10px;
+  justify-items: center;
+}
+
 @media(min-width: 500px){
   .my-nav {
     top: 0px;
@@ -295,6 +352,15 @@ a{
 @media (max-width: 500px) {
   .container {
     margin: 20px;
+  }
+
+  .profile-card {
+    flex-direction: column;
+  }
+
+  .control-btns {
+    flex-direction: row;
+    justify-content: center;
   }
 
   .my-nav {
@@ -318,10 +384,13 @@ a{
     height: 100px;
   }
 
-  .board-pic {
-    width:60px;
-    height: 60px;
-  }
+  /* .board-pic {
+    width:40px;
+    height: 40px;
+    object-fit: cover;
+    border: 5px solid white;
+    border-radius: 50%;
+  } */
 
   .MuiTypography-h5 {
     font-size: 1em;
@@ -364,6 +433,12 @@ a{
     justify-content: space-between;
     min-width: 220px;
     max-width: 220px;
+  }
+
+  .btn-list-event {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
  
   /* .my-card-content{

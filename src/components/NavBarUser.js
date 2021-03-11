@@ -30,7 +30,7 @@ export default function NavBarUser(props) {
           value="board"
           icon={<DashboardIcon />}
           href="/board"
-          className="my-navbar-icon"
+          className="my-navbar-icon first-icon"
         />
         <BottomNavigationAction
           label="Events"
@@ -47,11 +47,19 @@ export default function NavBarUser(props) {
           className="my-navbar-icon"
         />
         {user ? (
-          <Link to="/profile"><img
-            src={user.picture}
-            alt="userIcon"
-            className="profile-pic navBar-pic"
-          /></Link>
+          <a
+            className="MuiButtonBase-root MuiBottomNavigationAction-root my-navbar-icon MuiBottomNavigationAction-iconOnly"
+            href="/profile"
+          >
+            <span className=".MuiBottomNavigationAction-root MuiBottomNavigationAction-wrapper">
+              <img
+                src={user.picture}
+                alt="userIcon"
+                className="profile-pic navBar-pic"
+              />
+              <span className="MuiBottomNavigationAction-label MuiBottomNavigationAction-iconOnly"></span>
+            </span>
+          </a>
         ) : (
           <BottomNavigationAction
             label="Profile"

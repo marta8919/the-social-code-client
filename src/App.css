@@ -15,14 +15,13 @@
   flex-direction: column;
 }
 
-
 body {
   background-color: var(--darkbackground);
   margin: 0;
   color: white;
 }
 
-.main{
+.main {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -53,6 +52,13 @@ body {
   margin:0;
   padding:0;
 } */
+
+.my-tags {
+  font-style: italic;
+  background: rgba(41, 237, 198, 0.3);
+  padding: 1px 4px;
+  border-radius: 5px;
+}
 
 .transparent {
   background: none;
@@ -93,11 +99,11 @@ body {
   color: white;
 } */
 
-.MuiButton-outlinedPrimary, .MuiButton-outlinedPrimary {
+.MuiButton-outlinedPrimary,
+.MuiButton-outlinedPrimary {
   color: white;
-} */
-
-.form-center {
+}
+*/ .form-center {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -178,16 +184,18 @@ body {
   width: 40px;
   height: 40px;
   border: 3px solid var(--darkbackground);
-  margin: 5px
+  margin: 5px;
+
+  margin-bottom: 12px;
 }
 
-.post-picture{
+.post-picture {
   width: 300px;
   justify-content: center;
   object-fit: cover;
 }
 
-.post-picture-details{
+.post-picture-details {
   width: 100%;
 }
 
@@ -271,10 +279,6 @@ body {
   margin-top: 20px;
 }
 
-.MuiBottomNavigation-root{
-  justify-content: space-between;
-}
-
 .fake-code {
   border: 1px solid white;
   font-family: monospace;
@@ -293,13 +297,13 @@ body {
   align-items: center;
 }
 
-.big-title{
+.big-title {
   font-size: 10em;
 }
 
-.logo{
+.logo {
   width: 80px;
-  margin:30px;
+  margin: 30px;
 }
 
 .team {
@@ -323,7 +327,7 @@ body {
 .line-center {
   display: flex;
   align-items: center;
-  justify-content:space-around;
+  justify-content: space-around;
 }
 
 .my-inputfield {
@@ -337,7 +341,7 @@ body {
   justify-content: center;
 }
 
-.profile-card{
+.profile-card {
   padding: 10px;
   display: flex;
   justify-content: space-between;
@@ -345,18 +349,18 @@ body {
 }
 
 .board-pic {
-  width:40px;
+  width: 40px;
   height: 40px;
   object-fit: cover;
   border: 5px solid white;
   border-radius: 50%;
 }
 
-.pic-name-board{
+.pic-name-board {
   display: flex;
 }
 
-.small-link{
+.small-link {
   font-size: 18px;
   text-decoration: none;
   color: black;
@@ -367,26 +371,30 @@ body {
   color: var(--gradient1B);
 }
 
-.board-vote-date{
+.board-vote-date {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 10px;
 }
 
-.board-card{
+.board-card {
   padding: 20px;
   margin-top: 20px;
 }
 
-.post-screenshot{
+.post-screenshot {
   margin-top: 10px;
   justify-items: center;
 }
 
-/* MEDIA QUERIES */
+.MuiBottomNavigation-root,
+my-nav {
+  align-items: center;
+  justify-content: space-between;
+}
 
-@media(min-width: 500px){
+@media (min-width: 500px) {
   .my-nav {
     top: 0px;
     position: fixed;
@@ -420,9 +428,9 @@ body {
     border: 2px solid var(--darkbackground);
   }
 
-  .logo{
+  .logo {
     width: 60px;
-    margin:10px;
+    margin: 10px;
   }
 
   .my-inputfield {
@@ -434,23 +442,15 @@ body {
     height: 100px;
   }
 
-  /* .board-pic {
-    width:40px;
-    height: 40px;
-    object-fit: cover;
-    border: 5px solid white;
-    border-radius: 50%;
-  } */
-
   .MuiTypography-h5 {
     font-size: 1em;
   }
 
-  .navBar-pic { 
+  .navBar-pic {
     width: 40px;
     height: 40px;
     border: 3px solid var(--darkbackground);
-    margin: 5px;
+    margin-right: auto;
   }
 
   .text-card {
@@ -466,15 +466,15 @@ body {
     padding: 10px;
   }
 
-  .fake-code{
+  .fake-code {
     width: 300px;
   }
 
-  .team{
+  .team {
     flex-direction: column;
   }
 
-  .team-card{
+  .team-card {
     width: 90%;
   }
 
@@ -504,5 +504,4 @@ body {
   /* .my-card-content{
     width: 60% ;
   } */
-
 }

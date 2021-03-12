@@ -1,7 +1,7 @@
 # The Social Code - TSC
 
 <!-- Logo to be filled in -->
-![]()
+![Main Logo TSC](https://res.cloudinary.com/dfpleoyv6/image/upload/v1615540340/Captura_eqmzq8.png)
 
 This work is licensed under a MIT License
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -9,24 +9,23 @@ This work is licensed under a MIT License
 
 ## Description
 
-The Social Code TBS is a platform that allows developers to post their ideas, articles and code to a tech social media, give feeback on other user's post and save some inspiration.
+The Social Code (TSC) is a platform where developers and technical people can share their experiences and create online events to network and share knowledge with other people
 
-The user will have to log in to view, write articles and search users to connect though private messages.
+The user can log in to view, write articles and search users to connect though private messages.
 
 ## MVP
 
-The MPV will include the possibility to sign-up, log-in and log-out. Publish (or save as a draft) post/article/code functionality and view the posts the users have published on their profile page. the main board will show all posts and articles. On the profile page the user will also have the possibility to edit their profile information and edit drafts. Private Messaging and responsive design is also included.
+The MPV will include the possibility to sign-up, log-in and log-out. Publish post or event with calendar functionality and view the posts the users have published on their profile page. The main board will show all posts and events. On the profile page the user will also have the possibility to edit their profile information and edit events, as well as delete posts and events.
 
 ## Backlog
 
 - [ ] Access to lost password
-- [ ] Email validation
-- [ ] Main board with the latest news of the day
-- [ ] Voting posts through "likes"
+- [X] Email validation
+- [X] Voting posts through "likes"
 - [ ] Drag and drop images
-- [ ] Search Bar
+- [X] Search Bar
 - [ ] Notifications on the navigation bar
-- [ ] Adding img to review
+- [X] Adding img to posts
 - [ ] Liked posts visible on profile
 
 ## Built with
@@ -45,27 +44,29 @@ The MPV will include the possibility to sign-up, log-in and log-out. Publish (or
 ### Models
 - Post.model.js
 - User.model.js
+- Events.model.js
 
-### routes
-- index.js
-- user-routes.js
-- auth.routes.js
-- post.routes.js
+### Client routes
+- HomePage: Welcoming page to the platform inviting the user to sign up
+- Confirming email: route sent to the user to the email account to confirm the user and be able to login
+- Sign Up: Sign Up form to create a user and send confirmation email to the email account
+- Login: Login form to use when the email address is already confirmed
+- About: Information page about the platform and the creators
+- Board: Main Board page to show all posts and future events
+- Profile: Logged in user's profile
+- Edit Profile/Edit Picture: Edit Profile information form
+- New Post / New Event / Edit Event: Forms to create/edit and publish posts and events
+- User Profile: Visit a profile from another user
+- Not Found: error 404 page
 
-## Data Structure Client Side
-### public
-- images
-
-### src
-#### components
-#### pages
+### Server Routes
+- File posts.routes.js: All GET/PATCH/POST/DELETE routes regarding the post model
+- File events.routes.js: All GET/PATCH/POST/DELETE routes regarding the event model
+- File user.routes.js: All GET/PATCH/POST/ routes regarding the user model
+- File posts.routes.js: All GET/POST/ routes regarding authentication and user confirmation through link to the email account
 
 ## Resources
-
-[Kanba board](https://www.notion.so/599c7db70d1841529f66226c690f6447?v=d64120829e4548a49ac65f89135463a9)
-
-[Presentation Slides]()
+[Presentation Slides](https://docs.google.com/presentation/d/1h5AIJ0Ya-EroVpIp3jqWOcplupaNuKBAHy55zTP07gU/edit?usp=sharing)
 
 ## Deployed Website
-(WIP)
-[TSC]()
+[The Social Code](https://the-social-code.herokuapp.com/)
